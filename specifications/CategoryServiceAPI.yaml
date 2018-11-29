@@ -3,8 +3,6 @@ info:
   description: ""
   version: "1.0.0"
   title: "Category Service"
-  contact:
-    email: "moritz.goeckel@gmail.com"
 host: "localhost:8080"
 basePath: "/"
 tags:
