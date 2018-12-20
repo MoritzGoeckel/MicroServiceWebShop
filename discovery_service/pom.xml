@@ -6,10 +6,9 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.1.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>de.hska</groupId>
-	<artifactId>Discovery_Service</artifactId>
+	<artifactId>discovery_Service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Discovery_Service</name>
 	<description>Demo project for Spring Boot</description>

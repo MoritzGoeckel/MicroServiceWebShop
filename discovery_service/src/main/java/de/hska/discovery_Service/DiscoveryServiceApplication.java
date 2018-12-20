@@ -1,4 +1,4 @@
-package de.hska.Discovery_Service;
+package de.hska.discovery_Service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
