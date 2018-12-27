@@ -30,12 +30,10 @@ public class CategoryEndpoints {
     }
 
     @RequestMapping(value = "/categories/", method = RequestMethod.GET)
-    public ResponseEntity<Iterable<Category>> getCategories() {
-        return new ResponseEntity<>(repo.findAll(), HttpStatus.OK);
-    }
+    public ResponseEntity<Iterable<Category>> getCategories(@RequestHeader(defaultValue = "") String name) {
+        if(name == null || name.isEmpty())
+            return new ResponseEntity<>(repo.findAll(), HttpStatus.OK);
 
-    @RequestMapping(value = "/categories/", method = RequestMethod.GET)
-    public ResponseEntity<Iterable<Category>> getCategories(@RequestHeader String name) {
         Iterable<Category> foundCategories = StreamSupport
                 .stream(repo.findAll().spliterator(), true)
                 .filter(c -> c.getName().contains(name)).collect(Collectors.toList());
