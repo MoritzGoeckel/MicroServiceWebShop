@@ -1,0 +1,7 @@
+Zum Bauen eines Docker imgaes:
+
+docker build -t category_service:latest .
+
+Zum Starten eines Containers:
+
+docker run -i --rm --name categoryContainer -p 9090:9090 category_service:latest

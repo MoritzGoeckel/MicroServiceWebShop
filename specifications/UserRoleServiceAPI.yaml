@@ -3,7 +3,7 @@ info:
   description: Service for user and role management
   version: 1.0.0
   title: User Service
-host: Webshop.de
+host: userRoleService.de
 basePath: /v2
 schemes:
   - https
@@ -30,13 +30,15 @@ paths:
           type: integer
           format: int64
       responses:
-        200:
+        '200':
           description: success
           schema:
             type: array
             items:
               $ref: '#/definitions/User'
-        403:
+        '400':
+          description: bad request
+        '500':
           description: error
     post:
       summary: Create user
@@ -50,11 +52,13 @@ paths:
           schema:
             $ref: '#/definitions/User'
       responses:
-        200:
+        '200':
           description: success
-        403:
+        '409':
+          description: conflict
+        '500':
           description: error
-  /users/{id}:
+  '/users/{id}':
     get:
       summary: Get user by Id
       operationId: getUserById
@@ -67,11 +71,13 @@ paths:
           type: integer
           format: int64
       responses:
-        200:
+        '200':
           description: success
           schema:
             $ref: '#/definitions/User'
-        403:
+        '404':
+          description: not found
+        '500':
           description: error
     put:
       summary: Set user by Id
@@ -90,9 +96,11 @@ paths:
           schema:
             $ref: '#/definitions/User'
       responses:
-        200:
+        '200':
           description: success
-        403:
+        '404':
+         description: not found
+        '500':
           description: error
     delete:
       summary: Delete user with Id
@@ -104,9 +112,11 @@ paths:
           type: integer
           format: int64
       responses:
-        200:
+        '200':
           description: Success
-        403:
+        '404':
+          description: not found
+        '500':
           description: error
   /roles:
     get:
@@ -123,13 +133,15 @@ paths:
           type: integer
           format: int32
       responses:
-        200:
+        '200':
           description: success
           schema:
             type: array
             items:
               $ref: '#/definitions/Role'
-        403:
+        '400':
+          description: bad request
+        '500':
           description: error
     post:
       summary: Create role
@@ -143,11 +155,13 @@ paths:
           schema:
             $ref: '#/definitions/Role'
       responses:
-        200:
+        '200':
           description: success
-        403:
+        '409':
+          description: conflict
+        '500':
           description: error
-  /roles/{id}:
+  '/roles/{id}':
     get:
       summary: Get role by Id
       operationId: getRoleById
@@ -160,11 +174,13 @@ paths:
           type: integer
           format: int64
       responses:
-        200:
+        '200':
           description: success
           schema:
             $ref: '#/definitions/Role'
-        403:
+        '404':
+          description: not found
+        '500':
           description: error
     put:
       summary: Set role by Id
@@ -183,9 +199,11 @@ paths:
           schema:
             $ref: '#/definitions/Role'
       responses:
-        200:
+        '200':
           description: success
-        403:
+        '404':
+          description: not found
+        '500':
           description: error
     delete:
       summary: Delete role with Id
@@ -197,9 +215,11 @@ paths:
           type: integer
           format: int64
       responses:
-        200:
+        '200':
           description: Success
-        403:
+        '404':
+          description: not found
+        '500':
           description: error
 definitions:
   User:
