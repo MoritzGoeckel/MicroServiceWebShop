@@ -1,0 +1,180 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "",
+    "version": "1.0.0",
+    "title": "Category Service",
+    "contact": {
+      "email": "bhb127@outlook.de"
+    }
+  },
+  "host": "localhost:8083",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "categories",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/categories": {
+      "post": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Adds a new category",
+        "description": "",
+        "operationId": "add category",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "header",
+            "description": "The name of the category",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "405": {
+            "description": "Category already exists"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Queries categories. If no name is provided all categories will be returned",
+        "description": "",
+        "operationId": "query categories",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "header",
+            "description": "The name of the category",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{id}": {
+      "delete": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Deletes a category",
+        "description": "",
+        "operationId": "delete category",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the to be deleted category",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "405": {
+            "description": "Category does not exist"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Retrieves a category",
+        "description": "",
+        "operationId": "get category",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the to be retrieved category",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "405": {
+            "description": "Category does not exist"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Category"
+      }
+    }
+  }
+}

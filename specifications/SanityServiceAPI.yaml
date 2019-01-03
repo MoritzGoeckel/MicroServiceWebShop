@@ -1,220 +1,218 @@
-swagger: '2.0'
+swagger: "2.0"
 info:
-  description: ''
-  version: 1.0.0
-  title: Sanity Service
+  description: ""
+  version: "1.0.0"
+  title: "Sanity Service"
   contact:
-    email: bhb127@outlook.de
-host: 'localhost:8080'
-basePath: /
+    email: "bhb127@outlook.de"
+host: "localhost:8080"
+basePath: "/"
 tags:
-  - name: products
-    description: ''
-  - name: categories
-    description: ''
-  - name: userRole
-    description: ''
+- name: "products"
+  description: ""
+- name: "categories"
+  description: ""
+- name: "userRole"
+  description: ""
 paths:
   /products:
     post:
       tags:
-        - products
-      summary: Adds a new product
-      description: ''
-      operationId: add product
+      - "products"
+      summary: "Adds a new product"
+      description: ""
+      operationId: "add product"
       consumes:
-        - application/json
+      - "application/json"
       produces:
-        - application/json
+      - "application/json"
       parameters:
-        - name: name
-          in: header
-          description: The name of the product
-          required: true
-          type: string
+      - name: "name"
+        in: "header"
+        description: "The name of the product"
+        required: true
+        type: "string"
       responses:
-        '200':
-          description: Successful operation
+        400:
+          description: "Invalid input"
+        405:
+          description: "Product already exists"
+        200:
+          description: "Successful operation"
           schema:
-            $ref: '#/definitions/Product'
-        '400':
-          description: Invalid input
-        '405':
-          description: Product already exists
+            $ref: "#/definitions/Product"
     get:
       tags:
-        - products
-      summary: Queries products. If no name is provided all products will be returned
-      description: ''
-      operationId: query products
+      - "products"
+      summary: "Queries products. If no name is provided all products will be returned"
+      description: ""
+      operationId: "query products"
       consumes:
-        - application/json
+      - "application/json"
       produces:
-        - application/json
+      - "application/json"
       parameters:
-        - name: name
-          in: header
-          description: The name of the product
-          required: false
-          type: string
+      - name: "name"
+        in: "header"
+        description: "The name of the product"
+        required: false
+        type: "string"
       responses:
-        '200':
-          description: Successful operation
+        200:
+          description: "Successful operation"
           schema:
-            type: array
+            type: "array"
             items:
-              $ref: '#/definitions/Product'
-  '/products/{id}':
+              $ref: "#/definitions/Product"
+  
+  /products/{id}:
     delete:
       tags:
-        - products
-      summary: Deletes a product
-      description: ''
-      operationId: delete product
+      - "products"
+      summary: "Deletes a product"
+      description: ""
+      operationId: "delete product"
       consumes:
-        - application/json
+      - "application/json"
       produces:
-        - application/json
+      - "application/json"
       parameters:
-        - name: id
-          in: path
-          description: The id of the to be deleted product
-          required: true
-          type: integer
-          format: int64
+      - name: "id"
+        in: "path"
+        description: "The id of the to be deleted product"
+        required: true
+        type: "integer"
+        format: "int64"
       responses:
-        '200':
-          description: Successful operation
-        '405':
-          description: Product does not exist
+        405:
+          description: "Product does not exist"
+        200:
+          description: "Successful operation"
     get:
       tags:
-        - products
-      summary: Retrieves a product
-      description: ''
-      operationId: get product
+      - "products"
+      summary: "Retrieves a product"
+      description: ""
+      operationId: "get product"
       consumes:
-        - application/json
+      - "application/json"
       produces:
-        - application/json
+      - "application/json"
       parameters:
-        - name: id
-          in: path
-          description: The id of the to be retrieved product
-          required: true
-          type: integer
-          format: int64
+      - name: "id"
+        in: "path"
+        description: "The id of the to be retrieved product"
+        required: true
+        type: "integer"
+        format: "int64"
       responses:
-        '200':
-          description: Successful operation
+        405:
+          description: "Product does not exist"
+        200:
+          description: "Successful operation"
           schema:
-            $ref: '#/definitions/Product'
-        '405':
-          description: Product does not exist
+            $ref: "#/definitions/Product"
   /categories:
     post:
       tags:
-        - categories
-      summary: Adds a new category
-      description: ''
-      operationId: add category
+      - "categories"
+      summary: "Adds a new category"
+      description: ""
+      operationId: "add category"
       consumes:
-        - application/json
+      - "application/json"
       produces:
-        - application/json
+      - "application/json"
       parameters:
-        - name: name
-          in: header
-          description: The name of the category
-          required: true
-          type: string
+      - name: "name"
+        in: "header"
+        description: "The name of the category"
+        required: true
+        type: "string"
       responses:
-        '200':
-          description: Successful operation
+        400:
+          description: "Invalid input"
+        405:
+          description: "Category already exists"
+        200:
+          description: "Successful operation"
           schema:
-            $ref: '#/definitions/Category'
-        '400':
-          description: Invalid input
-        '405':
-          description: Category already exists
+            $ref: "#/definitions/Category"
     get:
       tags:
-        - categories
-      summary: >-
-        Queries categories. If no name is provided all categories will be
-        returned
-      description: ''
-      operationId: query categories
+      - "categories"
+      summary: "Queries categories. If no name is provided all categories will be returned"
+      description: ""
+      operationId: "query categories"
       consumes:
-        - application/json
+      - "application/json"
       produces:
-        - application/json
+      - "application/json"
       parameters:
-        - name: name
-          in: header
-          description: The name of the category
-          required: false
-          type: string
+      - name: "name"
+        in: "header"
+        description: "The name of the category"
+        required: false
+        type: "string"
       responses:
-        '200':
-          description: Successful operation
+        200:
+          description: "Successful operation"
           schema:
-            type: array
+            type: "array"
             items:
-              $ref: '#/definitions/Category'
-  '/categories/{id}':
+              $ref: "#/definitions/Category"
+  
+  /categories/{id}:
     delete:
       tags:
-        - categories
-      summary: Deletes a category
-      description: ''
-      operationId: delete category
+      - "categories"
+      summary: "Deletes a category"
+      description: ""
+      operationId: "delete category"
       consumes:
-        - application/json
+      - "application/json"
       produces:
-        - application/json
+      - "application/json"
       parameters:
-        - name: id
-          in: path
-          description: The id of the to be deleted category
-          required: true
-          type: integer
-          format: int64
+      - name: "id"
+        in: "path"
+        description: "The id of the to be deleted category"
+        required: true
+        type: "integer"
+        format: "int64"
       responses:
-        '200':
-          description: Successful operation
-        '400':
-          description: Category stil has products
-        '405':
-          description: Category does not exist
+        405:
+          description: "Category does not exist"
+        200:
+          description: "Successful operation"
     get:
       tags:
-        - categories
-      summary: Retrieves a category
-      description: ''
-      operationId: get category
+      - "categories"
+      summary: "Retrieves a category"
+      description: ""
+      operationId: "get category"
       consumes:
-        - application/json
+      - "application/json"
       produces:
-        - application/json
+      - "application/json"
       parameters:
-        - name: id
-          in: path
-          description: The id of the to be retrieved category
-          required: true
-          type: integer
-          format: int64
+      - name: "id"
+        in: "path"
+        description: "The id of the to be retrieved category"
+        required: true
+        type: "integer"
+        format: "int64"
       responses:
-        '200':
-          description: Successful operation
+        405:
+          description: "Category does not exist"
+        200:
+          description: "Successful operation"
           schema:
-            $ref: '#/definitions/Category'
-        '405':
-          description: Category does not exist
+            $ref: "#/definitions/Category"
   /users:
     get:
       tags:
-        - userRole
+      - "userRole"
       summary: Get users
       operationId: getUsers
       produces:
@@ -234,17 +232,17 @@ paths:
           type: integer
           format: int64
       responses:
-        '200':
+        200:
           description: success
           schema:
             type: array
             items:
               $ref: '#/definitions/User'
-        '403':
+        403:
           description: error
     post:
       tags:
-        - userRole
+      - "userRole"
       summary: Create user
       operationId: createUser
       produces:
@@ -256,14 +254,14 @@ paths:
           schema:
             $ref: '#/definitions/User'
       responses:
-        '200':
+        200:
           description: success
-        '403':
+        403:
           description: error
-  '/users/{id}':
+  /users/{id}:
     get:
       tags:
-        - userRole
+      - "userRole"
       summary: Get user by Id
       operationId: getUserById
       produces:
@@ -275,15 +273,15 @@ paths:
           type: integer
           format: int64
       responses:
-        '200':
+        200:
           description: success
           schema:
             $ref: '#/definitions/User'
-        '403':
+        403:
           description: error
     put:
       tags:
-        - userRole
+      - "userRole"
       summary: Set user by Id
       operationId: setUserById
       produces:
@@ -300,13 +298,13 @@ paths:
           schema:
             $ref: '#/definitions/User'
       responses:
-        '200':
+        200:
           description: success
-        '403':
+        403:
           description: error
     delete:
       tags:
-        - userRole
+      - "userRole"
       summary: Delete user with Id
       operationId: deleteUser
       parameters:
@@ -316,14 +314,14 @@ paths:
           type: integer
           format: int64
       responses:
-        '200':
+        200:
           description: Success
-        '403':
+        403:
           description: error
   /roles:
     get:
       tags:
-        - userRole
+      - "userRole"
       summary: Get roles
       operationId: getRoles
       produces:
@@ -337,17 +335,17 @@ paths:
           type: integer
           format: int32
       responses:
-        '200':
+        200:
           description: success
           schema:
             type: array
             items:
               $ref: '#/definitions/Role'
-        '403':
+        403:
           description: error
     post:
       tags:
-        - userRole
+      - "userRole"
       summary: Create role
       operationId: createRole
       produces:
@@ -359,14 +357,14 @@ paths:
           schema:
             $ref: '#/definitions/Role'
       responses:
-        '200':
+        200:
           description: success
-        '403':
+        403:
           description: error
-  '/roles/{id}':
+  /roles/{id}:
     get:
       tags:
-        - userRole
+      - "userRole"
       summary: Get role by Id
       operationId: getRoleById
       produces:
@@ -378,15 +376,15 @@ paths:
           type: integer
           format: int64
       responses:
-        '200':
+        200:
           description: success
           schema:
             $ref: '#/definitions/Role'
-        '403':
+        403:
           description: error
     put:
       tags:
-        - userRole
+      - "userRole"
       summary: Set role by Id
       operationId: setRoleById
       produces:
@@ -403,13 +401,13 @@ paths:
           schema:
             $ref: '#/definitions/Role'
       responses:
-        '200':
+        200:
           description: success
-        '403':
+        403:
           description: error
     delete:
       tags:
-        - userRole
+      - "userRole"
       summary: Delete role with Id
       operationId: deleteRole
       parameters:
@@ -419,31 +417,31 @@ paths:
           type: integer
           format: int64
       responses:
-        '200':
+        200:
           description: Success
-        '403':
+        403:
           description: error
 definitions:
   Product:
-    type: object
+    type: "object"
     properties:
       id:
-        type: integer
-        format: int64
+        type: "integer"
+        format: "int64"
       name:
-        type: string
+        type: "string"
     xml:
-      name: Product
+      name: "Product"
   Category:
-    type: object
+    type: "object"
     properties:
       id:
-        type: integer
-        format: int64
+        type: "integer"
+        format: "int64"
       name:
-        type: string
+        type: "string"
     xml:
-      name: Category
+      name: "Category"
   User:
     type: object
     properties:
@@ -470,3 +468,4 @@ definitions:
       level:
         type: integer
         format: int32
+
