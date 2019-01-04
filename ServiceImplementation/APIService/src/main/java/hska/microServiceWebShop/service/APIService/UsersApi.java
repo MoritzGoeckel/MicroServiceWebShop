@@ -3,7 +3,7 @@
  * https://github.com/swagger-api/swagger-codegen
  * Do not edit the class manually.
  */
-package hska.microServiceWebShop.service.SanityService;
+package hska.microServiceWebShop.service.APIService;
 
 import hska.microServiceWebShop.models.Error;
 import hska.microServiceWebShop.models.User;
@@ -23,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-03T22:28:55.656Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-04T00:32:34.965Z")
 
 @Api(value = "users", description = "the users API")
 public interface UsersApi {

@@ -1,8 +1,8 @@
-package hska.microServiceWebShop.service.SanityService;
+package hska.microServiceWebShop.service.APIService;
 
 import javax.xml.bind.annotation.XmlTransient;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-03T22:28:55.656Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-04T00:32:34.965Z")
 
 @javax.xml.bind.annotation.XmlRootElement
 public class ApiResponseMessage {

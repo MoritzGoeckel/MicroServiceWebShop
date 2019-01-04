@@ -8,7 +8,7 @@
       "email": "bhb127@outlook.de"
     }
   },
-  "host": "localhost:8080",
+  "host": "localhost:8085",
   "basePath": "/",
   "tags": [
     {

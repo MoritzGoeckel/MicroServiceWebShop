@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * CategoryQuery
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-03T22:28:55.656Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-04T00:32:34.965Z")
 
 public class CategoryQuery   {
   @JsonProperty("text")
