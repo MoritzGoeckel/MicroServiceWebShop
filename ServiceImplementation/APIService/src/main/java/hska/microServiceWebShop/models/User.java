@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * User
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-03T18:09:25.690Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-03T22:28:55.656Z")
 
 public class User   {
   @JsonProperty("id")
@@ -28,8 +28,11 @@ public class User   {
   @JsonProperty("lastName")
   private String lastName = null;
 
+  @JsonProperty("password")
+  private String password = null;
+
   @JsonProperty("roleID")
-  private Integer roleID = null;
+  private Long roleID = null;
 
   public User id(Long id) {
     this.id = id;
@@ -111,7 +114,27 @@ public class User   {
     this.lastName = lastName;
   }
 
-  public User roleID(Integer roleID) {
+  public User password(String password) {
+    this.password = password;
+    return this;
+  }
+
+  /**
+   * Get password
+   * @return password
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public User roleID(Long roleID) {
     this.roleID = roleID;
     return this;
   }
@@ -123,11 +146,11 @@ public class User   {
   @ApiModelProperty(value = "")
 
 
-  public Integer getRoleID() {
+  public Long getRoleID() {
     return roleID;
   }
 
-  public void setRoleID(Integer roleID) {
+  public void setRoleID(Long roleID) {
     this.roleID = roleID;
   }
 
@@ -145,12 +168,13 @@ public class User   {
         Objects.equals(this.username, user.username) &&
         Objects.equals(this.firstName, user.firstName) &&
         Objects.equals(this.lastName, user.lastName) &&
+        Objects.equals(this.password, user.password) &&
         Objects.equals(this.roleID, user.roleID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, firstName, lastName, roleID);
+    return Objects.hash(id, username, firstName, lastName, password, roleID);
   }
 
   @Override
@@ -162,6 +186,7 @@ public class User   {
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    roleID: ").append(toIndentedString(roleID)).append("\n");
     sb.append("}");
     return sb.toString();

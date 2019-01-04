@@ -34,10 +34,12 @@
         "parameters": [
           {
             "name": "name",
-            "in": "header",
+            "in": "body",
             "description": "The name of the category",
             "required": true,
-            "type": "string"
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
           }
         ],
         "responses": {
@@ -48,10 +50,16 @@
             }
           },
           "400": {
-            "description": "Invalid input"
+            "description": "bad request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           },
-          "405": {
-            "description": "Category already exists"
+          "409": {
+            "description": "conflict",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           }
         }
       },
@@ -70,11 +78,13 @@
         ],
         "parameters": [
           {
-            "name": "name",
-            "in": "header",
-            "description": "The name of the category",
+            "name": "Query",
+            "in": "body",
+            "description": "Parameters of the categoryquery",
             "required": false,
-            "type": "string"
+            "schema": {
+              "$ref": "#/definitions/CategoryQuery"
+            }
           }
         ],
         "responses": {
@@ -98,9 +108,6 @@
         "summary": "Deletes a category",
         "description": "",
         "operationId": "delete category",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/json"
         ],
@@ -118,8 +125,11 @@
           "200": {
             "description": "Successful operation"
           },
-          "405": {
-            "description": "Category does not exist"
+          "404": {
+            "description": "not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           }
         }
       },
@@ -153,8 +163,11 @@
               "$ref": "#/definitions/Category"
             }
           },
-          "405": {
-            "description": "Category does not exist"
+          "404": {
+            "description": "not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           }
         }
       }
@@ -171,9 +184,22 @@
         "name": {
           "type": "string"
         }
-      },
-      "xml": {
-        "name": "Category"
+      }
+    },
+    "CategoryQuery": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        }
       }
     }
   }

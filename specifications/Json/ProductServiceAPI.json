@@ -14,7 +14,7 @@
     {
       "name": "products",
       "description": ""
-    }
+    },
   ],
   "paths": {
     "/products": {
@@ -33,11 +33,13 @@
         ],
         "parameters": [
           {
-            "name": "name",
-            "in": "header",
-            "description": "The name of the product",
+            "name": "Product",
+            "in": "body",
+            "description": "The inserted product",
             "required": true,
-            "type": "string"
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
           }
         ],
         "responses": {
@@ -48,10 +50,16 @@
             }
           },
           "400": {
-            "description": "Invalid input"
+            "description": "Invalid input",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           },
-          "405": {
-            "description": "Product already exists"
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           }
         }
       },
@@ -59,7 +67,7 @@
         "tags": [
           "products"
         ],
-        "summary": "Queries products. If no name is provided all products will be returned",
+        "summary": "Queries products. If no parameters is provided all products will be returned",
         "description": "",
         "operationId": "query products",
         "consumes": [
@@ -70,11 +78,13 @@
         ],
         "parameters": [
           {
-            "name": "name",
-            "in": "header",
+            "name": "Query",
+            "in": "body",
             "description": "The name of the product",
             "required": false,
-            "type": "string"
+            "schema": {
+              "$ref": "#/definitions/ProductQuery"
+            }
           }
         ],
         "responses": {
@@ -85,6 +95,12 @@
               "items": {
                 "$ref": "#/definitions/Product"
               }
+            }
+          },
+          "400": {
+            "description": "bad request",
+            "schema": {
+              "$ref": "#/definitions/Error"
             }
           }
         }
@@ -98,9 +114,6 @@
         "summary": "Deletes a product",
         "description": "",
         "operationId": "delete product",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/json"
         ],
@@ -118,8 +131,11 @@
           "200": {
             "description": "Successful operation"
           },
-          "405": {
-            "description": "Product does not exist"
+          "404": {
+            "description": "not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           }
         }
       },
@@ -130,9 +146,6 @@
         "summary": "Retrieves a product",
         "description": "",
         "operationId": "get product",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/json"
         ],
@@ -153,8 +166,11 @@
               "$ref": "#/definitions/Product"
             }
           },
-          "405": {
-            "description": "Product does not exist"
+          "404": {
+            "description": "not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           }
         }
       }
@@ -170,10 +186,46 @@
         },
         "name": {
           "type": "string"
+        },
+        "price": {
+          "type": "number",
+          "format": "double"
+        },
+        "category": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "details": {
+          "type": "string"
         }
-      },
-      "xml": {
-        "name": "Product"
+      }
+    },
+    "ProductQuery": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "priceMin": {
+          "type": "number",
+          "format": "double"
+        },
+        "priceMax": {
+          "type": "number",
+          "format": "double"
+        },
+        "category": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        }
       }
     }
   }

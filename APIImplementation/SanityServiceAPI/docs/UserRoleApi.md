@@ -12,8 +12,6 @@ Method | HTTP request | Description
 [**getRoles**](UserRoleApi.md#getRoles) | **GET** /roles | Get roles
 [**getUserById**](UserRoleApi.md#getUserById) | **GET** /users/{id} | Get user by Id
 [**getUsers**](UserRoleApi.md#getUsers) | **GET** /users | Get users
-[**setRoleById**](UserRoleApi.md#setRoleById) | **PUT** /roles/{id} | Set role by Id
-[**setUserById**](UserRoleApi.md#setUserById) | **PUT** /users/{id} | Set user by Id
 
 
 <a name="createRole"></a>
@@ -25,8 +23,8 @@ Create role
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.UserRoleApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.UserRoleApi;
 
 
 UserRoleApi apiInstance = new UserRoleApi();
@@ -67,8 +65,8 @@ Create user
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.UserRoleApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.UserRoleApi;
 
 
 UserRoleApi apiInstance = new UserRoleApi();
@@ -109,8 +107,8 @@ Delete role with Id
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.UserRoleApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.UserRoleApi;
 
 
 UserRoleApi apiInstance = new UserRoleApi();
@@ -151,8 +149,8 @@ Delete user with Id
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.UserRoleApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.UserRoleApi;
 
 
 UserRoleApi apiInstance = new UserRoleApi();
@@ -193,8 +191,8 @@ Get role by Id
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.UserRoleApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.UserRoleApi;
 
 
 UserRoleApi apiInstance = new UserRoleApi();
@@ -229,22 +227,21 @@ No authorization required
 
 <a name="getRoles"></a>
 # **getRoles**
-> List&lt;Role&gt; getRoles(typ, level)
+> List&lt;Role&gt; getRoles(query)
 
 Get roles
 
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.UserRoleApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.UserRoleApi;
 
 
 UserRoleApi apiInstance = new UserRoleApi();
-String typ = "typ_example"; // String | 
-Integer level = 56; // Integer | 
+RoleQuery query = new RoleQuery(); // RoleQuery | Parameters of the role
 try {
-    List<Role> result = apiInstance.getRoles(typ, level);
+    List<Role> result = apiInstance.getRoles(query);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserRoleApi#getRoles");
@@ -256,8 +253,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **typ** | **String**|  | [optional]
- **level** | **Integer**|  | [optional]
+ **query** | [**RoleQuery**](RoleQuery.md)| Parameters of the role | [optional]
 
 ### Return type
 
@@ -281,8 +277,8 @@ Get user by Id
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.UserRoleApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.UserRoleApi;
 
 
 UserRoleApi apiInstance = new UserRoleApi();
@@ -317,24 +313,21 @@ No authorization required
 
 <a name="getUsers"></a>
 # **getUsers**
-> List&lt;User&gt; getUsers(username, firstname, lastname, roleId)
+> List&lt;User&gt; getUsers(query)
 
 Get users
 
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.UserRoleApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.UserRoleApi;
 
 
 UserRoleApi apiInstance = new UserRoleApi();
-String username = "username_example"; // String | 
-String firstname = "firstname_example"; // String | 
-String lastname = "lastname_example"; // String | 
-Long roleId = 789L; // Long | 
+UserQuery query = new UserQuery(); // UserQuery | Parameters of the user
 try {
-    List<User> result = apiInstance.getUsers(username, firstname, lastname, roleId);
+    List<User> result = apiInstance.getUsers(query);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserRoleApi#getUsers");
@@ -346,102 +339,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **String**|  | [optional]
- **firstname** | **String**|  | [optional]
- **lastname** | **String**|  | [optional]
- **roleId** | **Long**|  | [optional]
+ **query** | [**UserQuery**](UserQuery.md)| Parameters of the user | [optional]
 
 ### Return type
 
 [**List&lt;User&gt;**](User.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="setRoleById"></a>
-# **setRoleById**
-> setRoleById(id, role)
-
-Set role by Id
-
-### Example
-```java
-// Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.UserRoleApi;
-
-
-UserRoleApi apiInstance = new UserRoleApi();
-Long id = 789L; // Long | 
-Role role = new Role(); // Role | 
-try {
-    apiInstance.setRoleById(id, role);
-} catch (ApiException e) {
-    System.err.println("Exception when calling UserRoleApi#setRoleById");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **Long**|  |
- **role** | [**Role**](Role.md)|  |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="setUserById"></a>
-# **setUserById**
-> setUserById(id, user)
-
-Set user by Id
-
-### Example
-```java
-// Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.UserRoleApi;
-
-
-UserRoleApi apiInstance = new UserRoleApi();
-Long id = 789L; // Long | 
-User user = new User(); // User | 
-try {
-    apiInstance.setUserById(id, user);
-} catch (ApiException e) {
-    System.err.println("Exception when calling UserRoleApi#setUserById");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **Long**|  |
- **user** | [**User**](User.md)|  |
-
-### Return type
-
-null (empty response body)
 
 ### Authorization
 

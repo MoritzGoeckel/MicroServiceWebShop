@@ -8,7 +8,8 @@ Name | Type | Description | Notes
 **username** | **String** |  |  [optional]
 **firstName** | **String** |  |  [optional]
 **lastName** | **String** |  |  [optional]
-**roleID** | **Integer** |  |  [optional]
+**password** | **String** |  |  [optional]
+**roleID** | **Long** |  |  [optional]
 
 
 

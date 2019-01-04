@@ -21,12 +21,12 @@ Adds a new category
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.CategoryService.CategoriesApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.CategoriesApi;
 
 
 CategoriesApi apiInstance = new CategoriesApi();
-String name = "name_example"; // String | The name of the category
+Category name = new Category(); // Category | The name of the category
 try {
     Category result = apiInstance.addCategory(name);
     System.out.println(result);
@@ -40,7 +40,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| The name of the category |
+ **name** | [**Category**](Category.md)| The name of the category |
 
 ### Return type
 
@@ -66,8 +66,8 @@ Deletes a category
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.CategoryService.CategoriesApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.CategoriesApi;
 
 
 CategoriesApi apiInstance = new CategoriesApi();
@@ -96,7 +96,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCategory"></a>
@@ -110,8 +110,8 @@ Retrieves a category
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.CategoryService.CategoriesApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.CategoriesApi;
 
 
 CategoriesApi apiInstance = new CategoriesApi();
@@ -146,7 +146,7 @@ No authorization required
 
 <a name="queryCategories"></a>
 # **queryCategories**
-> List&lt;Category&gt; queryCategories(name)
+> List&lt;Category&gt; queryCategories(query)
 
 Queries categories. If no name is provided all categories will be returned
 
@@ -155,14 +155,14 @@ Queries categories. If no name is provided all categories will be returned
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.CategoryService.CategoriesApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.CategoriesApi;
 
 
 CategoriesApi apiInstance = new CategoriesApi();
-String name = "name_example"; // String | The name of the category
+CategoryQuery query = new CategoryQuery(); // CategoryQuery | Parameters of the categoryquery
 try {
-    List<Category> result = apiInstance.queryCategories(name);
+    List<Category> result = apiInstance.queryCategories(query);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CategoriesApi#queryCategories");
@@ -174,7 +174,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| The name of the category | [optional]
+ **query** | [**CategoryQuery**](CategoryQuery.md)| Parameters of the categoryquery | [optional]
 
 ### Return type
 

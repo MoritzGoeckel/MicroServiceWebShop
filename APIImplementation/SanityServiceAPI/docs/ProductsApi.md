@@ -7,12 +7,12 @@ Method | HTTP request | Description
 [**addProduct**](ProductsApi.md#addProduct) | **POST** /products | Adds a new product
 [**deleteProduct**](ProductsApi.md#deleteProduct) | **DELETE** /products/{id} | Deletes a product
 [**getProduct**](ProductsApi.md#getProduct) | **GET** /products/{id} | Retrieves a product
-[**queryProducts**](ProductsApi.md#queryProducts) | **GET** /products | Queries products. If no name is provided all products will be returned
+[**queryProducts**](ProductsApi.md#queryProducts) | **GET** /products | Queries products. If no parameters is provided all products will be returned
 
 
 <a name="addProduct"></a>
 # **addProduct**
-> Product addProduct(name)
+> Product addProduct(product)
 
 Adds a new product
 
@@ -21,14 +21,14 @@ Adds a new product
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.ProductsApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.ProductsApi;
 
 
 ProductsApi apiInstance = new ProductsApi();
-String name = "name_example"; // String | The name of the product
+Product product = new Product(); // Product | The inserted product
 try {
-    Product result = apiInstance.addProduct(name);
+    Product result = apiInstance.addProduct(product);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ProductsApi#addProduct");
@@ -40,7 +40,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| The name of the product |
+ **product** | [**Product**](Product.md)| The inserted product |
 
 ### Return type
 
@@ -66,8 +66,8 @@ Deletes a product
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.ProductsApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.ProductsApi;
 
 
 ProductsApi apiInstance = new ProductsApi();
@@ -96,7 +96,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getProduct"></a>
@@ -110,8 +110,8 @@ Retrieves a product
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.ProductsApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.ProductsApi;
 
 
 ProductsApi apiInstance = new ProductsApi();
@@ -141,28 +141,28 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="queryProducts"></a>
 # **queryProducts**
-> List&lt;Product&gt; queryProducts(name)
+> List&lt;Product&gt; queryProducts(query)
 
-Queries products. If no name is provided all products will be returned
+Queries products. If no parameters is provided all products will be returned
 
 
 
 ### Example
 ```java
 // Import classes:
-//import hska.microServiceWebShop.api.ApiException;
-//import hska.microServiceWebShop.api.SanityService.ProductsApi;
+//import hska.microServiceWebShop.ApiException;
+//import hska.microServiceWebShop.api.ProductsApi;
 
 
 ProductsApi apiInstance = new ProductsApi();
-String name = "name_example"; // String | The name of the product
+ProductQuery query = new ProductQuery(); // ProductQuery | The name of the product
 try {
-    List<Product> result = apiInstance.queryProducts(name);
+    List<Product> result = apiInstance.queryProducts(query);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ProductsApi#queryProducts");
@@ -174,7 +174,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| The name of the product | [optional]
+ **query** | [**ProductQuery**](ProductQuery.md)| The name of the product | [optional]
 
 ### Return type
 

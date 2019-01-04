@@ -27,13 +27,22 @@ import java.io.IOException;
 /**
  * Product
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-03T17:23:12.659Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-03T22:27:11.419Z")
 public class Product {
   @SerializedName("id")
   private Long id = null;
 
   @SerializedName("name")
   private String name = null;
+
+  @SerializedName("price")
+  private Double price = null;
+
+  @SerializedName("category")
+  private Long category = null;
+
+  @SerializedName("details")
+  private String details = null;
 
   public Product id(Long id) {
     this.id = id;
@@ -71,6 +80,60 @@ public class Product {
     this.name = name;
   }
 
+  public Product price(Double price) {
+    this.price = price;
+    return this;
+  }
+
+   /**
+   * Get price
+   * @return price
+  **/
+  @ApiModelProperty(value = "")
+  public Double getPrice() {
+    return price;
+  }
+
+  public void setPrice(Double price) {
+    this.price = price;
+  }
+
+  public Product category(Long category) {
+    this.category = category;
+    return this;
+  }
+
+   /**
+   * Get category
+   * @return category
+  **/
+  @ApiModelProperty(value = "")
+  public Long getCategory() {
+    return category;
+  }
+
+  public void setCategory(Long category) {
+    this.category = category;
+  }
+
+  public Product details(String details) {
+    this.details = details;
+    return this;
+  }
+
+   /**
+   * Get details
+   * @return details
+  **/
+  @ApiModelProperty(value = "")
+  public String getDetails() {
+    return details;
+  }
+
+  public void setDetails(String details) {
+    this.details = details;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -82,12 +145,15 @@ public class Product {
     }
     Product product = (Product) o;
     return Objects.equals(this.id, product.id) &&
-        Objects.equals(this.name, product.name);
+        Objects.equals(this.name, product.name) &&
+        Objects.equals(this.price, product.price) &&
+        Objects.equals(this.category, product.category) &&
+        Objects.equals(this.details, product.details);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(id, name, price, category, details);
   }
 
 
@@ -98,6 +164,9 @@ public class Product {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -8,7 +8,7 @@
       "email": "bhb127@outlook.de"
     }
   },
-  "host": "localhost:8083",
+  "host": "localhost:8084",
   "basePath": "/",
   "tags": [
     {
@@ -29,25 +29,13 @@
         ],
         "parameters": [
           {
-            "in": "query",
-            "name": "username",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "firstname",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "lastname",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "roleId",
-            "type": "integer",
-            "format": "int64"
+            "name": "Query",
+            "in": "body",
+            "description": "Parameters of the user",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/UserQuery"
+            }
           }
         ],
         "responses": {
@@ -60,8 +48,11 @@
               }
             }
           },
-          "403": {
-            "description": "error"
+          "400": {
+            "description": "bad request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           }
         }
       },
@@ -88,8 +79,17 @@
           "200": {
             "description": "success"
           },
-          "403": {
-            "description": "error"
+          "400": {
+            "description": "bad request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "409": {
+            "description": "conflict",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           }
         }
       }
@@ -120,43 +120,11 @@
               "$ref": "#/definitions/User"
             }
           },
-          "403": {
-            "description": "error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "userRole"
-        ],
-        "summary": "Set user by Id",
-        "operationId": "setUserById",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "in": "body",
-            "name": "user",
-            "required": true,
+          "404": {
+            "description": "not found",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Error"
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "success"
-          },
-          "403": {
-            "description": "error"
           }
         }
       },
@@ -179,8 +147,11 @@
           "200": {
             "description": "Success"
           },
-          "403": {
-            "description": "error"
+          "404": {
+            "description": "not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           }
         }
       }
@@ -197,15 +168,13 @@
         ],
         "parameters": [
           {
-            "in": "query",
-            "name": "typ",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "level",
-            "type": "integer",
-            "format": "int32"
+            "name": "Query",
+            "in": "body",
+            "description": "Parameters of the role",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/RoleQuery"
+            }
           }
         ],
         "responses": {
@@ -218,8 +187,11 @@
               }
             }
           },
-          "403": {
-            "description": "error"
+          "400": {
+            "description": "bad request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           }
         }
       },
@@ -246,8 +218,17 @@
           "200": {
             "description": "success"
           },
-          "403": {
-            "description": "error"
+          "400": {
+            "description": "bad request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "409": {
+            "description": "conflict",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           }
         }
       }
@@ -278,43 +259,11 @@
               "$ref": "#/definitions/Role"
             }
           },
-          "403": {
-            "description": "error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "userRole"
-        ],
-        "summary": "Set role by Id",
-        "operationId": "setRoleById",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "in": "body",
-            "name": "role",
-            "required": true,
+          "404": {
+            "description": "not found",
             "schema": {
-              "$ref": "#/definitions/Role"
+              "$ref": "#/definitions/Error"
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "success"
-          },
-          "403": {
-            "description": "error"
           }
         }
       },
@@ -337,8 +286,11 @@
           "200": {
             "description": "Success"
           },
-          "403": {
-            "description": "error"
+          "404": {
+            "description": "not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           }
         }
       }
@@ -361,9 +313,27 @@
         "lastName": {
           "type": "string"
         },
+        "password": {
+          "type": "string"
+        },
         "roleID": {
           "type": "integer",
-          "format": "int32"
+          "format": "int64"
+        }
+      }
+    },
+    "UserQuery": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "role": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
@@ -380,6 +350,26 @@
         "level": {
           "type": "integer",
           "format": "int32"
+        }
+      }
+    },
+    "RoleQuery": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "level": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
         }
       }
     }
