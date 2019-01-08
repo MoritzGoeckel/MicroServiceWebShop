@@ -1,0 +1,5 @@
+FROM java:8
+WORKDIR /
+ADD ./target/product_service-0.0.1-SNAPSHOT.jar .
+EXPOSE 9091
+CMD ["java", "-jar", "product_service-0.0.1-SNAPSHOT.jar"]
