@@ -17,9 +17,16 @@ public class Role {
 	private String typ;
 	
 	@Column(name="level")
-	private int level;
+	private Integer level;
 	
+	public Role() {
+		
+	}
 	
+	public Role(String typ, Integer level) {
+		this.typ = typ;
+		this.level = level;
+	}
 
 	public long getId() {
 		return this.id;
@@ -33,11 +40,11 @@ public class Role {
 		this.typ = typ;
 	}
 
-	public int getLevel() {
+	public Integer getLevel() {
 		return this.level;
 	}
 
-	public void setLevel(int level) {
+	public void setLevel(Integer level) {
 		this.level = level;
 	}
 	

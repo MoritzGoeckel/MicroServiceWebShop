@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,64 +16,68 @@ public class RoleEndpoint {
 
 	@Autowired
 	private RoleRepository repo;
-		
+	
+	@Autowired
+	private UserRepository repoUser;
+
 	@RequestMapping(value = "/roles", method = RequestMethod.GET)
-	public ResponseEntity<Iterable<Role>> getRoles(@RequestParam(required = false, value = "typ") String typ,
-													@RequestParam(required = false, value = "level") Integer level){
+	public ResponseEntity<Iterable<Role>> getRoles(@RequestBody(required = false) RoleQuery query) {
 		Iterable<Role> rolesDB = null;
-		if(typ != null) {
-			if(level != null) {
-				rolesDB = repo.findAllByTypAndLevel(typ, level);		
-			}else {
-				rolesDB = repo.findAllByTyp(typ);		
+		if (query != null) {
+			if (query.getTyp() != null) {
+				if (query.getLevel() != null) {
+					rolesDB = repo.findAllByTypAndLevel(query.getTyp(), query.getLevel());
+				} else {
+					rolesDB = repo.findAllByTyp(query.getTyp());
+				}
+			} else {
+				if (query.getLevel() != null) {
+					rolesDB = repo.findAllByLevel(query.getLevel());
+				} else {
+					rolesDB = repo.findAll();
+				}
 			}
 		}else {
-			if(level != null) {
-				rolesDB = repo.findAllByLevel(level);			
-			}else {		
-				rolesDB = repo.findAll();
-			}
+			rolesDB = repo.findAll();
 		}
 		return new ResponseEntity<Iterable<Role>>(rolesDB, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/roles/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Role> getRole(@PathVariable(required = true, name = "id") long id) {
+	public ResponseEntity<Role> getRole(@PathVariable(required = true, name = "id") long id) {		
 		Optional<Role> roleDB = repo.findById(id);
-		if(roleDB.isPresent()) {
+		if (roleDB.isPresent()) {
 			return new ResponseEntity<Role>(roleDB.get(), HttpStatus.OK);
-		}else {
+		} else {
 			return new ResponseEntity<Role>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	@RequestMapping(value = "/roles", method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<Void> addRole(@RequestBody(required = true) Role role){
-		if(role.getId() != 0) {
-			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+
+	@RequestMapping(value = "/roles", method = RequestMethod.POST)
+	public ResponseEntity<Role> addRole(@RequestBody(required = true) Role role) {
+		if (role.getId() != 0) {
+			return new ResponseEntity<Role>(HttpStatus.CONFLICT);
 		}
-		repo.save(role);
-		return new ResponseEntity<Void>(HttpStatus.OK);
-	}
-	
-	@RequestMapping(value = "/roles/{id}", method = RequestMethod.PUT, consumes = "application/json")
-	public ResponseEntity<Void> updateRole(@PathVariable(required = true, name = "id") long id, @RequestBody(required = true) Role role){
-		Optional<Role> roleDB = repo.findById(id);
-		if(!roleDB.isPresent()) {
-			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		if(role.getLevel() == null || role.getTyp() == null) {
+			return new ResponseEntity<Role>(HttpStatus.BAD_REQUEST);
 		}
-		repo.save(role);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		Role roleDB = repo.save(role);
+		return new ResponseEntity<Role>(roleDB, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/roles/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> deleteRole(@PathVariable(required = true, name = "id") long id){
+	public ResponseEntity<Void> deleteRole(@PathVariable(required = true, name = "id") long id) {
+		
 		Optional<Role> roleDB = repo.findById(id);
-		if(!roleDB.isPresent()) {
+		if (!roleDB.isPresent()) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		}
+		Iterable<User> users = repoUser.findAllByRoleID(id);
+		if(users.iterator().hasNext()) {
+			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
 		repo.deleteById(id);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
-	
+
 }
