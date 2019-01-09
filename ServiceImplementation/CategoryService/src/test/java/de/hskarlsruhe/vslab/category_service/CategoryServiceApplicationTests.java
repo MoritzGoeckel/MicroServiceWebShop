@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 public class CategoryServiceApplicationTests {
-
+    /**
     private CategoryServiceClient client = new CategoryServiceClient();
 
     @Test
@@ -38,4 +38,5 @@ public class CategoryServiceApplicationTests {
         Category[] categories = client.getCategories();
         System.out.println(Arrays.toString(categories));
     }
+    **/
 }
