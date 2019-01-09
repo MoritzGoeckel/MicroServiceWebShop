@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,73 +16,46 @@ public class UserEndpoint {
 
 	@Autowired
 	private UserRepository repo;
+	
+	@Autowired
+	private RoleRepository repoRole;
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public ResponseEntity<Iterable<User>> getUsers(@RequestParam(required = false, value = "username") String username,
-			@RequestParam(required = false, value = "firstname") String firstname,
-			@RequestParam(required = false, value = "lastname") String lastname,
-			@RequestParam(required = false, value = "roleId") Long roleId) {
+	public ResponseEntity<Iterable<User>> getUsers(@RequestBody(required = false) UserQuery query) {
 		Iterable<User> usersDB = null;
-		if (username != null) {
-			if (firstname != null) {
-				if (lastname != null) {
-					if (roleId != null) {
-						usersDB = repo.findAllByUsernameAndFirstnameAndLastnameAndRoleId(username, firstname, lastname, roleId);	
-					} else {
-						usersDB = repo.findAllByUsernameAndFirstnameAndLastname(username, firstname, lastname);
+		if (query != null) {
+			if (query.getUsername() != null) {
+				if (query.getText() != null) {
+					if(query.getRole() != null) {
+						usersDB = repo.findAllByUsernameAndTextAndRoleID(query.getUsername(), query.getText(),
+								query.getRole());			
+					}else {
+						usersDB = repo.findAllByUsernameAndText(query.getUsername(), query.getText());
 					}
-				} else {
-					if (roleId != null) {
-						usersDB = repo.findAllByUsernameAndFirstnameAndRoleId(username, firstname, roleId);
-					} else {
-						usersDB = repo.findAllByUsernameAndFirstname(username, firstname);
-					}
-				}
-			} else {
-				if (lastname != null) {
-					if (roleId != null) {
-						usersDB = repo.findAllByUsernameAndLastnameAndRoleId(username, lastname, roleId);
-					} else {
-						usersDB = repo.findAllByUsernameAndLastname(username, lastname);
-					}
-				} else {
-					if (roleId != null) {
-						usersDB = repo.findAllByUsernameAndRoleId(username, roleId);
-					} else {
-						usersDB = repo.findAllByUsername(username);
+				}else {
+					if(query.getRole() != null) {
+						usersDB = repo.findAllByUsernameAndRoleID(query.getUsername(), query.getRole());
+					}else {
+						usersDB = repo.findAllByUsername(query.getUsername());
 					}
 				}
-			}
-		} else {
-			if (firstname != null) {
-				if (lastname != null) {
-					if (roleId != null) {
-						usersDB = repo.findAllByFirstnameAndLastnameAndRoleId(firstname, lastname, roleId);
-					} else {
-						usersDB = repo.findAllByFirstnameAndLastname(firstname, lastname);
+			}else {
+				if(query.getText() != null) {
+					if(query.getRole() != null) {
+						usersDB = repo.findAllByTextAndRoleID(query.getText(), query.getRole());
+					}else {
+						usersDB = repo.findAllByText(query.getText());
 					}
-				} else {
-					if (roleId != null) {
-						usersDB = repo.findAllByFirstnameAndRoleId(firstname, roleId);
-					} else {
-						usersDB = repo.findAllByFirstname(firstname);
-					}
-				}
-			} else {
-				if (lastname != null) {
-					if (roleId != null) {
-						usersDB = repo.findAllByLastnameAndRoleId(lastname, roleId);
-					} else {
-						usersDB = repo.findAllByLastname(lastname);
-					}
-				} else {
-					if (roleId != null) {
-						usersDB = repo.findAllByRoleId(roleId);
-					} else {
+				}else {
+					if(query.getRole() != null) {
+						usersDB = repo.findAllByRoleID(query.getRole());
+					}else {
 						usersDB = repo.findAll();
 					}
 				}
 			}
+		} else {
+			usersDB = repo.findAll();
 		}
 		return new ResponseEntity<Iterable<User>>(usersDB, HttpStatus.OK);
 	}
@@ -99,22 +71,21 @@ public class UserEndpoint {
 	}
 
 	@RequestMapping(value = "/users", method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<Void> addUser(@RequestBody(required = true) User user) {
+	public ResponseEntity<User> addUser(@RequestBody(required = true) User user) {
 		if (user.getId() != 0) {
-			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+			return new ResponseEntity<User>(HttpStatus.CONFLICT);
 		}
-		repo.save(user);
-		return new ResponseEntity<Void>(HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/users/{id}", method = RequestMethod.PUT, consumes = "application/json")
-	public ResponseEntity<Void> updateUser(@PathVariable(required = true, name = "id") long id, @RequestBody(required = true) User user) {
-		Optional<User> userDB = repo.findById(id);
-		if (!userDB.isPresent()) {
-			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		if(user.getUsername() == null || user.getFirstname() == null || user.getLastname() == null || user.getPassword() == null || user.getRoleID() == null) {
+			return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
 		}
-		repo.save(user);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		if(!repoRole.findById(user.getRoleID()).isPresent()) {
+			return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
+		}
+		if(repo.findAllByUsername(user.getUsername()).iterator().hasNext()) {
+			return new ResponseEntity<User>(HttpStatus.CONFLICT);
+		}
+		User userDB = repo.save(user);
+		return new ResponseEntity<User>(userDB, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
