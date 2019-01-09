@@ -1,0 +1,1 @@
+sudo -H docker run -i --rm --name productContainer -p 8082:8082 product_service:latest
