@@ -1,0 +1,1 @@
+sudo -H docker run -i --rm --name apiContainer -p 8085:8085 api_service:latest

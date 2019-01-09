@@ -1,0 +1,1 @@
+sudo -H docker run -i --rm --name categoryContainer -p 8083:8083 category_service:latest
