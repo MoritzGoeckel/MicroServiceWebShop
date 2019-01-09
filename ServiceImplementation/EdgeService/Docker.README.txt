@@ -1,0 +1,7 @@
+Zum Bauen eines Docker imgaes:
+
+docker build -t edge_service:latest .
+
+Zum Starten eines Containers:
+
+docker run -i --rm --name edgeContainer -p 8091:8091 edge_service:latest
