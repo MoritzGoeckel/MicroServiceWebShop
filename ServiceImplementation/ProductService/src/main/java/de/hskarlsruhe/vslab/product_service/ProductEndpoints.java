@@ -74,7 +74,7 @@ public class ProductEndpoints {
         }
 
         // Suche nach Namen mit bestimmten Buchstaben
-        else if((name == null || name.isEmpty()) && details == null && category != null && price == null)
+        else if(!(name == null) && details == null && category == null && price == null)
         {
             Iterable<Product> foundProducts = StreamSupport
                     .stream(repo.findAll().spliterator(), true)
