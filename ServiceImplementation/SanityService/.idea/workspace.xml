@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f12041dd-da42-4b52-a923-82430bc6697f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../APIService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../APIService/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductService/src/main/java/de/hskarlsruhe/vslab/product_service/ProductEndpoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ProductService/src/main/java/de/hskarlsruhe/vslab/product_service/ProductEndpoints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../UserRoleService/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,7 +15,7 @@
     <session id="-576037147">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.17" value="1" />
