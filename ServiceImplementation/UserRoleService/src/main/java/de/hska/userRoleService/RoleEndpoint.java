@@ -61,6 +61,9 @@ public class RoleEndpoint {
 		if(role.getLevel() == null || role.getTyp() == null) {
 			return new ResponseEntity<Role>(HttpStatus.BAD_REQUEST);
 		}
+		if(repo.findAllByTyp(role.getTyp()).iterator().hasNext()) {
+			return new ResponseEntity<Role>(HttpStatus.CONFLICT);
+		}
 		Role roleDB = repo.save(role);
 		return new ResponseEntity<Role>(roleDB, HttpStatus.OK);
 	}

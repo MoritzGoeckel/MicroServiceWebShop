@@ -4,4 +4,4 @@ docker build -t discovery_service:latest .
 
 Zum Starten eines Containers:
 
-docker run -i --rm --name discoveryContainer -p 8090:8090 discovery_service:latest
+docker run -i --rm --name discoveryContainer -p 8761:8761 discovery_service:latest
