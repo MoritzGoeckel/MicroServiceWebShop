@@ -1,4 +1,4 @@
-package de.hska.Discovery_Service;
+package de.hska.EdgeService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DiscoveryServiceApplicationTests {
+public class EdgeServiceApplicationTests {
 
 	@Test
 	public void contextLoads() {
