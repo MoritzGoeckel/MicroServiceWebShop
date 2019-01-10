@@ -9,34 +9,32 @@ public class CategoryServiceApplicationTests {
     private CategoryServiceClient client = new CategoryServiceClient();
 
     @Test
-    public void addCategoryTest() throws ApiException {
-        Category category = client.postCategory("TheName3");
-        System.out.println(category);
-    }
+    public void generalTest() throws ApiException {
+        CategoryServiceApplication.main("");
 
-    @Test
-    public void getCategoryArray() throws ApiException {
-        Category[] categories = client.getCategories("");
-        System.out.println(Arrays.toString(categories));
-    }
+        Category category = client.postCategory("TheName");
+        System.out.println("Added: " + category);
 
-    @Test
-    public void getSpecificCategoryArray() throws ApiException {
-        Category[] categories = client.getCategories("2");
-        System.out.println(Arrays.toString(categories));
-    }
-
-    @Test
-    public void getSecondCategoryById() throws ApiException {
-        Category category = client.getCategoryById(2);
-        System.out.println(category);
-    }
-
-    @Test
-    public void deleteCategoryTest() throws ApiException {
-        client.deleteCategoryById(3);
         Category[] categories = client.getCategories();
-        System.out.println(Arrays.toString(categories));
+        System.out.println("Got all: " + Arrays.toString(categories));
+
+        category = client.postCategory("TheName2");
+        System.out.println("Added: " + category);
+
+        categories = client.getCategories("2");
+        System.out.println("Got specific: " + Arrays.toString(categories));
+
+        category = client.getCategoryById(2);
+        System.out.println("Got by ID: " + category);
+
+        categories = client.getCategories();
+        System.out.println("Got all: " + Arrays.toString(categories));
+
+        System.out.println("Deleting id 2");
+        client.deleteCategoryById(1);
+
+        categories = client.getCategories();
+        System.out.println("Got all: " + Arrays.toString(categories));
     }
     **/
 }

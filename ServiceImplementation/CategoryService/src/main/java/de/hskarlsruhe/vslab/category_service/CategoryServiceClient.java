@@ -15,7 +15,7 @@ public class CategoryServiceClient {
     }
 
     public Category postCategory(String name) throws ApiException {
-        ResponseEntity<Category> response = restTemplate.postForEntity(baseUrl + "categories/", name, Category.class);
+        ResponseEntity<Category> response = restTemplate.postForEntity(baseUrl + "categories", name, Category.class);
         handle(response);
         return response.getBody();
 
@@ -30,7 +30,7 @@ public class CategoryServiceClient {
         HttpHeaders headers = new HttpHeaders();
         headers.set("query", query);
 
-        ResponseEntity<Category[]> response = restTemplate.exchange(baseUrl + "categories/", HttpMethod.GET, new HttpEntity(headers), Category[].class);
+        ResponseEntity<Category[]> response = restTemplate.exchange(baseUrl + "categories", HttpMethod.GET, new HttpEntity(headers), Category[].class);
 
         handle(response);
 
