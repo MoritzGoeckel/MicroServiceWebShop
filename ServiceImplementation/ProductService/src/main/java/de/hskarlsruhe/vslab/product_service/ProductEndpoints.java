@@ -16,7 +16,7 @@ public class ProductEndpoints {
     @Autowired
     private ProductRepo repo;
 
-    @RequestMapping(value = "/products/", method = RequestMethod.POST)
+    @RequestMapping(value = "/products", method = RequestMethod.POST)
     public ResponseEntity<Product> postProduct(@RequestBody Product product) {
 
         boolean nameAlreadyExists = StreamSupport
@@ -33,7 +33,7 @@ public class ProductEndpoints {
 
     // liefert einen bestimmten Product zurück, mit bestimmten Namen
     // wenn product leer ist, werden alle Produkte zurück geliefert
-    @RequestMapping(value = "/products/", method = RequestMethod.GET)
+    @RequestMapping(value = "/products", method = RequestMethod.GET)
     public ResponseEntity<Iterable<Product>> getProducts(@RequestBody Product product) {
 
         String name = product.getName();

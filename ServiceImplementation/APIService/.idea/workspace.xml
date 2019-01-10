@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2588f99b-5fa1-41d0-bb70-4db6d4bf3638" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../CategoryService/src/main/java/de/hskarlsruhe/vslab/category_service/CategoryEndpoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CategoryService/src/main/java/de/hskarlsruhe/vslab/category_service/CategoryEndpoints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductService/src/main/java/de/hskarlsruhe/vslab/product_service/ProductEndpoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ProductService/src/main/java/de/hskarlsruhe/vslab/product_service/ProductEndpoints.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SanityService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SanityService/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UserRoleService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../UserRoleService/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -279,7 +278,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1053" extended-state="7" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
