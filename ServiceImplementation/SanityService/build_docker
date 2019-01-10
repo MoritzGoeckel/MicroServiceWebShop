@@ -1,0 +1,1 @@
+sudo -H docker build -t sanity_service:latest .

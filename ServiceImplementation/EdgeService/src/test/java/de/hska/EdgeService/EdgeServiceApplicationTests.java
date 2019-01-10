@@ -1,5 +1,4 @@
-package de.hska.userRoleService;
-
+package de.hska.EdgeService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,12 +7,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserRoleServiceApplicationTests {
+public class EdgeServiceApplicationTests {
 
 	@Test
-	public void Test() {
-		
+	public void contextLoads() {
 	}
-	
-	
+
 }
+
