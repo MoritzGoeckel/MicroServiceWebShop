@@ -5,12 +5,14 @@ import org.junit.Test;
 import java.util.Arrays;
 
 public class CategoryServiceApplicationTests {
-    /**
+
     private CategoryServiceClient client = new CategoryServiceClient();
 
     @Test
     public void generalTest() throws ApiException {
         CategoryServiceApplication.main("");
+
+        System.out.println("Starting test");
 
         Category category = client.postCategory("TheName");
         System.out.println("Added: " + category);
@@ -30,11 +32,11 @@ public class CategoryServiceApplicationTests {
         categories = client.getCategories();
         System.out.println("Got all: " + Arrays.toString(categories));
 
-        System.out.println("Deleting id 2");
+        System.out.println("Deleting id 1");
         client.deleteCategoryById(1);
 
         categories = client.getCategories();
         System.out.println("Got all: " + Arrays.toString(categories));
     }
-    **/
+
 }
