@@ -63,13 +63,11 @@ public interface CategoriesApi {
 
     @ApiOperation(value = "Queries categories. If no name is provided all categories will be returned", nickname = "queryCategories", notes = "", response = Category.class, responseContainer = "List", tags={ "categories", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful operation", response = Category.class, responseContainer = "List"),
-        @ApiResponse(code = 404, message = "not found", response = Error.class)
-    })
+        @ApiResponse(code = 200, message = "Successful operation", response = Category.class, responseContainer = "List") })
     @RequestMapping(value = "/categories",
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.GET)
-    ResponseEntity queryCategories(@ApiParam(value = "Parameters of the categoryquery"  )  @Valid @RequestBody CategoryQuery query);
+    ResponseEntity<List<Category>> queryCategories(@ApiParam(value = "Parameters of the categoryquery"  )  @Valid @RequestBody CategoryQuery query);
 
 }

@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2588f99b-5fa1-41d0-bb70-4db6d4bf3638" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../CategoryService/src/test/java/de/hskarlsruhe/vslab/category_service/CategoryServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CategoryService/src/test/java/de/hskarlsruhe/vslab/category_service/CategoryServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CategoryService/src/main/java/de/hskarlsruhe/vslab/category_service/CategoryEndpoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CategoryService/src/main/java/de/hskarlsruhe/vslab/category_service/CategoryEndpoints.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SanityService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SanityService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../UserRoleService/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -146,7 +149,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="260" />
     <option name="y" value="26" />
     <option name="width" value="1400" />
@@ -275,7 +278,7 @@
     <option name="totallyTimeSpent" value="4139000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="1920" height="1053" extended-state="6" />
+    <frame x="0" y="-1" width="1920" height="1053" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
@@ -289,7 +292,7 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3298611" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3298611" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39930555" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -306,7 +309,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.162527" />
+      <window_info active="true" anchor="right" id="Maven Projects" order="5" visible="true" weight="0.162527" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />

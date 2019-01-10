@@ -16,7 +16,7 @@ public class CategoryEndpoints {
     @Autowired
     private CategoryRepo repo;
 
-    @RequestMapping(value = "/categories/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/categories", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Category> postCategory(@RequestHeader String name) {
         boolean nameAlreadyExists = StreamSupport
                 .stream(repo.findAll().spliterator(), true)
@@ -27,10 +27,10 @@ public class CategoryEndpoints {
 
         Category category = new Category(name);
         category = repo.save(category);
-        return new ResponseEntity<>(category, HttpStatus.OK);
+        return new ResponseEntity<Category>(category, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/categories/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/categories", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Iterable<Category>> getCategories(@RequestHeader(defaultValue = "") String query) {
         if(query == null || query.isEmpty())
             return new ResponseEntity<>(repo.findAll(), HttpStatus.OK);

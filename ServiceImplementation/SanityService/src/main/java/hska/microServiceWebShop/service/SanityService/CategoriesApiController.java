@@ -104,19 +104,19 @@ public class CategoriesApiController implements CategoriesApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                List<Category> c = categoriesAPIClient.queryCategories(query);
-                return ResponseEntity.ok().body(c);
+                List<Category> cs = categoriesAPIClient.queryCategories(query);
+                return new ResponseEntity<List<Category>>(cs,HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
                 if(e.getResponseBody() == null)
-                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-                return ResponseEntity.status(e.getCode()).body(e.getResponseBody());
+                    return new ResponseEntity<String>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<String>(e.getMessage(),HttpStatus.valueOf(e.getResponseBody()));
             }
         }
 
         Error error = new Error();
         error.description("wrong acept datatye");
-        return ResponseEntity.badRequest().body(error);
+        return new ResponseEntity<Error>(error,HttpStatus.BAD_REQUEST);
     }
 
 }
