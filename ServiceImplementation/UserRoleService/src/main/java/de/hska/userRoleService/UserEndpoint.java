@@ -20,6 +20,7 @@ public class UserEndpoint {
 	@Autowired
 	private RoleRepository repoRole;
 
+	
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ResponseEntity<Iterable<User>> getUsers(@RequestBody(required = false) UserQuery query) {
 		Iterable<User> usersDB = null;
