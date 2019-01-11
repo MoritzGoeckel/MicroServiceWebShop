@@ -1,17 +1,25 @@
-package de.hskarlsruhe.vslab.category_service;
-
+import CategoryServiceClient.ApiException;
+import CategoryServiceClient.Category;
+import CategoryServiceClient.CategoryServiceClientApplication;
+import CategoryServiceClient.CategoryServiceClient;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 
-public class CategoryServiceApplicationTests {
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes={CategoryServiceClientApplication.class})
+public class Tests {
 
-    private CategoryServiceClient client = new CategoryServiceClient();
+    //!!!! YOU HAVE TO LET IT BE INSTACIATED BY SPRING. DO NOT USE "NEW"
+    @Autowired
+    private CategoryServiceClient client;
 
     @Test
     public void generalTest() throws ApiException {
-        CategoryServiceApplication.main("");
-
         System.out.println("Starting test");
 
         Category category = client.postCategory("TheName");
