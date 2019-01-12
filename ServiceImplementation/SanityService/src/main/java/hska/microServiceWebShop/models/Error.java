@@ -2,16 +2,9 @@ package hska.microServiceWebShop.models;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 
-/**
- * Error
- */
+
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-03T22:24:38.514Z")
 
@@ -23,12 +16,6 @@ public class Error   {
     this.description = description;
     return this;
   }
-
-  /**
-   * Get description
-   * @return description
-  **/
-  @ApiModelProperty(value = "")
 
 
   public String getDescription() {

@@ -2,12 +2,7 @@ package hska.microServiceWebShop.models;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 
 /**
  * RoleQuery
@@ -27,12 +22,6 @@ public class RoleQuery   {
     return this;
   }
 
-  /**
-   * Get text
-   * @return text
-  **/
-  @ApiModelProperty(value = "")
-
 
   public String getText() {
     return text;
@@ -47,13 +36,6 @@ public class RoleQuery   {
     return this;
   }
 
-  /**
-   * Get level
-   * @return level
-  **/
-  @ApiModelProperty(value = "")
-
-
   public Integer getLevel() {
     return level;
   }
@@ -61,7 +43,6 @@ public class RoleQuery   {
   public void setLevel(Integer level) {
     this.level = level;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {

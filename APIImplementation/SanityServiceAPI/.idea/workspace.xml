@@ -2,198 +2,112 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4fcfd113-f8d8-40f6-8d2f-cb001d082aa7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../APIServiceAPI/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ProductServiceAPI/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServiceAPI/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/docs/CategoriesApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServiceAPI/docs/CategoriesApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/docs/Product.md" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServiceAPI/docs/Product.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/docs/ProductsApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServiceAPI/docs/ProductsApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/docs/User.md" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServiceAPI/docs/User.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/docs/UserRoleApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServiceAPI/docs/UserRoleApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServiceAPI/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServiceAPI/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/APIService/CategoriesApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/APIService/ProductsApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/APIService/UserRoleApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiCallback.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/Configuration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/GzipRequestInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/JSON.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/Pair.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/ProgressRequestBody.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/ProgressResponseBody.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/StringUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/ApiKeyAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/Authentication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/HttpBasicAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/OAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/OAuthFlow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/models/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/models/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/models/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServiceAPI/src/main/java/hska/microServiceWebShop/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/test/java/hska/microServiceWebShop/api/APIService/CategoriesApiTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/test/java/hska/microServiceWebShop/api/APIService/ProductsApiTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/src/test/java/hska/microServiceWebShop/api/APIService/UserRoleApiTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../CategoryServiceAPI/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/docs/CategoriesApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/../CategoryServiceAPI/docs/CategoriesApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CategoryServiceAPI/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiCallback.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/CategoryService/CategoriesApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/Configuration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/GzipRequestInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/JSON.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/Pair.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/ProgressRequestBody.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/ProgressResponseBody.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/StringUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/ApiKeyAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/Authentication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/HttpBasicAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/OAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/OAuthFlow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CategoryServiceAPI/src/main/java/hska/microServiceWebShop/models/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CategoryServiceAPI/src/test/java/hska/microServiceWebShop/api/CategoryService/CategoriesApiTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../ProductServiceAPI/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/docs/Product.md" beforeDir="false" afterPath="$PROJECT_DIR$/../ProductServiceAPI/docs/Product.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/docs/ProductsApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/../ProductServiceAPI/docs/ProductsApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ProductServiceAPI/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ProductServiceAPI/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiCallback.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/Configuration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/GzipRequestInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/JSON.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/Pair.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/ProductService/ProductsApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/ProgressRequestBody.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/ProgressResponseBody.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/StringUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/ApiKeyAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/Authentication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/HttpBasicAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/OAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/OAuthFlow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ProductServiceAPI/src/main/java/hska/microServiceWebShop/models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/src/test/java/hska/microServiceWebShop/api/ProductService/ProductsApiTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/CategoriesApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/CategoriesApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Product.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Product.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/ProductsApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/ProductsApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/User.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/User.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/UserRoleApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/UserRoleApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ApiCallback.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ApiException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ApiResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/Configuration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/GzipRequestInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/JSON.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/Pair.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ProgressRequestBody.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ProgressResponseBody.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/SanityService/CategoriesApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/SanityService/ProductsApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/SanityService/UserRoleApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/StringUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/auth/ApiKeyAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/auth/Authentication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/auth/HttpBasicAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/auth/OAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/auth/OAuthFlow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/models/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/models/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/models/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hska/microServiceWebShop/api/SanityService/CategoriesApiTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hska/microServiceWebShop/api/SanityService/ProductsApiTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hska/microServiceWebShop/api/SanityService/UserRoleApiTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../UserRoleServiceAPI/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/docs/User.md" beforeDir="false" afterPath="$PROJECT_DIR$/../UserRoleServiceAPI/docs/User.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/docs/UserRoleApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/../UserRoleServiceAPI/docs/UserRoleApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../UserRoleServiceAPI/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiCallback.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/ApiResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/Configuration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/GzipRequestInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/JSON.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/Pair.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/ProgressRequestBody.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/ProgressResponseBody.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/StringUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/UserRoleService/UserRoleApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/ApiKeyAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/Authentication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/HttpBasicAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/OAuth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/api/auth/OAuthFlow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/models/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/models/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserRoleServiceAPI/src/main/java/hska/microServiceWebShop/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/src/test/java/hska/microServiceWebShop/api/UserRoleService/UserRoleApiTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/APIService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/Service/APIService/ApiException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/Service/APIService/ApiOriginFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/Service/APIService/ApiResponseMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/Service/APIService/CategoriesApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/Service/APIService/CategoriesApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/Service/APIService/NotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/Service/APIService/ProductsApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/Service/APIService/ProductsApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/Service/APIService/RolesApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/Service/APIService/RolesApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/Service/APIService/UsersApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/Service/APIService/UsersApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/models/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/models/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/models/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/hska/microServiceWebShop/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/io/swagger/Swagger2SpringBoot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/io/swagger/Swagger2SpringBoot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/io/swagger/configuration/SwaggerDocumentationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/APIService/src/main/java/io/swagger/configuration/SwaggerDocumentationConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/CategoryService/Dockerfile.txt" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/SanityServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/ApiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/JSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/JSON.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/CategoriesApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/CategoriesApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ProductsApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ProductsApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/UserRoleApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/UserRoleApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/SanityService.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/SanityService.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_google_code_gson_gson_2_8_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_google_guava_guava_18_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_core_2_7_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_schema_2_7_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_spi_2_7_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_7_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_7_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_7_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_7_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_swagger_UserRoleService_1_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_swagger_swagger_models_1_5_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_6_14.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__net_minidev_accessors_smart_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__net_minidev_json_smart_2_2_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_23.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_23.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_23.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_apache_tomcat_tomcat_annotations_api_8_5_23.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_assertj_assertj_core_2_6_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_3_6_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_javassist_javassist_3_21_0_GA.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_1_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_mapstruct_mapstruct_1_1_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_ow2_asm_asm_5_0_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_reflections_reflections_0_9_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_25.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_slf4j_log4j_over_slf4j_1_7_25.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_5_9_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_5_9_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_5_9_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_5_9_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_5_9_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_9_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_9_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_1_5_9_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_1_5_9_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_aop_4_3_13_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_beans_4_3_13_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_context_4_3_13_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_core_4_3_13_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_expression_4_3_13_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_test_4_3_13_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_web_4_3_13_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_webmvc_4_3_13_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_yaml_snakeyaml_1_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.swagger-codegen-ignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.swagger-codegen/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/Service/SanityService/ApiException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/Service/SanityService/ApiOriginFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/Service/SanityService/ApiResponseMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/Service/SanityService/CategoriesApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/Service/SanityService/CategoriesApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/Service/SanityService/NotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/Service/SanityService/ProductsApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/Service/SanityService/ProductsApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/Service/SanityService/RolesApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/Service/SanityService/RolesApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/Service/SanityService/UsersApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/Service/SanityService/UsersApiController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/CategoryQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/CategoryQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Error.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/ProductQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/ProductQuery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/RoleQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/RoleQuery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/Swagger2SpringBoot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/Swagger2SpringBoot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/configuration/SwaggerDocumentationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/configuration/SwaggerDocumentationConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../specifications/CategoryServiceAPI.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../specifications/Json/APIServiceAPI.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../specifications/Json/APIServiceAPI.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../specifications/Json/CategoryServiceAPI.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../specifications/Json/CategoryServiceAPI.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../specifications/Json/ProductServiceAPI.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../specifications/Json/ProductServiceAPI.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../specifications/Json/SanityServiceAPI.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../specifications/Json/SanityServiceAPI.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../specifications/Json/UserRoleServiceAPI.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../specifications/Json/UserRoleServiceAPI.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../specifications/ProductServiceAPI.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../specifications/SanityServiceAPI.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../specifications/UserRoleServiceAPI.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/UserQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/UserQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ApiException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ApiOriginFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ApiResponseMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/NotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ProductsApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ProductsApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ProductsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ProductsApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/RolesApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/RolesApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/RolesApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/RolesApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/UsersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/UsersApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/UsersApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/UsersApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/RFC3339DateFormat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/Swagger2SpringBoot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/configuration/CustomInstantDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CustomInstantDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/configuration/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/configuration/JacksonConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/JacksonConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/configuration/SwaggerDocumentationConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -207,20 +121,110 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="2" />
+          <entry key="java" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="2" />
+          <entry key="JAVA" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="238" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="238" />
         </counts>
       </usages-collector>
     </session>
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/CategoriesApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="142" column="54" selection-start-line="142" selection-end-line="143" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/ApiClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3350">
+              <caret line="714" column="13" lean-forward="true" selection-start-line="714" selection-start-column="13" selection-end-line="714" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/JSON.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3024">
+              <caret line="153" column="61" selection-start-line="153" selection-start-column="61" selection-end-line="153" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/UserRoleApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="397">
+              <caret line="1014" column="9" lean-forward="true" selection-start-line="1014" selection-start-column="9" selection-end-line="1014" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ProductsApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3379">
+              <caret line="452" lean-forward="true" selection-start-line="452" selection-end-line="452" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ProductsApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/CategoriesApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/UserRoleApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/JSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/ApiClient.java" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
@@ -261,6 +265,59 @@
               <item name="SanityService" type="b2602c69:ProjectViewProjectNode" />
               <item name="SanityServiceAPI" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="SanityService" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SanityServiceAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SanityService" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SanityServiceAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SanityService" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SanityServiceAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SanityService" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SanityServiceAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microServiceWebShop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SanityService" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SanityServiceAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microServiceWebShop" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SanityService" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SanityServiceAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microServiceWebShop" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SanityService" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SanityServiceAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microServiceWebShop" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -298,43 +355,45 @@
       <option name="presentableId" value="Default" />
       <updated>1546555623905</updated>
       <workItem from="1546555627346" duration="45000" />
+      <workItem from="1547245664663" duration="6460000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45000" />
+    <option name="totallyTimeSpent" value="6505000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Learn" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Learn" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3298611" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3298611" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Maven Projects" visible="true" weight="0.32991362" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" visible="true" weight="0.32991362" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,6 +401,64 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/UserRoleApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="1014" column="9" lean-forward="true" selection-start-line="1014" selection-start-column="9" selection-end-line="1014" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ProductsApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3379">
+          <caret line="452" lean-forward="true" selection-start-line="452" selection-end-line="452" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/squareup/okhttp/okhttp/2.7.5/okhttp-2.7.5.jar!/com/squareup/okhttp/Call.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-224">
+          <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/CategoriesApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="142" column="54" selection-start-line="142" selection-end-line="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.1/gson-2.8.1.jar!/com/google/gson/Gson.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="501" column="17" selection-start-line="501" selection-start-column="17" selection-end-line="501" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/ApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3350">
+          <caret line="714" column="13" lean-forward="true" selection-start-line="714" selection-start-column="13" selection-end-line="714" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/models/Error.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="27" column="8" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/JSON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3024">
+          <caret line="153" column="61" selection-start-line="153" selection-start-column="61" selection-end-line="153" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>

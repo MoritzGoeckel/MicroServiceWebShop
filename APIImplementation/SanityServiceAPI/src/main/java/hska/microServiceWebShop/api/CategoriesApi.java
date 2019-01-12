@@ -429,8 +429,6 @@ public class CategoriesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call queryCategoriesCall(CategoryQuery query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = query;
-
         // create path and map variables
         String localVarPath = "/categories";
 
@@ -453,6 +451,8 @@ public class CategoriesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        localVarHeaderParams.put("Text", query.getText());
+
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
@@ -466,13 +466,11 @@ public class CategoriesApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, null, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call queryCategoriesValidateBeforeCall(CategoryQuery query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-
         com.squareup.okhttp.Call call = queryCategoriesCall(query, progressListener, progressRequestListener);
         return call;
 

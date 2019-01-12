@@ -2,13 +2,7 @@ package hska.microServiceWebShop.models;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-
 /**
  * ProductQuery
  */
@@ -33,12 +27,6 @@ public class ProductQuery   {
     return this;
   }
 
-  /**
-   * Get text
-   * @return text
-  **/
-  @ApiModelProperty(value = "")
-
 
   public String getText() {
     return text;
@@ -53,13 +41,6 @@ public class ProductQuery   {
     return this;
   }
 
-  /**
-   * Get priceMin
-   * @return priceMin
-  **/
-  @ApiModelProperty(value = "")
-
-
   public Double getPriceMin() {
     return priceMin;
   }
@@ -73,13 +54,6 @@ public class ProductQuery   {
     return this;
   }
 
-  /**
-   * Get priceMax
-   * @return priceMax
-  **/
-  @ApiModelProperty(value = "")
-
-
   public Double getPriceMax() {
     return priceMax;
   }
@@ -92,13 +66,6 @@ public class ProductQuery   {
     this.category = category;
     return this;
   }
-
-  /**
-   * Get category
-   * @return category
-  **/
-  @ApiModelProperty(value = "")
-
 
   public Long getCategory() {
     return category;

@@ -701,14 +701,18 @@ public class ApiClient {
         if (respBody == null || "".equals(respBody)) {
             return null;
         }
-
         String contentType = response.headers().get("Content-Type");
         if (contentType == null) {
             // ensuring a default content type
             contentType = "application/json";
         }
         if (isJsonMime(contentType)) {
-            return json.deserialize(respBody, returnType);
+
+            try {
+                return json.deserialize(respBody, returnType);
+            }catch (ApiException e){
+                throw new ApiException(response.code(),e.getMessage());
+            }
         } else if (returnType.equals(String.class)) {
             // Expecting string, return the raw response body.
             return (T) respBody;

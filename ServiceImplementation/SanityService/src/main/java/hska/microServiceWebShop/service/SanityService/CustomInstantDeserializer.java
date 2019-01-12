@@ -1,4 +1,4 @@
-package io.swagger.configuration;
+package hska.microServiceWebShop.service.SanityService;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonTokenId;

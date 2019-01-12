@@ -186,7 +186,6 @@ public class UserRoleApi {
      */
     public com.squareup.okhttp.Call createUserCall(User user, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = user;
-
         // create path and map variables
         String localVarPath = "/users";
 
@@ -664,7 +663,6 @@ public class UserRoleApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getRolesCall(RoleQuery query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = query;
 
         // create path and map variables
         String localVarPath = "/roles";
@@ -686,7 +684,12 @@ public class UserRoleApi {
             
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
         localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        localVarHeaderParams.put("Text", query.getText());
+
+        localVarHeaderParams.put("Level", query.getLevel().toString());
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -701,7 +704,7 @@ public class UserRoleApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, null, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")
@@ -904,8 +907,6 @@ public class UserRoleApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUsersCall(UserQuery query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = query;
-
         // create path and map variables
         String localVarPath = "/users";
 
@@ -928,6 +929,12 @@ public class UserRoleApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        localVarHeaderParams.put("Text", query.getText());
+
+        localVarHeaderParams.put("Username", query.getUsername());
+
+        localVarHeaderParams.put("Role", query.getRole().toString());
+
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
@@ -941,7 +948,7 @@ public class UserRoleApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, null, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")

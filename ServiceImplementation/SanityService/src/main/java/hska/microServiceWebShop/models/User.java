@@ -2,13 +2,7 @@ package hska.microServiceWebShop.models;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-
 /**
  * User
  */
@@ -39,13 +33,6 @@ public class User   {
     return this;
   }
 
-  /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
   public Long getId() {
     return id;
   }
@@ -58,13 +45,6 @@ public class User   {
     this.username = username;
     return this;
   }
-
-  /**
-   * Get username
-   * @return username
-  **/
-  @ApiModelProperty(value = "")
-
 
   public String getUsername() {
     return username;
@@ -79,13 +59,6 @@ public class User   {
     return this;
   }
 
-  /**
-   * Get firstName
-   * @return firstName
-  **/
-  @ApiModelProperty(value = "")
-
-
   public String getFirstName() {
     return firstName;
   }
@@ -98,13 +71,6 @@ public class User   {
     this.lastName = lastName;
     return this;
   }
-
-  /**
-   * Get lastName
-   * @return lastName
-  **/
-  @ApiModelProperty(value = "")
-
 
   public String getLastName() {
     return lastName;
@@ -119,13 +85,6 @@ public class User   {
     return this;
   }
 
-  /**
-   * Get password
-   * @return password
-  **/
-  @ApiModelProperty(value = "")
-
-
   public String getPassword() {
     return password;
   }
@@ -138,13 +97,6 @@ public class User   {
     this.roleID = roleID;
     return this;
   }
-
-  /**
-   * Get roleID
-   * @return roleID
-  **/
-  @ApiModelProperty(value = "")
-
 
   public Long getRoleID() {
     return roleID;

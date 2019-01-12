@@ -429,8 +429,6 @@ public class ProductsApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call queryProductsCall(ProductQuery query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = query;
-
         // create path and map variables
         String localVarPath = "/products";
 
@@ -453,6 +451,14 @@ public class ProductsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        localVarHeaderParams.put("Text", query.getText());
+
+        localVarHeaderParams.put("Category", query.getCategory().toString());
+
+        localVarHeaderParams.put("PriceMin", query.getPriceMin().toString());
+
+        localVarHeaderParams.put("PriceMax", query.getPriceMax().toString());
+
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
@@ -466,7 +472,7 @@ public class ProductsApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, null, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")

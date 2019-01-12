@@ -18,6 +18,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.internal.bind.util.ISO8601Utils;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.google.gson.JsonElement;
@@ -32,6 +33,7 @@ import okio.ByteString;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.lang.Error;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -126,7 +128,7 @@ public class JSON {
      * @return The deserialized Java object
      */
     @SuppressWarnings("unchecked")
-    public <T> T deserialize(String body, Type returnType) {
+    public <T> T deserialize(String body, Type returnType) throws ApiException {
         try {
             if (isLenientOnJson) {
                 JsonReader jsonReader = new JsonReader(new StringReader(body));
@@ -138,10 +140,25 @@ public class JSON {
             }
         } catch (JsonParseException e) {
             // Fallback processing when failed to parse JSON form response body:
-            // return the response body string directly for the String return type;
-            if (returnType.equals(String.class))
-                return (T) body;
-            else throw (e);
+            returnType = new TypeToken<hska.microServiceWebShop.models.Error>(){}.getType();
+            hska.microServiceWebShop.models.Error error;
+            try {
+                if (isLenientOnJson) {
+                    JsonReader jsonReader = new JsonReader(new StringReader(body));
+                    // see https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/stream/JsonReader.html#setLenient(boolean)
+                    jsonReader.setLenient(true);
+                    error =  gson.fromJson(jsonReader, returnType);
+                } else {
+                    error = gson.fromJson(body, returnType);
+                }
+                throw new ApiException(error.getDescription());
+            } catch (JsonParseException e2) {
+                // Fallback processing when failed to parse JSON form response body:
+                // return the response body string directly for the String return type;
+                if (returnType.equals(String.class))
+                    return (T) body;
+                else throw (e);
+            }
         }
     }
 

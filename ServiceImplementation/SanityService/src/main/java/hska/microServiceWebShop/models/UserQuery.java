@@ -2,12 +2,7 @@ package hska.microServiceWebShop.models;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 
 /**
  * UserQuery
@@ -30,13 +25,6 @@ public class UserQuery   {
     return this;
   }
 
-  /**
-   * Get username
-   * @return username
-  **/
-  @ApiModelProperty(value = "")
-
-
   public String getUsername() {
     return username;
   }
@@ -50,13 +38,6 @@ public class UserQuery   {
     return this;
   }
 
-  /**
-   * Get text
-   * @return text
-  **/
-  @ApiModelProperty(value = "")
-
-
   public String getText() {
     return text;
   }
@@ -69,13 +50,6 @@ public class UserQuery   {
     this.role = role;
     return this;
   }
-
-  /**
-   * Get role
-   * @return role
-  **/
-  @ApiModelProperty(value = "")
-
 
   public Long getRole() {
     return role;

@@ -2,16 +2,8 @@ package hska.microServiceWebShop.models;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 
-/**
- * Role
- */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-03T22:24:38.514Z")
 
@@ -30,13 +22,6 @@ public class Role   {
     return this;
   }
 
-  /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
   public Long getId() {
     return id;
   }
@@ -50,13 +35,6 @@ public class Role   {
     return this;
   }
 
-  /**
-   * Get typ
-   * @return typ
-  **/
-  @ApiModelProperty(value = "")
-
-
   public String getTyp() {
     return typ;
   }
@@ -69,12 +47,6 @@ public class Role   {
     this.level = level;
     return this;
   }
-
-  /**
-   * Get level
-   * @return level
-  **/
-  @ApiModelProperty(value = "")
 
 
   public Integer getLevel() {

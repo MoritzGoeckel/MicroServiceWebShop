@@ -5,9 +5,6 @@ import hska.microServiceWebShop.models.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hska.microServiceWebShop.models.Error;
 import io.swagger.annotations.*;
-import io.swagger.models.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,28 +12,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.validation.constraints.*;
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-03T22:24:38.514Z")
 
 @Controller
-public class CategoriesApiController implements CategoriesApi {
-
-    private static final Logger log = LoggerFactory.getLogger(CategoriesApiController.class);
-
+public class CategoriesApiController  implements CategoriesApi{
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
 
-    @Autowired
-    private CategoryServiceClient categoriesAPIClient;
+    //@Autowired
+    //private CategoryServiceClient categoriesAPIClient;
+    hska.microServiceWebShop.api.CategoriesApi categoriesAPIClient = new hska.microServiceWebShop.api.CategoriesApi();
+
     hska.microServiceWebShop.api.ProductsApi productsAPIClient = new hska.microServiceWebShop.api.ProductsApi();
 
     @org.springframework.beans.factory.annotation.Autowired
@@ -45,7 +35,7 @@ public class CategoriesApiController implements CategoriesApi {
         this.request = request;
     }
 
-    public ResponseEntity<Category> addCategory(@ApiParam(value = "The name of the category" ,required=true )  @Valid @RequestBody Category name) {
+    public ResponseEntity addCategory(@ApiParam(value = "The name of the category" ,required=true )  @Valid @RequestBody Category name) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
                 try {
@@ -53,9 +43,9 @@ public class CategoriesApiController implements CategoriesApi {
                     return ResponseEntity.ok().body(c);
                 } catch (ApiException e) {
                     e.printStackTrace();
-                    if(e.getResponseBody() == null)
-                        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-                    return ResponseEntity.status(e.getCode()).build();
+                    Error error = new Error();
+                    error.setDescription(e.getMessage());
+                    return ResponseEntity.status(e.getCode()).body(error);
                 }
         }
         return ResponseEntity.badRequest().build();
@@ -77,9 +67,9 @@ public class CategoriesApiController implements CategoriesApi {
             return ResponseEntity.badRequest().body(error);
         } catch (ApiException e) {
             e.printStackTrace();
-            if(e.getResponseBody() == null)
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-            return ResponseEntity.status(e.getCode()).body(e.getResponseBody());
+            Error error = new Error();
+            error.setDescription(e.getMessage());
+            return ResponseEntity.status(e.getCode()).body(error);
         }
     }
 
@@ -91,9 +81,9 @@ public class CategoriesApiController implements CategoriesApi {
                 return ResponseEntity.ok().body(c);
             } catch (ApiException e) {
                 e.printStackTrace();
-                if(e.getResponseBody() == null)
-                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-                return ResponseEntity.status(e.getCode()).body(e.getResponseBody());
+                Error error = new Error();
+                error.setDescription(e.getMessage());
+                return ResponseEntity.status(e.getCode()).body(error);
             }
         }
 
@@ -102,7 +92,9 @@ public class CategoriesApiController implements CategoriesApi {
         return ResponseEntity.badRequest().body(error);
     }
 
-    public ResponseEntity queryCategories(@ApiParam(value = "Parameters of the categoryquery"  )  @Valid @RequestBody CategoryQuery query) {
+    public ResponseEntity queryCategories(@RequestHeader(value="Text",defaultValue = "") String text) {
+        CategoryQuery query = new CategoryQuery();
+        query.setText(text);
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
@@ -110,9 +102,9 @@ public class CategoriesApiController implements CategoriesApi {
                 return new ResponseEntity<List<Category>>(cs,HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
-                if(e.getResponseBody() == null)
-                    return new ResponseEntity<String>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-                return new ResponseEntity<String>(e.getMessage(),HttpStatus.valueOf(e.getResponseBody()));
+                Error error = new Error();
+                error.setDescription(e.getMessage());
+                return ResponseEntity.status(e.getCode()).body(error);
             }
         }
 
