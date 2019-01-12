@@ -44,10 +44,11 @@ public class CategoriesApiTest {
      */
     @Test
     public void addCategoryTest() throws ApiException {
-        Category name = null;
+        Category name = new Category();
+        name.setName("cat1");
         Category response = api.addCategory(name);
-
-        // TODO: test validations
+        assert response.getName() == "cat1";
+        assert response.getId() != null;
     }
     
     /**
@@ -60,10 +61,11 @@ public class CategoriesApiTest {
      */
     @Test
     public void deleteCategoryTest() throws ApiException {
-        Long id = null;
+        Category name = new Category();
+        name.setName("cat2");
+        Category response = api.addCategory(name);
+        Long id = response.getId();
         api.deleteCategory(id);
-
-        // TODO: test validations
     }
     
     /**
@@ -76,9 +78,12 @@ public class CategoriesApiTest {
      */
     @Test
     public void getCategoryTest() throws ApiException {
-        Long id = null;
-        Category response = api.getCategory(id);
-
+        Category name = new Category();
+        name.setName("cat3");
+        Category response = api.addCategory(name);
+        Long id = response.getId();
+        Category response2 = api.getCategory(id);
+        assert response2.getName() == "cat3";
         // TODO: test validations
     }
     
@@ -92,7 +97,7 @@ public class CategoriesApiTest {
      */
     @Test
     public void queryCategoriesTest() throws ApiException {
-        CategoryQuery query = null;
+        CategoryQuery query = new CategoryQuery();
         List<Category> response = api.queryCategories(query);
 
         // TODO: test validations
