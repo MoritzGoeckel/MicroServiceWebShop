@@ -40,15 +40,18 @@ public class CategoriesApiController  implements CategoriesApi{
         if (accept != null && accept.contains("application/json")) {
                 try {
                     Category c = categoriesAPIClient.addCategory(name);
-                    return ResponseEntity.ok().body(c);
+                    return new ResponseEntity<Category>(c,HttpStatus.OK);
                 } catch (ApiException e) {
                     e.printStackTrace();
                     Error error = new Error();
                     error.setDescription(e.getMessage());
-                    return ResponseEntity.status(e.getCode()).body(error);
+                    return new ResponseEntity<Error>(error,HttpStatus.valueOf(e.getCode()));
                 }
         }
-        return ResponseEntity.badRequest().build();
+
+        Error error = new Error();
+        error.description("wrong acept datatye");
+        return new ResponseEntity<Error>(error,HttpStatus.BAD_REQUEST);
     }
 
     public ResponseEntity deleteCategory(@ApiParam(value = "The id of the to be deleted category",required=true) @PathVariable("id") Long id) {
@@ -60,16 +63,16 @@ public class CategoriesApiController  implements CategoriesApi{
             List<Product> ps = productsAPIClient.queryProducts(pq);
             if(ps.size() == 0){
                 categoriesAPIClient.deleteCategory(id);
-                return ResponseEntity.ok().body(c);
+                return new ResponseEntity<Category>(c,HttpStatus.OK);
             }
             Error error = new Error();
             error.description("still products in category");
-            return ResponseEntity.badRequest().body(error);
+            return new ResponseEntity<Error>(error,HttpStatus.BAD_REQUEST);
         } catch (ApiException e) {
             e.printStackTrace();
             Error error = new Error();
             error.setDescription(e.getMessage());
-            return ResponseEntity.status(e.getCode()).body(error);
+            return new ResponseEntity<Error>(error,HttpStatus.valueOf(e.getCode()));
         }
     }
 
@@ -78,18 +81,18 @@ public class CategoriesApiController  implements CategoriesApi{
         if (accept != null && accept.contains("application/json")) {
             try {
                 Category c = categoriesAPIClient.getCategory(id);
-                return ResponseEntity.ok().body(c);
+                return new ResponseEntity<Category>(c,HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
                 Error error = new Error();
                 error.setDescription(e.getMessage());
-                return ResponseEntity.status(e.getCode()).body(error);
+                return new ResponseEntity<Error>(error,HttpStatus.valueOf(e.getCode()));
             }
         }
 
         Error error = new Error();
         error.description("wrong acept datatye");
-        return ResponseEntity.badRequest().body(error);
+        return new ResponseEntity<Error>(error,HttpStatus.BAD_REQUEST);
     }
 
     public ResponseEntity queryCategories(@RequestHeader(value="Text",defaultValue = "") String text) {
@@ -104,7 +107,7 @@ public class CategoriesApiController  implements CategoriesApi{
                 e.printStackTrace();
                 Error error = new Error();
                 error.setDescription(e.getMessage());
-                return ResponseEntity.status(e.getCode()).body(error);
+                return new ResponseEntity<Error>(error,HttpStatus.valueOf(e.getCode()));
             }
         }
 

@@ -687,9 +687,14 @@ public class UserRoleApi {
 
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        localVarHeaderParams.put("Text", query.getText());
+        if(query != null){
+            if(query.getText() != null)
+                localVarHeaderParams.put("Text", query.getText());
 
-        localVarHeaderParams.put("Level", query.getLevel().toString());
+            if(query.getLevel() != null)
+                localVarHeaderParams.put("Level", query.getLevel().toString());
+
+        }
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -929,11 +934,16 @@ public class UserRoleApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        localVarHeaderParams.put("Text", query.getText());
+        if(query != null) {
+            if (query.getText() != null)
+                localVarHeaderParams.put("Text", query.getText());
 
-        localVarHeaderParams.put("Username", query.getUsername());
+            if (query.getUsername() != null)
+                localVarHeaderParams.put("Username", query.getUsername());
 
-        localVarHeaderParams.put("Role", query.getRole().toString());
+            if (query.getRole() != null)
+                localVarHeaderParams.put("Role", query.getRole().toString());
+        }
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {

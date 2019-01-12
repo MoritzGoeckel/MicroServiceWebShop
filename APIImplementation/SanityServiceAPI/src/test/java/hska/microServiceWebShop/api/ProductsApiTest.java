@@ -44,8 +44,18 @@ public class ProductsApiTest {
      */
     @Test
     public void addProductTest() throws ApiException {
-        Product product = null;
+        Product product = new Product();
+        product.setName("Pro1");
+        product.setCategory(1L);
+        product.setPrice(50.5);
+        try {
         Product response = api.addProduct(product);
+        }catch (ApiException e){
+            System.err.println(e.getCode());
+            System.err.println(e.getMessage());
+            System.err.println(e.getResponseBody());
+            e.printStackTrace(System.err);
+        }
 
         // TODO: test validations
     }
@@ -60,7 +70,12 @@ public class ProductsApiTest {
      */
     @Test
     public void deleteProductTest() throws ApiException {
-        Long id = null;
+        Product product = new Product();
+        product.setName("Pro2");
+        product.setCategory(1L);
+        product.setPrice(50.5);
+        Product response = api.addProduct(product);
+        Long id = response.getId();
         api.deleteProduct(id);
 
         // TODO: test validations
@@ -76,8 +91,13 @@ public class ProductsApiTest {
      */
     @Test
     public void getProductTest() throws ApiException {
-        Long id = null;
-        Product response = api.getProduct(id);
+        Product product = new Product();
+        product.setName("Pro3");
+        product.setCategory(1L);
+        product.setPrice(50.5);
+        Product response = api.addProduct(product);
+        Long id = response.getId();
+        Product response2 = api.getProduct(id);
 
         // TODO: test validations
     }
@@ -92,7 +112,7 @@ public class ProductsApiTest {
      */
     @Test
     public void queryProductsTest() throws ApiException {
-        ProductQuery query = null;
+        ProductQuery query = new ProductQuery();
         List<Product> response = api.queryProducts(query);
 
         // TODO: test validations

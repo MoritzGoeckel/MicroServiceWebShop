@@ -46,7 +46,7 @@ public class UserRoleApiTest {
      */
     @Test
     public void createRoleTest() throws ApiException {
-        Role role = null;
+        Role role = new Role();
         api.createRole(role);
 
         // TODO: test validations
@@ -62,7 +62,7 @@ public class UserRoleApiTest {
      */
     @Test
     public void createUserTest() throws ApiException {
-        User user = null;
+        User user = new User();
         api.createUser(user);
 
         // TODO: test validations
@@ -78,7 +78,7 @@ public class UserRoleApiTest {
      */
     @Test
     public void deleteRoleTest() throws ApiException {
-        Long id = null;
+        Long id = 1L;
         api.deleteRole(id);
 
         // TODO: test validations
@@ -94,7 +94,7 @@ public class UserRoleApiTest {
      */
     @Test
     public void deleteUserTest() throws ApiException {
-        Long id = null;
+        Long id = 1L;
         api.deleteUser(id);
 
         // TODO: test validations
@@ -110,7 +110,7 @@ public class UserRoleApiTest {
      */
     @Test
     public void getRoleByIdTest() throws ApiException {
-        Long id = null;
+        Long id = 1L;
         Role response = api.getRoleById(id);
 
         // TODO: test validations
@@ -126,7 +126,7 @@ public class UserRoleApiTest {
      */
     @Test
     public void getRolesTest() throws ApiException {
-        RoleQuery query = null;
+        RoleQuery query = new RoleQuery();
         List<Role> response = api.getRoles(query);
 
         // TODO: test validations
@@ -142,7 +142,7 @@ public class UserRoleApiTest {
      */
     @Test
     public void getUserByIdTest() throws ApiException {
-        Long id = null;
+        Long id = 1L;
         User response = api.getUserById(id);
 
         // TODO: test validations
@@ -158,7 +158,7 @@ public class UserRoleApiTest {
      */
     @Test
     public void getUsersTest() throws ApiException {
-        UserQuery query = null;
+        UserQuery query = new UserQuery();
         List<User> response = api.getUsers(query);
 
         // TODO: test validations
