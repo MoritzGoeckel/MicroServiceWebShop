@@ -1,7 +1,10 @@
 package de.hskarlsruhe.vslab.product_service;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +19,15 @@ public class ProductEndpoints {
     @Autowired
     private ProductRepo repo;
 
-    @RequestMapping(value = "/products", method = RequestMethod.POST)
-    public ResponseEntity<Product> postProduct(@RequestBody Product product) {
+    @RequestMapping(value = "/products",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE )
+    public ResponseEntity<Product> postProduct(@RequestBody String jsonElement) {
+
+
+        Gson gson = new Gson();
+        Product product = gson.fromJson(jsonElement, Product.class);
 
         boolean nameAlreadyExists = StreamSupport
                 .stream(repo.findAll().spliterator(), true)
@@ -33,9 +43,10 @@ public class ProductEndpoints {
 
     // liefert einen bestimmten Product zurück, mit bestimmten Namen
     // wenn product leer ist, werden alle Produkte zurück geliefert
-    @RequestMapping(value = "/products", method = RequestMethod.GET)
-    public ResponseEntity<Iterable<Product>> getProducts(@RequestBody Product product) {
+    @RequestMapping(value = "/products", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Iterable<Product>> getProducts(@RequestHeader(defaultValue = "") String query) {
 
+        /*
         String name = product.getName();
         String details = product.getDetails();
         Long category = product.getCategory();
@@ -89,16 +100,25 @@ public class ProductEndpoints {
             ((ArrayList<Product>) foundProducts).add(p);
             return new ResponseEntity<>(foundProducts, HttpStatus.OK);
         }
+    */
+        if(query == null || query.isEmpty())
+            return new ResponseEntity<>(repo.findAll(), HttpStatus.OK);
 
+        Iterable<Product> foundCategories = StreamSupport
+                .stream(repo.findAll().spliterator(), true)
+                .filter(c -> c.getName().contains(query)).collect(Collectors.toList());
+
+        return new ResponseEntity<>(foundCategories, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/products/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/products/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Product> getProductById(@PathVariable Long id) {
         Optional<Product> optionalProduct = repo.findById(id);
 
         return optionalProduct
-                .map(product -> new ResponseEntity<>(product, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+                .map(product -> new ResponseEntity<Product>(product, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<Product>(HttpStatus.NOT_FOUND));
+
     }
 
     @RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE)

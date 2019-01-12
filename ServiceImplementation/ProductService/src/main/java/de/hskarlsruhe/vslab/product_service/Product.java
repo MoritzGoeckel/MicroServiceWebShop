@@ -1,5 +1,7 @@
 package de.hskarlsruhe.vslab.product_service;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Objects;
 
 @javax.persistence.Entity
@@ -17,6 +19,7 @@ public class Product {
     @javax.persistence.Id
     @javax.persistence.GeneratedValue
     @javax.persistence.Column(name="id")
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private long id;
 
     @javax.persistence.Column(name="name")
@@ -100,16 +103,13 @@ public class Product {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class Product {\n");
-
-        sb.append("    id: ").append(toIndentedString(id)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    price: ").append(toIndentedString(price)).append("\n");
-        sb.append("    category: ").append(toIndentedString(category)).append("\n");
-        sb.append("    details: ").append(toIndentedString(details)).append("\n");
-        sb.append("}");
-        return sb.toString();
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", id=" + id + '\'' +
+                ", price=" + price + '\'' +
+                ", category=" + category + '\'' +
+                ", details=" + details +
+                '}';
     }
 
     /**
