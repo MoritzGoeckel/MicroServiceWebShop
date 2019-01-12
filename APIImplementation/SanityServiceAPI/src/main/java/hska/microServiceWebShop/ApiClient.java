@@ -52,7 +52,7 @@ import hska.microServiceWebShop.auth.OAuth;
 
 public class ApiClient {
 
-    private String basePath = "https://localhost:8081";
+    private String basePath = "http://localhost:8081";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
