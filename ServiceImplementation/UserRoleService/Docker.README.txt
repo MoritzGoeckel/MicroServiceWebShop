@@ -1,7 +1,0 @@
-Zum Bauen eines Docker imgaes:
-
-docker build -t userrole_service:latest .
-
-Zum Starten eines Containers:
-
-docker run -i --rm --name userroleContainer -p 8084:8084 userrole_service:latest

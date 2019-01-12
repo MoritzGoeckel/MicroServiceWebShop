@@ -1,7 +1,0 @@
-Zum Bauen eines Docker imgaes:
-
-docker build -t discovery_service:latest .
-
-Zum Starten eines Containers:
-
-docker run -i --rm --name discoveryContainer -p 8761:8761 discovery_service:latest

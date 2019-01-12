@@ -2,112 +2,238 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4fcfd113-f8d8-40f6-8d2f-cb001d082aa7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/SanityServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/ApiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/JSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/JSON.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/CategoriesApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/CategoriesApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ProductsApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ProductsApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/UserRoleApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/UserRoleApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/SanityService.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/SanityService.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_10.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_10.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_google_code_gson_gson_2_8_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_google_guava_guava_18_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_core_2_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_schema_2_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_spi_2_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_swagger_UserRoleService_1_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_swagger_swagger_models_1_5_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_6_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__net_minidev_accessors_smart_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__net_minidev_json_smart_2_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_23.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_23.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_23.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_apache_tomcat_tomcat_annotations_api_8_5_23.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_assertj_assertj_core_2_6_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_3_6_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_javassist_javassist_3_21_0_GA.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_mapstruct_mapstruct_1_1_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_ow2_asm_asm_5_0_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_reflections_reflections_0_9_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_25.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_slf4j_log4j_over_slf4j_1_7_25.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_5_9_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_5_9_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_5_9_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_5_9_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_5_9_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_9_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_9_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_1_5_9_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_1_5_9_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_2_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_aop_4_3_13_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_beans_4_3_13_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_context_4_3_13_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_core_4_3_13_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_expression_4_3_13_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_test_4_3_13_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_web_4_3_13_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_springframework_spring_webmvc_4_3_13_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_yaml_snakeyaml_1_17.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.swagger-codegen-ignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.swagger-codegen/VERSION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/CategoryQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/CategoryQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Error.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/ProductQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/ProductQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/RoleQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/RoleQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/UserQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/models/UserQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ApiException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ApiOriginFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ApiResponseMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CategoriesApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/NotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ProductsApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ProductsApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ProductsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/ProductsApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/RolesApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/RolesApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/RolesApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/RolesApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/UsersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/UsersApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/UsersApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/UsersApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/RFC3339DateFormat.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/Swagger2SpringBoot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/configuration/CustomInstantDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/CustomInstantDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/configuration/HomeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/configuration/JacksonConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/hska/microServiceWebShop/service/SanityService/JacksonConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/java/io/swagger/configuration/SwaggerDocumentationConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/libraries/Maven__com_google_code_gson_gson_2_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/libraries/Maven__com_squareup_okhttp_logging_interceptor_2_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/libraries/Maven__com_squareup_okhttp_okhttp_2_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/libraries/Maven__com_squareup_okio_okio_1_6_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/libraries/Maven__io_gsonfire_gson_fire_1_8_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_18.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/libraries/Maven__org_threeten_threetenbp_1_3_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.swagger-codegen-ignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.swagger-codegen/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/build.sbt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/git_push.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServiceAPI/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/libraries/Maven__com_google_code_gson_gson_2_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/libraries/Maven__com_squareup_okhttp_logging_interceptor_2_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/libraries/Maven__com_squareup_okhttp_okhttp_2_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/libraries/Maven__com_squareup_okio_okio_1_6_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/libraries/Maven__io_gsonfire_gson_fire_1_8_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_18.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/libraries/Maven__org_threeten_threetenbp_1_3_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.swagger-codegen-ignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.swagger-codegen/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/build.sbt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/git_push.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductServiceAPI/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp_logging_interceptor_2_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp_okhttp_2_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_1_6_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_gsonfire_gson_fire_1_8_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_18.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_threeten_threetenbp_1_3_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.swagger-codegen-ignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.swagger-codegen/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/git_push.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/libraries/Maven__com_google_code_gson_gson_2_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/libraries/Maven__com_squareup_okhttp_logging_interceptor_2_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/libraries/Maven__com_squareup_okhttp_okhttp_2_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/libraries/Maven__com_squareup_okio_okio_1_6_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/libraries/Maven__io_gsonfire_gson_fire_1_8_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_18.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/libraries/Maven__org_threeten_threetenbp_1_3_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.settings/org.eclipse.m2e.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.swagger-codegen-ignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.swagger-codegen/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/build.sbt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/git_push.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPI/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/.swagger-codegen-ignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/.swagger-codegen/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/build.sbt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/docs/Role.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/docs/User.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/docs/UserRoleApi.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/git_push.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/ApiCallback.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/ApiClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/ApiException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/ApiResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/Configuration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/GzipRequestInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/JSON.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/Pair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/ProgressRequestBody.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/ProgressResponseBody.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/StringUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/UserRoleService/UserRoleApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/auth/ApiKeyAuth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/auth/Authentication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/auth/HttpBasicAuth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/auth/OAuth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/api/auth/OAuthFlow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/models/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/main/java/hska/microServiceWebShop/models/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserRoleServiceAPIxx/src/test/java/hska/microServiceWebShop/api/UserRoleService/UserRoleApiTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-client-generated_api.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-client-generated_category.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-client-generated_product.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-client-generated_sanity.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-client-generated_userRole.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/.swagger-codegen-ignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/APIService/.swagger-codegen/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/CategoryService/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/CategoryService/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/CategoryService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/CategoryService/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/CategoryService/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/DiscoveryService/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/DiscoveryService/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/DiscoveryService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/DiscoveryService/Docker.README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/DiscoveryService/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/DiscoveryService/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/EdgeService/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/EdgeService/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/EdgeService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/EdgeService/Docker.README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/EdgeService/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/EdgeService/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/ProductService/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/ProductService/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/ProductService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/ProductService/Docker.README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/ProductService/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/ProductService/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/SanityService.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_github_joschi_jackson_jackson_datatype_threetenbp_2_6_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_squareup_okhttp_logging_interceptor_2_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_squareup_okhttp_okhttp_2_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__com_squareup_okio_okio_1_6_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_gsonfire_gson_fire_1_8_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_swagger_CategoryService_1_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__io_swagger_ProductService_1_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/libraries/Maven__org_threeten_threetenbp_1_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/SanityService/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/UserRoleService/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/UserRoleService/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/UserRoleService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/UserRoleService/Docker.README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/UserRoleService/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/UserRoleService/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/spring-server-generated_api.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ServiceImplementation/spring-server-generated_sanity.zip" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -120,7 +246,7 @@
     <session id="1968342981">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.opened" value="2" />
@@ -165,7 +291,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/ApiClient.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3350">
-              <caret line="714" column="13" lean-forward="true" selection-start-line="714" selection-start-column="13" selection-end-line="714" selection-end-column="13" />
+              <caret line="714" column="13" selection-start-line="714" selection-start-column="13" selection-end-line="714" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -183,7 +309,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/UserRoleApi.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="397">
-              <caret line="1014" column="9" lean-forward="true" selection-start-line="1014" selection-start-column="9" selection-end-line="1014" selection-end-column="9" />
+              <caret line="1014" column="9" selection-start-line="1014" selection-start-column="9" selection-end-line="1014" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -192,7 +318,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ProductsApi.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3379">
-              <caret line="452" lean-forward="true" selection-start-line="452" selection-end-line="452" />
+              <caret line="452" selection-start-line="452" selection-end-line="452" />
             </state>
           </provider>
         </entry>
@@ -355,18 +481,17 @@
       <option name="presentableId" value="Default" />
       <updated>1546555623905</updated>
       <workItem from="1546555627346" duration="45000" />
-      <workItem from="1547245664663" duration="6460000" />
+      <workItem from="1547245664663" duration="7060000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6505000" />
+    <option name="totallyTimeSpent" value="7105000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -376,7 +501,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3298611" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3298611" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -393,7 +518,7 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Database" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" visible="true" weight="0.32991362" />
+      <window_info active="true" anchor="right" id="Maven Projects" order="8" visible="true" weight="0.32991362" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -406,14 +531,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/UserRoleApi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
-          <caret line="1014" column="9" lean-forward="true" selection-start-line="1014" selection-start-column="9" selection-end-line="1014" selection-end-column="9" />
+          <caret line="1014" column="9" selection-start-line="1014" selection-start-column="9" selection-end-line="1014" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/api/ProductsApi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3379">
-          <caret line="452" lean-forward="true" selection-start-line="452" selection-end-line="452" />
+          <caret line="452" selection-start-line="452" selection-end-line="452" />
         </state>
       </provider>
     </entry>
@@ -441,7 +566,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/hska/microServiceWebShop/ApiClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3350">
-          <caret line="714" column="13" lean-forward="true" selection-start-line="714" selection-start-column="13" selection-end-line="714" selection-end-column="13" />
+          <caret line="714" column="13" selection-start-line="714" selection-start-column="13" selection-end-line="714" selection-end-column="13" />
         </state>
       </provider>
     </entry>
