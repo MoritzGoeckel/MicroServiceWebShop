@@ -1,4 +1,4 @@
-package de.hska.userRoleService;
+package de.hska.UserRoleServiceClient;
 
 import static org.junit.Assert.fail;
 
@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -18,10 +19,14 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@RunWith(SpringRunner.class)
-public class UserRoleServiceApplicationTests {
+import de.hska.UserRoleServiceClient.Role;
+import de.hska.UserRoleServiceClient.User;
 
-	private final static String HOST = "http://localhost:8086";
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserRoleServiceClientApplicationTests {
+
+	private final static String HOST = "http://localhost:8087";
 	private final static String USERRESOURCE = "/users";
 	private final static String ROLERESOURCE = "/roles";
 
@@ -399,8 +404,7 @@ public class UserRoleServiceApplicationTests {
 			rest.delete(HOST + ROLERESOURCE + "/" + roleRest.getId());
 			return;
 		}
-		fail();
-		
+
 	}
 
 	private void checkRole(Role expected, Role actual) {
@@ -439,5 +443,6 @@ public class UserRoleServiceApplicationTests {
 			checkUser(expected.get(i), actual.get(i));
 		}
 	}
+
 
 }

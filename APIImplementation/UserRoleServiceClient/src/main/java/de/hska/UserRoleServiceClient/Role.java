@@ -1,21 +1,27 @@
-package de.hska.userRoleService;
+package de.hska.UserRoleServiceClient;
 
-public class RoleQuery {
 
+public class Role {
+
+	private long id;
 	private String typ;
 	private Integer level;
 	
-	public RoleQuery() {
+	public Role() {
 		
 	}
 	
-	public RoleQuery(String typ, Integer level) {
+	public Role(String typ, Integer level) {
 		this.typ = typ;
 		this.level = level;
 	}
 
+	public long getId() {
+		return this.id;
+	}
+	
 	public String getTyp() {
-		return typ;
+		return this.typ;
 	}
 
 	public void setTyp(String typ) {
@@ -23,11 +29,12 @@ public class RoleQuery {
 	}
 
 	public Integer getLevel() {
-		return level;
+		return this.level;
 	}
 
 	public void setLevel(Integer level) {
 		this.level = level;
 	}
+	
 	
 }
