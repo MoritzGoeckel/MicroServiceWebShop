@@ -31,6 +31,11 @@ public class UserRoleApiTests {
 	private UserRoleApi api;
 
 	@Test
+	public void empty() {
+		
+	}
+	
+	@Test
 	public void createRole() {
 		Role role = new Role("Admin", 1);
 

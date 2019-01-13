@@ -10,6 +10,10 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+import hska.microServiceWebShop.Clients.CategoryServiceClient;
+import hska.microServiceWebShop.Clients.ProductServiceClient;
+import hska.microServiceWebShop.Clients.UserRoleApi;
+
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -26,4 +30,20 @@ public class SanityServiceApplication {
     RestTemplate restTemplate() {
         return new RestTemplate();
     }
+    
+    @Bean
+    CategoryServiceClient categorieServiceClient() {
+    	return new CategoryServiceClient();
+    }
+    
+    @Bean
+    ProductServiceClient productServiceClient() {
+    	return new ProductServiceClient();
+    }
+    
+    @Bean
+    UserRoleApi userRoleApi() {
+    	return new UserRoleApi();
+    }
+    
 }
