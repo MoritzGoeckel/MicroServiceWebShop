@@ -14,12 +14,6 @@ public class CategoryServiceClient {
 
     private String baseUrl;
 
-    @LoadBalanced
-    @Bean
-    RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-
     @Autowired
     private RestTemplate restTemplate;
 

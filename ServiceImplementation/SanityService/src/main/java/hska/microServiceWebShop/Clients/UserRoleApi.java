@@ -21,12 +21,6 @@ import java.util.List;
 @Component
 public class UserRoleApi {
 
-	@LoadBalanced
-	@Bean
-	RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
-
 	@Autowired
 	private RestTemplate restTemplate;
 

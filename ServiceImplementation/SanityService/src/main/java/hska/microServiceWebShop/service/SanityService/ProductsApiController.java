@@ -1,7 +1,6 @@
 package hska.microServiceWebShop.service.SanityService;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import hska.microServiceWebShop.ApiException;
+import hska.microServiceWebShop.Clients.ApiException;
 import hska.microServiceWebShop.Clients.ProductServiceClient;
 import hska.microServiceWebShop.models.Error;
 import hska.microServiceWebShop.models.Product;
@@ -23,7 +22,6 @@ public class ProductsApiController{
 
     @Autowired
     private ProductServiceClient productsAPIClient;
-    //hska.microServiceWebShop.api.ProductsApi productsAPIClient = new hska.microServiceWebShop.api.ProductsApi();
 
     private final HttpServletRequest request;
 
