@@ -1,10 +1,12 @@
 package hska.microServiceWebShop.service.SanityService;
 
 import hska.microServiceWebShop.ApiException;
+import hska.microServiceWebShop.Clients.UserRoleApi;
 import hska.microServiceWebShop.models.Error;
 import hska.microServiceWebShop.models.Role;
 import hska.microServiceWebShop.models.RoleQuery;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,19 +14,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
 public class RolesApiController implements RolesApi {
 
-    hska.microServiceWebShop.api.UserRoleApi userRoleAPIClient = new hska.microServiceWebShop.api.UserRoleApi();
-    private final ObjectMapper objectMapper;
+    @Autowired
+    private UserRoleApi userRoleAPIClient;
+    //hska.microServiceWebShop.api.UserRoleApi userRoleAPIClient = new hska.microServiceWebShop.api.UserRoleApi();
 
     private final HttpServletRequest request;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public RolesApiController(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
+    public RolesApiController(HttpServletRequest request) {
         this.request = request;
     }
 
@@ -44,7 +47,7 @@ public class RolesApiController implements RolesApi {
     public ResponseEntity deleteRole(@PathVariable("id") Long id) {
         String accept = request.getHeader("Accept");
         try {
-            Role r = userRoleAPIClient.getRoleById(id);
+            Role r = userRoleAPIClient.getRole(id);
             userRoleAPIClient.deleteRole(id);
             return ResponseEntity.ok().body(r);
         } catch (ApiException e) {
@@ -59,7 +62,7 @@ public class RolesApiController implements RolesApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                Role r = userRoleAPIClient.getRoleById(id);
+                Role r = userRoleAPIClient.getRole(id);
                 return ResponseEntity.ok().body(r);
             } catch (ApiException e) {
                 e.printStackTrace();
@@ -82,7 +85,7 @@ public class RolesApiController implements RolesApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                List<Role> rs = userRoleAPIClient.getRoles(query);
+                List<Role> rs = userRoleAPIClient.getRoles(query.getText(),query.getLevel());
                 return ResponseEntity.ok().body(rs);
             } catch (ApiException e) {
                 e.printStackTrace();

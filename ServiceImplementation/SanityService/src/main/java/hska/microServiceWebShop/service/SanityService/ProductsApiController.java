@@ -1,10 +1,12 @@
 package hska.microServiceWebShop.service.SanityService;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import hska.microServiceWebShop.ApiException;
+import hska.microServiceWebShop.Clients.ProductServiceClient;
 import hska.microServiceWebShop.models.Error;
 import hska.microServiceWebShop.models.Product;
 import hska.microServiceWebShop.models.ProductQuery;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -13,11 +15,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
 public class ProductsApiController{
-    hska.microServiceWebShop.api.ProductsApi productsAPIClient = new hska.microServiceWebShop.api.ProductsApi();
+
+    @Autowired
+    private ProductServiceClient productsAPIClient;
+    //hska.microServiceWebShop.api.ProductsApi productsAPIClient = new hska.microServiceWebShop.api.ProductsApi();
 
     private final HttpServletRequest request;
 
@@ -30,7 +36,7 @@ public class ProductsApiController{
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                Product p = productsAPIClient.addProduct(product);
+                Product p = productsAPIClient.postProduct(product.toString());
                 return new ResponseEntity<Product>(p, HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
@@ -48,8 +54,8 @@ public class ProductsApiController{
     public ResponseEntity deleteProduct(@PathVariable("id") Long id) {
         String accept = request.getHeader("Accept");
         try {
-            Product p = productsAPIClient.getProduct(id);
-            productsAPIClient.deleteProduct(id);
+            Product p = productsAPIClient.getProductById(id.intValue());
+            productsAPIClient.deleteProductById(id.intValue());
             return new ResponseEntity<Product>(p, HttpStatus.OK);
         } catch (ApiException e) {
             e.printStackTrace();
@@ -63,7 +69,7 @@ public class ProductsApiController{
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                Product p = productsAPIClient.getProduct(id);
+                Product p = productsAPIClient.getProductById(id.intValue());
                 return new ResponseEntity<Product>(p, HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
@@ -90,7 +96,7 @@ public class ProductsApiController{
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                List<Product> ps = productsAPIClient.queryProducts(query);
+                List<Product> ps = Arrays.asList(productsAPIClient.getProducts(query.getText()));
                 return new ResponseEntity<List<Product>>(ps, HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();

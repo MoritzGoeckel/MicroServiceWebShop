@@ -1,6 +1,8 @@
 package hska.microServiceWebShop.service.SanityService;
 
 import hska.microServiceWebShop.ApiException;
+import hska.microServiceWebShop.Clients.CategoryServiceClient;
+import hska.microServiceWebShop.Clients.ProductServiceClient;
 import hska.microServiceWebShop.models.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hska.microServiceWebShop.models.Error;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-03T22:24:38.514Z")
 
@@ -23,11 +27,13 @@ public class CategoriesApiController  implements CategoriesApi{
 
     private final HttpServletRequest request;
 
-    //@Autowired
-    //private CategoryServiceClient categoriesAPIClient;
-    hska.microServiceWebShop.api.CategoriesApi categoriesAPIClient = new hska.microServiceWebShop.api.CategoriesApi();
+    @Autowired
+    private CategoryServiceClient categoriesAPIClient;
+    //hska.microServiceWebShop.api.CategoriesApi categoriesAPIClient = new hska.microServiceWebShop.api.CategoriesApi();
 
-    hska.microServiceWebShop.api.ProductsApi productsAPIClient = new hska.microServiceWebShop.api.ProductsApi();
+    @Autowired
+    private ProductServiceClient productsAPIClient;
+    //hska.microServiceWebShop.api.ProductsApi productsAPIClient = new hska.microServiceWebShop.api.ProductsApi();
 
     @org.springframework.beans.factory.annotation.Autowired
     public CategoriesApiController(ObjectMapper objectMapper, HttpServletRequest request) {
@@ -35,11 +41,11 @@ public class CategoriesApiController  implements CategoriesApi{
         this.request = request;
     }
 
-    public ResponseEntity addCategory(@ApiParam(value = "The name of the category" ,required=true )  @Valid @RequestBody Category name) {
+    public ResponseEntity addCategory(@ApiParam(value = "The name of the category" ,required=true )  @Valid @RequestBody Category category) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
                 try {
-                    Category c = categoriesAPIClient.addCategory(name);
+                    Category c = categoriesAPIClient.postCategory(category.getName());
                     return new ResponseEntity<Category>(c,HttpStatus.OK);
                 } catch (ApiException e) {
                     e.printStackTrace();
@@ -57,12 +63,12 @@ public class CategoriesApiController  implements CategoriesApi{
     public ResponseEntity deleteCategory(@ApiParam(value = "The id of the to be deleted category",required=true) @PathVariable("id") Long id) {
         String accept = request.getHeader("Accept");
         try {
-            Category c = categoriesAPIClient.getCategory(id);
+            Category c = categoriesAPIClient.getCategoryById(id.intValue());
             ProductQuery pq = new ProductQuery();
             pq.category(id);
-            List<Product> ps = productsAPIClient.queryProducts(pq);
+            List<Product> ps = Arrays.asList(productsAPIClient.getProducts(""+pq.getCategory()));
             if(ps.size() == 0){
-                categoriesAPIClient.deleteCategory(id);
+                categoriesAPIClient.deleteCategoryById(id.intValue());
                 return new ResponseEntity<Category>(c,HttpStatus.OK);
             }
             Error error = new Error();
@@ -80,7 +86,7 @@ public class CategoriesApiController  implements CategoriesApi{
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                Category c = categoriesAPIClient.getCategory(id);
+                Category c = categoriesAPIClient.getCategoryById(id.intValue());
                 return new ResponseEntity<Category>(c,HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
@@ -101,7 +107,7 @@ public class CategoriesApiController  implements CategoriesApi{
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                List<Category> cs = categoriesAPIClient.queryCategories(query);
+                List<Category> cs = Arrays.asList(categoriesAPIClient.getCategories(query.getText()));
                 return new ResponseEntity<List<Category>>(cs,HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
