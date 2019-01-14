@@ -1,4 +1,4 @@
-package de.hskarlsruhe.vslab.product_service;
+package de.hskarlsruhe.vslab;
 
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;

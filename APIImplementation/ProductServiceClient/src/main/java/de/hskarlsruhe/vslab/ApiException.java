@@ -1,4 +1,4 @@
-package ProductServiceClient;
+package de.hskarlsruhe.vslab;
 
 public class ApiException extends Exception{
     @Override

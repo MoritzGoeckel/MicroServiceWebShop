@@ -1,31 +1,25 @@
-package ProductServiceClient;
+package de.hskarlsruhe.vslab;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.*;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
-@Controller
 public class ProductServiceClient {
 
-    private String baseUrl;
+    private String baseUrl = "http://localhost:8082/";
+    private RestTemplate restTemplate = new RestTemplate();
 
-    @LoadBalanced
-    @Bean
-    RestTemplate restTemplate() {
-        return new RestTemplate();
+    public ProductServiceClient(){}
+
+    public ProductServiceClient(String baseUrl){
+        this.baseUrl = baseUrl;
     }
 
-    @Autowired
-    private RestTemplate restTemplate;
+    public Product postProduct(String jsonElement) throws ApiException {
 
-    public ProductServiceClient(){ this.baseUrl = "http://" + "product-service" + "/";}
+        //Gson gson = new Gson();
+        //Product product = gson.fromJson(productAsString, Product.class);
 
-    public ProductServiceClient(String baseUrl){ this.baseUrl = baseUrl;}
-
-    public Product postProduct(String jsonElement) throws ApiException{
+        // set headers
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<String>(jsonElement, headers);
@@ -35,6 +29,7 @@ public class ProductServiceClient {
         handle(response);
 
         return response.getBody();
+
     }
 
     public Product[] getProducts() throws ApiException {
