@@ -930,6 +930,8 @@ public class ApiClient {
                         respBody = response.body().string();
                     } catch (IOException e) {
                         throw new ApiException(response.message(), e, response.code(), response.headers().toMultimap());
+                    } catch (IllegalStateException e){
+                        throw new ApiException(response.code(),e.getMessage());
                     }
                 }
                 throw new ApiException(response.message(), response.code(), response.headers().toMultimap(), respBody);

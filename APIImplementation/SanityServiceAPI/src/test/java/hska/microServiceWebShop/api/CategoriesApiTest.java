@@ -49,9 +49,10 @@ public class CategoriesApiTest {
         name.setName("cat1");
         try {
             Category response = api.addCategory(name);
-            assert response.getName() == "cat1";
-            assert response.getId() != null;
             System.out.println(response.getId());
+            System.out.println(response.getName());
+            assert response.getName().equalsIgnoreCase("cat1");
+            assert response.getId() != null;
         }catch (ApiException e){
             System.err.println(e.getCode());
             System.err.println(e.getMessage());
@@ -94,7 +95,7 @@ public class CategoriesApiTest {
         Category response = api.addCategory(name);
         Long id = response.getId();
         Category response2 = api.getCategory(id);
-        assert response2.getName() == "cat3";
+        assert response2.getName().equalsIgnoreCase("cat3");
         // TODO: test validations
     }
     
@@ -110,7 +111,9 @@ public class CategoriesApiTest {
     public void queryCategoriesTest() throws ApiException {
         CategoryQuery query = new CategoryQuery();
         List<Category> response = api.queryCategories(query);
-
+        for (Category c: response) {
+           System.out.println(c.toString());
+        }
         // TODO: test validations
     }
     
