@@ -30,8 +30,8 @@ public class UserEndpoint {
 			@RequestParam(name = "text", required = false) String text,
 			@RequestParam(name = "roleID", required = false) Long roleID) {
 		Iterable<User> usersDB = null;
-		if (username != null) {
-			if (text != null) {
+		if (username != null && !username.isEmpty()) {
+			if (text != null && !text.isEmpty()) {
 				if (roleID != null) {
 					usersDB = repo.findAllByUsernameAndTextAndRoleID(username, text, roleID);
 				} else {
@@ -45,7 +45,7 @@ public class UserEndpoint {
 				}
 			}
 		} else {
-			if (text != null) {
+			if (text != null && !text.isEmpty()) {
 				if (roleID != null) {
 					usersDB = repo.findAllByTextAndRoleID(text, roleID);
 				} else {
@@ -92,10 +92,10 @@ public class UserEndpoint {
 	}
 
 	private void checkPostBody(User user) throws BadRequestException {
-		if (user.getUsername() == null) {
-			if (user.getFirstname() == null) {
-				if (user.getLastname() == null) {
-					if (user.getPassword() == null) {
+		if (user.getUsername() == null || user.getUsername().isEmpty()) {
+			if (user.getFirstname() == null || user.getFirstname().isEmpty()) {
+				if (user.getLastname() == null || user.getLastname().isEmpty()) {
+					if (user.getPassword() == null || user.getPassword().isEmpty()) {
 						if (user.getRoleID() == null) {
 							throw new BadRequestException(
 									"Benutzername, Vorname, Nachname, Passwort und RolleID fehlen");
@@ -110,7 +110,7 @@ public class UserEndpoint {
 						}
 					}
 				} else {
-					if (user.getPassword() == null) {
+					if (user.getPassword() == null || user.getPassword().isEmpty()) {
 						if (user.getRoleID() == null) {
 							throw new BadRequestException("Benutzername, Vorname, Passwort und RolleID fehlen");
 						} else {
@@ -125,8 +125,8 @@ public class UserEndpoint {
 					}
 				}
 			} else {
-				if (user.getLastname() == null) {
-					if (user.getPassword() == null) {
+				if (user.getLastname() == null || user.getLastname().isEmpty()) {
+					if (user.getPassword() == null || user.getPassword().isEmpty()) {
 						if (user.getRoleID() == null) {
 							throw new BadRequestException("Benutzername, Nachname, Passwort und RolleID fehlen");
 						} else {
@@ -140,7 +140,7 @@ public class UserEndpoint {
 						}
 					}
 				} else {
-					if (user.getPassword() == null) {
+					if (user.getPassword() == null || user.getPassword().isEmpty()) {
 						if (user.getRoleID() == null) {
 							throw new BadRequestException("Benutzername, Passwort und RolleID fehlen");
 						} else {
@@ -156,9 +156,9 @@ public class UserEndpoint {
 				}
 			}
 		} else {
-			if (user.getFirstname() == null) {
-				if (user.getLastname() == null) {
-					if (user.getPassword() == null) {
+			if (user.getFirstname() == null || user.getFirstname().isEmpty()) {
+				if (user.getLastname() == null || user.getLastname().isEmpty()) {
+					if (user.getPassword() == null || user.getPassword().isEmpty()) {
 						if (user.getRoleID() == null) {
 							throw new BadRequestException("Vorname, Nachname, Passwort und RolleID fehlen");
 						} else {
@@ -172,7 +172,7 @@ public class UserEndpoint {
 						}
 					}
 				} else {
-					if (user.getPassword() == null) {
+					if (user.getPassword() == null || user.getPassword().isEmpty()) {
 						if (user.getRoleID() == null) {
 							throw new BadRequestException("Vorname, Passwort und RolleID fehlen");
 						} else {
@@ -187,8 +187,8 @@ public class UserEndpoint {
 					}
 				}
 			} else {
-				if (user.getLastname() == null) {
-					if (user.getPassword() == null) {
+				if (user.getLastname() == null || user.getLastname().isEmpty()) {
+					if (user.getPassword() == null || user.getPassword().isEmpty()) {
 						if (user.getRoleID() == null) {
 							throw new BadRequestException("Nachname, Passwort und RolleID fehlen");
 						} else {
@@ -202,7 +202,7 @@ public class UserEndpoint {
 						}
 					}
 				} else {
-					if (user.getPassword() == null) {
+					if (user.getPassword() == null || user.getPassword().isEmpty()) {
 						if (user.getRoleID() == null) {
 							throw new BadRequestException("Passwort und RolleID fehlen");
 						} else {

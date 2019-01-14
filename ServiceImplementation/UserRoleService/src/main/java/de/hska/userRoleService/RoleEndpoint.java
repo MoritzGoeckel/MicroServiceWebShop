@@ -29,7 +29,7 @@ public class RoleEndpoint {
 	public ResponseEntity<Iterable<Role>> getRoles(@RequestParam(name = "typ", required = false) String typ,
 			@RequestParam(name = "level", required = false) Integer level) {
 		Iterable<Role> rolesDB = null;
-		if (typ != null) {
+		if (typ != null && !typ.isEmpty()) {
 			if (level != null) {
 				rolesDB = repo.findAllByTypAndLevel(typ, level);
 			} else {
