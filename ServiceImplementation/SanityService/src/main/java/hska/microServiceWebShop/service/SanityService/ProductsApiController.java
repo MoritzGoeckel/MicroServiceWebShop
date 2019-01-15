@@ -94,7 +94,7 @@ public class ProductsApiController{
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                List<Product> ps = Arrays.asList(productsAPIClient.getProducts(query.getText()));
+                List<Product> ps = Arrays.asList(productsAPIClient.getProducts(query.getText(),query.getPriceMin(),query.getPriceMax(),query.getCategory()));
                 return new ResponseEntity<List<Product>>(ps, HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();

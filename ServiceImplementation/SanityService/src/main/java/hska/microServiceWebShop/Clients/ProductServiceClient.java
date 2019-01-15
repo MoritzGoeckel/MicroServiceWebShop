@@ -51,7 +51,7 @@ public class ProductServiceClient {
         return getProducts(null, null, null, null);
     }
 
-    public Product[] getProducts(String text, Double min, Double max, String category) throws ApiException {
+    public Product[] getProducts(String text, Double min, Double max, Long category) throws ApiException {
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -62,7 +62,7 @@ public class ProductServiceClient {
         if(max!=null)
             headers.set("max", max.toString());
         if(category!=null)
-            headers.set("category", category);
+            headers.set("category", category.toString());
 
         //RequestEntity<Product> requestEntity = new RequestEntity<Product>();
 
