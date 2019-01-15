@@ -47,6 +47,8 @@ public class UserRoleApiTest {
     @Test
     public void createRoleTest() throws ApiException {
         Role role = new Role();
+        role.setTyp("role1");
+        role.setLevel(1);
         api.createRole(role);
 
         // TODO: test validations

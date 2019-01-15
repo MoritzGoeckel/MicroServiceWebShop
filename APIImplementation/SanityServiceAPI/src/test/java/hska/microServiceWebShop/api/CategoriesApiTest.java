@@ -33,26 +33,23 @@ public class CategoriesApiTest {
 
     private final CategoriesApi api = new CategoriesApi();
 
-    
-    /**
-     * Adds a new category
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
     @Test
-    public void addCategoryTest() throws ApiException {
-
-        Category name = new Category();
-        name.setName("cat1");
+    public void addAndDeleteCategoryTest() throws ApiException {
         try {
+            Category name = new Category();
+            name.setName("cat1");
+
+            // Add cat1
+            System.out.println("Add cat1");
             Category response = api.addCategory(name);
-            System.out.println(response.getId());
-            System.out.println(response.getName());
+            System.out.println(response.toString());
             assert response.getName().equalsIgnoreCase("cat1");
             assert response.getId() != null;
+
+            // Delete cat1
+            System.out.println("Delete cat1");
+            Long id = response.getId();
+            api.deleteCategory(id);
         }catch (ApiException e){
             System.err.println(e.getCode());
             System.err.println(e.getMessage());
@@ -60,61 +57,115 @@ public class CategoriesApiTest {
             System.err.println(e.getStackTrace());
         }
 
+    }
+
+    @Test
+    public void addAndQueryCategoryTest() throws ApiException {
+        try {
+            Category name = new Category();
+            name.setName("cat2");
+
+            // Add cat2
+            System.out.println("Add cat2");
+            Category response = api.addCategory(name);
+            System.out.println(response.toString());
+            assert response.getName().equalsIgnoreCase("cat2");
+            assert response.getId() != null;
+
+            // get cat2 by id
+            System.out.println("get cat2 by id");
+            Long id = response.getId();
+            Category response2 = api.getCategory(id);
+            System.out.println(response.toString());
+            assert response2.getName().equalsIgnoreCase("cat2");
+
+            name = new Category();
+            name.setName("cat3");
+
+            // add cat3
+            System.out.println("add cat3");
+            response = api.addCategory(name);
+            System.out.println(response.toString());
+            assert response.getName().equalsIgnoreCase("cat3");
+            assert response.getId() != null;
+
+            // query for cat3
+            System.out.println("query for cat3");
+            CategoryQuery query = new CategoryQuery();
+            query.setText("cat3");
+            List<Category> responses = api.queryCategories(query);
+            for (Category c: responses) {
+                System.out.println(c.toString());
+                assert response.getName().contains("cat3");
+            }
+
+            // query for all
+            System.out.println("query for all");
+            query = new CategoryQuery();
+            responses = api.queryCategories(query);
+            for (Category c: responses) {
+                System.out.println(c.toString());
+
+                // Delete catX
+                System.out.println("Delete " + c.getName());
+                id = c.getId();
+                api.deleteCategory(id);
+            }
+
+            // query for all
+            System.out.println("query for all");
+            query = new CategoryQuery();
+            responses = api.queryCategories(query);
+            assert responses.size() == 0;
+
+
+        }catch (ApiException e){
+            System.err.println(e.getCode());
+            System.err.println(e.getMessage());
+            System.err.println(e.getResponseBody());
+            System.err.println(e.getStackTrace());
+        }
 
     }
-    
-    /**
-     * Deletes a category
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
+
     @Test
-    public void deleteCategoryTest() throws ApiException {
-        Category name = new Category();
-        name.setName("cat2");
-        Category response = api.addCategory(name);
-        Long id = response.getId();
-        api.deleteCategory(id);
-    }
-    
-    /**
-     * Retrieves a category
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getCategoryTest() throws ApiException {
-        Category name = new Category();
-        name.setName("cat3");
-        Category response = api.addCategory(name);
-        Long id = response.getId();
-        Category response2 = api.getCategory(id);
-        assert response2.getName().equalsIgnoreCase("cat3");
-        // TODO: test validations
-    }
-    
-    /**
-     * Queries categories. If no name is provided all categories will be returned
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void queryCategoriesTest() throws ApiException {
-        CategoryQuery query = new CategoryQuery();
-        List<Category> response = api.queryCategories(query);
-        for (Category c: response) {
-           System.out.println(c.toString());
+    public void addTwoTimesCategoryTest() throws ApiException {
+        try {
+            Category name = new Category();
+            name.setName("cat4");
+
+            // Add cat4
+            System.out.println("Add cat4");
+            Category response = api.addCategory(name);
+            System.out.println(response.toString());
+            assert response.getName().equalsIgnoreCase("cat4");
+            assert response.getId() != null;
+
+            try {
+                // Add cat4
+                System.out.println("Add cat4");
+                response = api.addCategory(name);
+                System.out.println(response.toString());
+                assert response.getName().equalsIgnoreCase("cat4");
+                assert response.getId() != null;
+            }catch (ApiException e){
+                System.err.println(e.getCode());
+                System.err.println(e.getMessage());
+                System.err.println(e.getResponseBody());
+                System.err.println(e.getStackTrace());
+            }
+
+            // Delete cat4
+            System.out.println("Delete cat4");
+            Long id = response.getId();
+            api.deleteCategory(id);
+        }catch (ApiException e){
+            System.err.println(e.getCode());
+            System.err.println(e.getMessage());
+            System.err.println(e.getResponseBody());
+            System.err.println(e.getStackTrace());
         }
-        // TODO: test validations
+
     }
     
 }

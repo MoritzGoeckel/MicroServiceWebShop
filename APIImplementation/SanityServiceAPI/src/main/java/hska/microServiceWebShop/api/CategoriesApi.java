@@ -128,7 +128,11 @@ public class CategoriesApi {
      */
     public Category addCategory(Category name) throws ApiException {
         ApiResponse<Category> resp = addCategoryWithHttpInfo(name);
-        return resp.getData();
+        Category c = resp.getData();
+        if(c == null){
+            throw new ApiException(resp.getStatusCode(),"Data is null, probably did not get it");
+        }
+        return c;
     }
 
     /**

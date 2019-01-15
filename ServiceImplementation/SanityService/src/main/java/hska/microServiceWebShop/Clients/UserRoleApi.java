@@ -54,10 +54,10 @@ public class UserRoleApi {
 		
 	public List<User> getUsers(String username, String text, Long roleID) throws HttpClientErrorException {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString("http://userroleservice/users");
-		if(username != null) {
+		if(username != null && !username.isEmpty()) {
 			builder.queryParam("username", username);
 		}
-		if(text != null) {
+		if(text != null && !text.isEmpty()) {
 			builder.queryParam("text", text);
 		}
 		if(roleID != null) {

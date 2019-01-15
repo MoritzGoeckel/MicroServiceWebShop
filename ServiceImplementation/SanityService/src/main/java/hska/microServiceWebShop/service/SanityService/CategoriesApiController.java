@@ -43,6 +43,7 @@ public class CategoriesApiController  implements CategoriesApi{
                     Category c = categoriesAPIClient.postCategory(category.getName());
                     return new ResponseEntity<Category>(c,HttpStatus.OK);
                 } catch (ApiException e) {
+                    System.err.println(e.getCode());
                     e.printStackTrace();
                     Error error = new Error();
                     error.setDescription(e.getMessage());
