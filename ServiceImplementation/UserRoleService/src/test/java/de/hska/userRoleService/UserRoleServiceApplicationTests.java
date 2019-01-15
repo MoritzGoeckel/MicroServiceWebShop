@@ -426,8 +426,8 @@ public class UserRoleServiceApplicationTests {
 		} else if (expected != null && actual != null) {
 			// Assert.assertEquals(expected.getId(), actual.getId());
 			Assert.assertEquals(expected.getUsername(), actual.getUsername());
-			Assert.assertEquals(expected.getFirstname(), actual.getFirstname());
-			Assert.assertEquals(expected.getLastname(), actual.getLastname());
+			Assert.assertEquals(expected.getFirstName(), actual.getFirstName());
+			Assert.assertEquals(expected.getLastName(), actual.getLastName());
 			Assert.assertEquals(expected.getPassword(), actual.getPassword());
 			Assert.assertEquals(expected.getRoleID(), actual.getRoleID());
 		}

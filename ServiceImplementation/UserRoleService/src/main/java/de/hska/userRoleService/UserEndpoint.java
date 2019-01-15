@@ -93,8 +93,8 @@ public class UserEndpoint {
 
 	private void checkPostBody(User user) throws BadRequestException {
 		if (user.getUsername() == null || user.getUsername().isEmpty()) {
-			if (user.getFirstname() == null || user.getFirstname().isEmpty()) {
-				if (user.getLastname() == null || user.getLastname().isEmpty()) {
+			if (user.getFirstName() == null || user.getFirstName().isEmpty()) {
+				if (user.getLastName() == null || user.getLastName().isEmpty()) {
 					if (user.getPassword() == null || user.getPassword().isEmpty()) {
 						if (user.getRoleID() == null) {
 							throw new BadRequestException(
@@ -125,7 +125,7 @@ public class UserEndpoint {
 					}
 				}
 			} else {
-				if (user.getLastname() == null || user.getLastname().isEmpty()) {
+				if (user.getLastName() == null || user.getLastName().isEmpty()) {
 					if (user.getPassword() == null || user.getPassword().isEmpty()) {
 						if (user.getRoleID() == null) {
 							throw new BadRequestException("Benutzername, Nachname, Passwort und RolleID fehlen");
@@ -156,8 +156,8 @@ public class UserEndpoint {
 				}
 			}
 		} else {
-			if (user.getFirstname() == null || user.getFirstname().isEmpty()) {
-				if (user.getLastname() == null || user.getLastname().isEmpty()) {
+			if (user.getFirstName() == null || user.getFirstName().isEmpty()) {
+				if (user.getLastName() == null || user.getLastName().isEmpty()) {
 					if (user.getPassword() == null || user.getPassword().isEmpty()) {
 						if (user.getRoleID() == null) {
 							throw new BadRequestException("Vorname, Nachname, Passwort und RolleID fehlen");
@@ -187,7 +187,7 @@ public class UserEndpoint {
 					}
 				}
 			} else {
-				if (user.getLastname() == null || user.getLastname().isEmpty()) {
+				if (user.getLastName() == null || user.getLastName().isEmpty()) {
 					if (user.getPassword() == null || user.getPassword().isEmpty()) {
 						if (user.getRoleID() == null) {
 							throw new BadRequestException("Nachname, Passwort und RolleID fehlen");

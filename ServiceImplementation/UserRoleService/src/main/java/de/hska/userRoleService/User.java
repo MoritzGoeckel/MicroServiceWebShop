@@ -16,16 +16,16 @@ public class User {
 	@Column(name="username")
 	private String username;
 	
-	@Column(name="firstname")
-	private String firstname;
+	@Column(name="firstName")
+	private String firstName;
 	
-	@Column(name="lastname")
-	private String lastname;
+	@Column(name="lastName")
+	private String lastName;
 	
 	@Column(name="password")
 	private String password;
 	
-	@Column(name="roleId")
+	@Column(name="roleID")
 	private Long roleID;
 	
 	
@@ -35,8 +35,8 @@ public class User {
 	
 	public User(String username, String firstname, String lastname, String password, Long roleID) {
 		this.username = username;
-		this.firstname = firstname;
-		this.lastname = lastname;
+		this.firstName = firstname;
+		this.lastName = lastname;
 		this.password = password;
 		this.roleID = roleID;
 	}
@@ -53,20 +53,20 @@ public class User {
 		this.username = username;
 	}
 
-	public String getFirstname() {
-		return this.firstname;
+	public String getFirstName() {
+		return this.firstName;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstName(String firstname) {
+		this.firstName = firstname;
 	}
 
-	public String getLastname() {
-		return this.lastname;
+	public String getLastName() {
+		return this.lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastname) {
+		this.lastName = lastname;
 	}
 
 	public String getPassword() {

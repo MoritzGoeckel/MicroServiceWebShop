@@ -61,7 +61,7 @@ public class ProductServiceClient {
 
     @HystrixCommand(fallbackMethod = "getProductsCache",
             ignoreExceptions=ApiException.class)
-    public Product[] getProducts(String text, Double min, Double max, String category) throws ApiException {
+    public Product[] getProducts(String text, Double min, Double max, Long category) throws ApiException {
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -72,7 +72,7 @@ public class ProductServiceClient {
         if(max!=null)
             headers.set("max", max.toString());
         if(category!=null)
-            headers.set("category", category);
+            headers.set("category", category.toString());
 
         //RequestEntity<Product> requestEntity = new RequestEntity<Product>();
 
@@ -88,7 +88,7 @@ public class ProductServiceClient {
         return products;
     }
 
-    public Product[] getProductsCache(String text, Double min, Double max, String category) throws ApiException {
+    public Product[] getProductsCache(String text, Double min, Double max, Long category) throws ApiException {
 
         Stream<Product> allFoundProductsSream = cache.values().stream();
 
