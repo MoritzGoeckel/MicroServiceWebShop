@@ -10,6 +10,7 @@ services:
       - product-service
       - sanity-service
       - user-role-service
+      - edge-server
     networks: 
       - backend
 category-service:
