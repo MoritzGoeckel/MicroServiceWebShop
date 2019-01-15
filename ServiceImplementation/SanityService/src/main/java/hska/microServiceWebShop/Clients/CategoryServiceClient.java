@@ -1,10 +1,10 @@
 package hska.microServiceWebShop.Clients;
 
-import hska.microServiceWebShop.Clients.ApiException;
 import hska.microServiceWebShop.models.Category;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -50,6 +50,7 @@ public class CategoryServiceClient {
         ResponseEntity<Category[]> response = restTemplate.exchange(baseUrl + "categories", HttpMethod.GET, new HttpEntity(headers), Category[].class);
 
         handle(response);
+
         Category[] categories = response.getBody();
         for(Category category : categories) {
         	cache.put(category.getId(), category);
@@ -58,11 +59,17 @@ public class CategoryServiceClient {
         return categories;
     }
 
+    @HystrixCommand(fallbackMethod = "getCategoriesByIdCache",
+            ignoreExceptions=ApiException.class)
     public Category getCategoryById(int id) throws ApiException {
         ResponseEntity<Category> response = restTemplate.getForEntity(baseUrl + "categories/" + id, Category.class);
         handle(response);
 
-        return response.getBody();
+        Category category = response.getBody();
+        if(category != null)
+            cache.put(category.getId(), category);
+
+        return category;
     }
 
     public void deleteCategoryById(int id) throws ApiException {
@@ -74,10 +81,20 @@ public class CategoryServiceClient {
         if(response.getStatusCode() != HttpStatus.OK)
             throw new ApiException(response.getStatusCode().value(), response.getStatusCode().getReasonPhrase());
     }
-    
+
     public Category[] getCategoriesCache(String query) {
-    	Category[] categories = new Category[cache.size()];
-    	return cache.values().toArray(categories);
+        return cache.values()
+                .stream()
+                .filter(c -> c.getName().contains(query))
+                .toArray(Category[]::new);
+    }
+
+    public Category getCategoriesByIdCache(int id) throws ApiException {
+        Category category = cache.getOrDefault((long) id, null);
+        if(category == null)
+            throw new ApiException(HttpStatus.NOT_FOUND.value(), "Category not found");
+
+        return category;
     }
 }
 
