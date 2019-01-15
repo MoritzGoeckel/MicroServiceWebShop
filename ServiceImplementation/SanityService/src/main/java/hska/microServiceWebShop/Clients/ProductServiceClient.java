@@ -14,6 +14,12 @@ public class ProductServiceClient {
 
     private String baseUrl;
 
+    @LoadBalanced
+    @Bean
+    RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -45,18 +51,18 @@ public class ProductServiceClient {
         return getProducts(null, null, null, null);
     }
 
-    public Product[] getProducts(String name, Double price, Long category, String details) throws ApiException {
+    public Product[] getProducts(String text, Double min, Double max, String category) throws ApiException {
 
 
         HttpHeaders headers = new HttpHeaders();
-        if(name!=null)
-            headers.set("name", name);
-        if(price!=null)
-            headers.set("price", price.toString());
+        if(text!=null)
+            headers.set("text", text);
+        if(min!=null)
+            headers.set("min", min.toString());
+        if(max!=null)
+            headers.set("max", max.toString());
         if(category!=null)
-            headers.set("category", category.toString());
-        if(details!=null)
-            headers.set("details", details);
+            headers.set("category", category);
 
         //RequestEntity<Product> requestEntity = new RequestEntity<Product>();
 
