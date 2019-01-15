@@ -30,19 +30,32 @@ import java.util.Map;
 /**
  * API tests for ProductsApi
  */
-@Ignore
+//@Ignore
 public class ProductsApiTest {
 
     private final ProductsApi api = new ProductsApi();
+    private final CategoriesApi apiCategory = new CategoriesApi();
 
     
     @Test
     public void addAndDeleteCategoryTest() throws ApiException {
         try {
+        	
+        	Category name = new Category();
+            name.setName("cat5");
+
+            // Add cat1
+            System.out.println("Add cat5");
+            Category response = apiCategory.addCategory(name);
+            System.out.println(response.toString());
+            assert response.getName().equalsIgnoreCase("cat5");
+            assert response.getId() != null;
+
+        	
             Product pro = new Product();
             pro.setName("pro1");
             pro.setDetails("no details");
-            pro.setCategory(1L);
+            pro.setCategory(response.getId());
             pro.setPrice(50.50);
 
             // Add pro1
@@ -56,11 +69,18 @@ public class ProductsApiTest {
             System.out.println("Delete pro1");
             Long id = proRes.getId();
             api.deleteProduct(id);
+            
+         // Delete cat1
+            System.out.println("Delete cat5");
+            id = response.getId();
+            apiCategory.deleteCategory(id);
+            
         }catch (ApiException e){
             System.err.println(e.getCode());
             System.err.println(e.getMessage());
             System.err.println(e.getResponseBody());
             System.err.println(e.getStackTrace());
+            assert false;
         }
 
     }
@@ -68,10 +88,20 @@ public class ProductsApiTest {
     @Test
     public void addAndQueryCategoryTest() throws ApiException {
         try {
+        	Category name = new Category();
+            name.setName("cat6");
+
+            // Add cat6
+            System.out.println("Add cat6");
+            Category responseC = apiCategory.addCategory(name);
+            System.out.println(responseC.toString());
+            assert responseC.getName().equalsIgnoreCase("cat6");
+            assert responseC.getId() != null;
+        	
             Product pro = new Product();
             pro.setName("pro2");
             pro.setDetails("no details");
-            pro.setCategory(1L);
+            pro.setCategory(responseC.getId());
             pro.setPrice(50.50);
 
             // Add pro2
@@ -91,7 +121,7 @@ public class ProductsApiTest {
             pro = new Product();
             pro.setName("pro3");
             pro.setDetails("no details");
-            pro.setCategory(1L);
+            pro.setCategory(responseC.getId());
             pro.setPrice(50.50);
 
             // add pro3
@@ -129,6 +159,11 @@ public class ProductsApiTest {
             query = new ProductQuery();
             responses = api.queryProducts(query);
             assert responses.size() == 0;
+            
+         // Delete cat1
+            System.out.println("Delete cat6");
+            id = responseC.getId();
+            apiCategory.deleteCategory(id);
 
 
         }catch (ApiException e){
@@ -136,6 +171,7 @@ public class ProductsApiTest {
             System.err.println(e.getMessage());
             System.err.println(e.getResponseBody());
             System.err.println(e.getStackTrace());
+            assert false;
         }
 
     }
@@ -143,8 +179,22 @@ public class ProductsApiTest {
     @Test
     public void addTwoTimesCategoryTest() throws ApiException {
         try {
+        	
+        	Category name = new Category();
+            name.setName("cat7");
+
+            // Add cat6
+            System.out.println("Add cat7");
+            Category responseC = apiCategory.addCategory(name);
+            System.out.println(responseC.toString());
+            assert responseC.getName().equalsIgnoreCase("cat7");
+            assert responseC.getId() != null;
+        	
             Product pro = new Product();
             pro.setName("pro4");
+            pro.setDetails("no details");
+            pro.setCategory(responseC.getId());
+            pro.setPrice(50.50);
 
             // Add pro4
             System.out.println("Add pro4");
@@ -157,25 +207,31 @@ public class ProductsApiTest {
                 // Add pro4
                 System.out.println("Add pro4");
                 response = api.addProduct(pro);
-                System.out.println(response.toString());
-                assert response.getName().equalsIgnoreCase("pro4");
-                assert response.getId() != null;
+                assert true;
             }catch (ApiException e){
-                System.err.println(e.getCode());
-                System.err.println(e.getMessage());
-                System.err.println(e.getResponseBody());
-                System.err.println(e.getStackTrace());
+                System.out.println(e.getCode());
+                System.out.println(e.getMessage());
+                System.out.println(e.getResponseBody());
+                System.out.println(e.getStackTrace());
             }
 
             // Delete pro4
             System.out.println("Delete pro4");
             Long id = response.getId();
             api.deleteProduct(id);
+            
+            // Delete cat1
+            System.out.println("Delete cat7");
+            id = responseC.getId();
+            apiCategory.deleteCategory(id);
+
+            
         }catch (ApiException e){
             System.err.println(e.getCode());
             System.err.println(e.getMessage());
             System.err.println(e.getResponseBody());
             System.err.println(e.getStackTrace());
+            assert false;
         }
 
     }

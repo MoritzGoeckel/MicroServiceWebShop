@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * API tests for UserRoleApi
  */
-@Ignore
+//@Ignore
 public class UserRoleApiTest {
 
     private final UserRoleApi api = new UserRoleApi();
@@ -85,6 +85,66 @@ public class UserRoleApiTest {
         System.out.println("try get role1");
         try {
         	api.getRoleById(id);
+        	assert false;
+        }catch(ApiException e) {
+        	System.out.println(e.getMessage());
+        }
+
+        // TODO: test validations
+    }
+    
+    @Test
+    public void creatUserTest() throws ApiException {
+        Role role = new Role();
+        role.setTyp("role2");
+        role.setLevel(1);
+
+        System.out.println("create role2");
+        role = api.createRole(role);
+        System.out.println(role.toString());
+
+        User user = new User();
+        user.setFirstName("John");
+        user.setLastName("Doe");
+        user.setPassword("1234");
+        user.setRoleID(role.getId());
+        user.setUsername("User");
+        
+        System.out.println("create user");
+        user = api.createUser(user);
+        System.out.println(user.toString());
+        
+        System.out.println("get userbyid");
+        Long id = user.getId();
+        User response = api.getUserById(id);
+        
+        System.out.println(response.toString());
+
+        System.out.println("query users");
+        UserQuery query = new UserQuery();
+        List<User> responses = api.getUsers(query);
+        
+        for(User r: responses) {
+        	System.out.println(r.toString());
+        }
+        
+        System.out.println("query user1");
+        query = new UserQuery();
+        query.setText("User");
+        responses = api.getUsers(query);
+        
+        for(User r: responses) {
+        	System.out.println(r.toString());
+        }
+        // TODO: test validations
+        
+        System.out.println("delete user1");
+        id = response.getId();
+        api.deleteUser(id);
+        
+        System.out.println("try get user1");
+        try {
+        	api.getUserById(id);
         	assert false;
         }catch(ApiException e) {
         	System.out.println(e.getMessage());

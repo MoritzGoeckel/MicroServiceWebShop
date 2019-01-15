@@ -28,6 +28,7 @@ import java.io.IOException;
 
 import hska.microServiceWebShop.models.Category;
 import hska.microServiceWebShop.models.Error;
+import hska.microServiceWebShop.models.Product;
 import hska.microServiceWebShop.models.Role;
 import hska.microServiceWebShop.models.RoleQuery;
 import hska.microServiceWebShop.models.User;
@@ -250,8 +251,9 @@ public class UserRoleApi {
      * @param user  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void createUser(User user) throws ApiException {
-        createUserWithHttpInfo(user);
+    public User createUser(User user) throws ApiException {
+    	ApiResponse<User> resp = createUserWithHttpInfo(user);
+        return resp.getData();
     }
 
     /**
@@ -261,9 +263,10 @@ public class UserRoleApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> createUserWithHttpInfo(User user) throws ApiException {
+    public ApiResponse<User> createUserWithHttpInfo(User user) throws ApiException {
         com.squareup.okhttp.Call call = createUserValidateBeforeCall(user, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<User>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**

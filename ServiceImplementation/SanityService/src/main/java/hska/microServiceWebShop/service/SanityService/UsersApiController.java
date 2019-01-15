@@ -28,8 +28,12 @@ public class UsersApiController implements UsersApi {
 
     public ResponseEntity createUser(@RequestBody User user) {
         String accept = request.getHeader("Accept");
-        userRoleAPIClient.createUser(user);
-        return ResponseEntity.ok().body(user);
+        try {
+        User u = userRoleAPIClient.createUser(user);
+        return ResponseEntity.ok().body(u);
+        } catch(Exception e) {
+        	throw e;
+        }
     }
 
     public ResponseEntity deleteUser(@PathVariable("id") Long id) {

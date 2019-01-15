@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * API tests for UserRoleApi
  */
-@Ignore
+//@Ignore
 public class UserRoleApiTest {
 
     private final UserRoleApi api = new UserRoleApi();

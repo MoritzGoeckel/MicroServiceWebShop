@@ -36,8 +36,16 @@ public class RolesApiController implements RolesApi {
 	public ResponseEntity createRole(@RequestBody Role role) {
 		String accept = request.getHeader("Accept");
 		if (accept != null && accept.contains("application/json")) {
-			Role r = userRoleAPIClient.createRole(role);
-			return new ResponseEntity<Role>(r, HttpStatus.OK);
+			try {
+				Role r = userRoleAPIClient.createRole(role);
+				return new ResponseEntity<Role>(r, HttpStatus.OK);
+			} catch (ApiException e) {
+				System.err.println(e.getCode());
+				e.printStackTrace();
+				Error error = new Error();
+				error.setDescription(e.getMessage());
+				return new ResponseEntity<Error>(error, HttpStatus.valueOf(e.getCode()));
+			}
 		}
 
 		Error error = new Error();
@@ -47,17 +55,32 @@ public class RolesApiController implements RolesApi {
 
 	public ResponseEntity deleteRole(@PathVariable("id") Long id) {
 		String accept = request.getHeader("Accept");
-
-		Role r = userRoleAPIClient.getRole(id);
-		userRoleAPIClient.deleteRole(id);
-		return ResponseEntity.ok().body(r);
+		try {
+			Role r = userRoleAPIClient.getRole(id);
+			userRoleAPIClient.deleteRole(id);
+			return ResponseEntity.ok().body(r);
+		} catch (ApiException e) {
+			System.err.println(e.getCode());
+			e.printStackTrace();
+			Error error = new Error();
+			error.setDescription(e.getMessage());
+			return new ResponseEntity<Error>(error, HttpStatus.valueOf(e.getCode()));
+		}
 	}
 
 	public ResponseEntity getRoleById(@PathVariable("id") Long id) {
 		String accept = request.getHeader("Accept");
 		if (accept != null && accept.contains("application/json")) {
-			Role r = userRoleAPIClient.getRole(id);
-			return ResponseEntity.ok().body(r);
+			try {
+				Role r = userRoleAPIClient.getRole(id);
+				return ResponseEntity.ok().body(r);
+			} catch (ApiException e) {
+				System.err.println(e.getCode());
+				e.printStackTrace();
+				Error error = new Error();
+				error.setDescription(e.getMessage());
+				return new ResponseEntity<Error>(error, HttpStatus.valueOf(e.getCode()));
+			}
 		}
 
 		Error error = new Error();
@@ -70,15 +93,23 @@ public class RolesApiController implements RolesApi {
 		RoleQuery query = new RoleQuery();
 		query.setText(text);
 		query.setLevel(level);
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            	List<Role> rs = userRoleAPIClient.getRoles(query.getText(), query.getLevel());
-                return new ResponseEntity<List<Role>>(rs,HttpStatus.OK);
-        }
+		String accept = request.getHeader("Accept");
+		if (accept != null && accept.contains("application/json")) {
+			try {
+				List<Role> rs = userRoleAPIClient.getRoles(query.getText(), query.getLevel());
+				return new ResponseEntity<List<Role>>(rs, HttpStatus.OK);
+			} catch (ApiException e) {
+				System.err.println(e.getCode());
+				e.printStackTrace();
+				Error error = new Error();
+				error.setDescription(e.getMessage());
+				return new ResponseEntity<Error>(error, HttpStatus.valueOf(e.getCode()));
+			}
+		}
 
-        Error error = new Error();
-        error.description("wrong acept datatye");
-        return new ResponseEntity<Error>(error,HttpStatus.BAD_REQUEST);
+		Error error = new Error();
+		error.description("wrong acept datatye");
+		return new ResponseEntity<Error>(error, HttpStatus.BAD_REQUEST);
 	}
 
 }

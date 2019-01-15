@@ -1,6 +1,7 @@
 package hska.microServiceWebShop.service.SanityService;
 
 import hska.microServiceWebShop.Clients.ApiException;
+import hska.microServiceWebShop.Clients.CategoryServiceClient;
 import hska.microServiceWebShop.Clients.ProductServiceClient;
 import hska.microServiceWebShop.models.Error;
 import hska.microServiceWebShop.models.Product;
@@ -18,11 +19,14 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-public class ProductsApiController{
+public class ProductsApiController implements ProductsApi{
 
     @Autowired
     private ProductServiceClient productsAPIClient;
 
+    @Autowired
+    private CategoryServiceClient categoriesAPIClient;
+    
     private final HttpServletRequest request;
 
     @org.springframework.beans.factory.annotation.Autowired
@@ -34,6 +38,7 @@ public class ProductsApiController{
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
+            	categoriesAPIClient.getCategoryById(product.getCategory().intValue());
                 Product p = productsAPIClient.postProduct(product.getName(),product.getPrice(),product.getCategory(),product.getDetails());
                 return new ResponseEntity<Product>(p, HttpStatus.OK);
             } catch (ApiException e) {

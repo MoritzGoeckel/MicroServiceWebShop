@@ -28,7 +28,7 @@ import java.util.Map;
 /**
  * API tests for CategoriesApi
  */
-@Ignore
+//@Ignore
 public class CategoriesApiTest {
 
     private final CategoriesApi api = new CategoriesApi();
@@ -55,6 +55,7 @@ public class CategoriesApiTest {
             System.err.println(e.getMessage());
             System.err.println(e.getResponseBody());
             System.err.println(e.getStackTrace());
+            assert false;
         }
 
     }
@@ -124,6 +125,7 @@ public class CategoriesApiTest {
             System.err.println(e.getMessage());
             System.err.println(e.getResponseBody());
             System.err.println(e.getStackTrace());
+            assert false;
         }
 
     }
@@ -145,14 +147,12 @@ public class CategoriesApiTest {
                 // Add cat4
                 System.out.println("Add cat4");
                 response = api.addCategory(name);
-                System.out.println(response.toString());
-                assert response.getName().equalsIgnoreCase("cat4");
-                assert response.getId() != null;
+                assert false;
             }catch (ApiException e){
-                System.err.println(e.getCode());
-                System.err.println(e.getMessage());
-                System.err.println(e.getResponseBody());
-                System.err.println(e.getStackTrace());
+                System.out.println(e.getCode());
+                System.out.println(e.getMessage());
+                System.out.println(e.getResponseBody());
+                System.out.println(e.getStackTrace());
             }
 
             // Delete cat4
@@ -164,6 +164,7 @@ public class CategoriesApiTest {
             System.err.println(e.getMessage());
             System.err.println(e.getResponseBody());
             System.err.println(e.getStackTrace());
+            assert false;
         }
 
     }

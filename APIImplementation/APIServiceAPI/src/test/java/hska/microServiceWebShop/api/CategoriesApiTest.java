@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * API tests for CategoriesApi
  */
-@Ignore
+//@Ignore
 public class CategoriesApiTest {
 
     private final CategoriesApi api = new CategoriesApi();
@@ -145,10 +145,10 @@ public class CategoriesApiTest {
                 assert response.getName().equalsIgnoreCase("cat4");
                 assert response.getId() != null;
             }catch (ApiException e){
-                System.err.println(e.getCode());
-                System.err.println(e.getMessage());
-                System.err.println(e.getResponseBody());
-                System.err.println(e.getStackTrace());
+                System.out.println(e.getCode());
+                System.out.println(e.getMessage());
+                System.out.println(e.getResponseBody());
+                System.out.println(e.getStackTrace());
             }
 
             // Delete cat4

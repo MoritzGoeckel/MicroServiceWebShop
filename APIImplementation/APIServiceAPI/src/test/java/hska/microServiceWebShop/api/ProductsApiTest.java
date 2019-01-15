@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * API tests for ProductsApi
  */
-@Ignore
+//@Ignore
 public class ProductsApiTest {
 
     private final ProductsApi api = new ProductsApi();
