@@ -26,7 +26,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-
+import hska.microServiceWebShop.models.Category;
 import hska.microServiceWebShop.models.Error;
 import hska.microServiceWebShop.models.Role;
 import hska.microServiceWebShop.models.RoleQuery;
@@ -86,7 +86,7 @@ public class UserRoleApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+        	"application/json"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -127,8 +127,13 @@ public class UserRoleApi {
      * @param role  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void createRole(Role role) throws ApiException {
-        createRoleWithHttpInfo(role);
+    public Role createRole(Role role) throws ApiException {
+        ApiResponse<Role> resp = createRoleWithHttpInfo(role);
+        Role r = resp.getData();
+        if(r == null){
+            throw new ApiException(resp.getStatusCode(),"Data is null, probably did not get it");
+        }
+        return r;
     }
 
     /**
@@ -138,9 +143,10 @@ public class UserRoleApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> createRoleWithHttpInfo(Role role) throws ApiException {
-        com.squareup.okhttp.Call call = createRoleValidateBeforeCall(role, null, null);
-        return apiClient.execute(call);
+    public ApiResponse<Role> createRoleWithHttpInfo(Role role) throws ApiException {
+    	com.squareup.okhttp.Call call = createRoleValidateBeforeCall(role, null, null);
+        Type localVarReturnType = new TypeToken<Role>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**

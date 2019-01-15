@@ -52,12 +52,12 @@ public class UsersApiController implements UsersApi {
     }
 
     public ResponseEntity getUsers(@RequestHeader(value="Text",defaultValue = "") String text,
-                                   @RequestHeader(value="Role",defaultValue = "") Long level,
+                                   @RequestHeader(value="Role",defaultValue = "") Long roleId,
                                    @RequestHeader(value="Username",defaultValue = "") String name) {
         UserQuery query = new UserQuery();
         query.setText(text);
         query.setUsername(name);
-        query.setRole(level);
+        query.setRole(roleId);
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             List<User> us = userRoleAPIClient.getUsers(query.getUsername(),query.getText(),query.getRole());

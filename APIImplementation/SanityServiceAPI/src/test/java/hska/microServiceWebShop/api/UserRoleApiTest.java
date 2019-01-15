@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * API tests for UserRoleApi
  */
-@Ignore
+//@Ignore
 public class UserRoleApiTest {
 
     private final UserRoleApi api = new UserRoleApi();
@@ -49,119 +49,46 @@ public class UserRoleApiTest {
         Role role = new Role();
         role.setTyp("role1");
         role.setLevel(1);
-        api.createRole(role);
 
-        // TODO: test validations
-    }
-    
-    /**
-     * Create user
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void createUserTest() throws ApiException {
-        User user = new User();
-        api.createUser(user);
+        System.out.println("create role");
+        role = api.createRole(role);
+        System.out.println(role.toString());
 
-        // TODO: test validations
-    }
-    
-    /**
-     * Delete role with Id
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void deleteRoleTest() throws ApiException {
-        Long id = 1L;
-        api.deleteRole(id);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Delete user with Id
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void deleteUserTest() throws ApiException {
-        Long id = 1L;
-        api.deleteUser(id);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Get role by Id
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getRoleByIdTest() throws ApiException {
-        Long id = 1L;
+        System.out.println("get rolebyid");
+        Long id = role.getId();
         Role response = api.getRoleById(id);
+        
+        System.out.println(response.toString());
 
-        // TODO: test validations
-    }
-    
-    /**
-     * Get roles
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getRolesTest() throws ApiException {
+        System.out.println("query roles");
         RoleQuery query = new RoleQuery();
-        List<Role> response = api.getRoles(query);
-
+        List<Role> responses = api.getRoles(query);
+        
+        for(Role r: responses) {
+        	System.out.println(r.toString());
+        }
+        
+        System.out.println("query role1");
+        query = new RoleQuery();
+        query.setText("role1");
+        responses = api.getRoles(query);
+        
+        for(Role r: responses) {
+        	System.out.println(r.toString());
+        }
         // TODO: test validations
-    }
-    
-    /**
-     * Get user by Id
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getUserByIdTest() throws ApiException {
-        Long id = 1L;
-        User response = api.getUserById(id);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Get users
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getUsersTest() throws ApiException {
-        UserQuery query = new UserQuery();
-        List<User> response = api.getUsers(query);
+        
+        System.out.println("delete role1");
+        id = response.getId();
+        api.deleteRole(id);
+        
+        System.out.println("try get role1");
+        try {
+        	api.getRoleById(id);
+        	assert false;
+        }catch(ApiException e) {
+        	System.out.println(e.getMessage());
+        }
 
         // TODO: test validations
     }
