@@ -46,18 +46,18 @@ public class ProductsApiController implements ProductsApi {
         if (accept != null && accept.contains("application/json")) {
             try {
                 Product p = productsAPIClient.addProduct(product);
-                return ResponseEntity.ok().body(p);
+                return new ResponseEntity<Product>(p, HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
-                if(e.getResponseBody() == null)
-                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-                return ResponseEntity.status(e.getCode()).body(e.getResponseBody());
+                Error error = new Error();
+                error.setDescription(e.getMessage());
+                return new ResponseEntity<Error>(error, HttpStatus.valueOf(e.getCode()));
             }
         }
 
         Error error = new Error();
         error.description("wrong acept datatye");
-        return ResponseEntity.badRequest().body(error);
+        return new ResponseEntity<Error>(error,HttpStatus.BAD_REQUEST);
     }
 
     public ResponseEntity deleteProduct(@ApiParam(value = "The id of the to be deleted product",required=true) @PathVariable("id") Long id) {
@@ -65,12 +65,12 @@ public class ProductsApiController implements ProductsApi {
         try {
             Product p = productsAPIClient.getProduct(id);
             productsAPIClient.deleteProduct(id);
-            return ResponseEntity.ok().body(p);
+            return new ResponseEntity<Product>(p, HttpStatus.OK);
         } catch (ApiException e) {
             e.printStackTrace();
-            if(e.getResponseBody() == null)
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-            return ResponseEntity.status(e.getCode()).body(e.getResponseBody());
+            Error error = new Error();
+            error.setDescription(e.getMessage());
+            return new ResponseEntity<Error>(error,HttpStatus.valueOf(e.getCode()));
         }
     }
 
@@ -79,37 +79,45 @@ public class ProductsApiController implements ProductsApi {
         if (accept != null && accept.contains("application/json")) {
             try {
                 Product p = productsAPIClient.getProduct(id);
-                return ResponseEntity.ok().body(p);
+                return new ResponseEntity<Product>(p, HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
-                if(e.getResponseBody() == null)
-                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-                return ResponseEntity.status(e.getCode()).body(e.getResponseBody());
+                Error error = new Error();
+                error.setDescription(e.getMessage());
+                return new ResponseEntity<Error>(error,HttpStatus.valueOf(e.getCode()));
             }
         }
 
         Error error = new Error();
         error.description("wrong acept datatye");
-        return ResponseEntity.badRequest().body(error);
+        return new ResponseEntity<Error>(error,HttpStatus.BAD_REQUEST);
     }
 
-    public ResponseEntity queryProducts(@ApiParam(value = "The name of the product"  )  @Valid @RequestBody ProductQuery query) {
+    public ResponseEntity queryProducts(@RequestHeader(value="Text",defaultValue = "") String text,
+                                        @RequestHeader(value="Category",defaultValue = "") Long category,
+                                        @RequestHeader(value="PriceMin",defaultValue = "") Double priceMin,
+                                        @RequestHeader(value="PriceMax",defaultValue = "") Double priceMax) {
+        ProductQuery query = new ProductQuery();
+        query.setText(text);
+        query.setCategory(category);
+        query.setPriceMin(priceMin);
+        query.setPriceMax(priceMax);
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
                 List<Product> ps = productsAPIClient.queryProducts(query);
-                return ResponseEntity.ok().body(ps);
+                return new ResponseEntity<List<Product>>(ps, HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
-                if(e.getResponseBody() == null)
-                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-                return ResponseEntity.status(e.getCode()).body(e.getResponseBody());
+                Error error = new Error();
+                error.setDescription(e.getMessage());
+                return new ResponseEntity<Error>(error,HttpStatus.valueOf(e.getCode()));
             }
         }
 
         Error error = new Error();
         error.description("wrong acept datatye");
-        return ResponseEntity.badRequest().body(error);
+        return new ResponseEntity<Error>(error,HttpStatus.BAD_REQUEST);
     }
 
 }

@@ -1,4 +1,4 @@
-package io.swagger.configuration;
+package hska.microServiceWebShop.service.APIService;
 
 import com.fasterxml.jackson.datatype.threetenbp.ThreeTenModule;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
