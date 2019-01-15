@@ -12,6 +12,8 @@ import hska.microServiceWebShop.models.Product;
 @Controller
 public class ProductServiceClient {
 
+  private Map<Long, Product> cache = new HashMap<>();
+
     private String baseUrl;
 
     @LoadBalanced
@@ -51,7 +53,9 @@ public class ProductServiceClient {
         return getProducts(null, null, null, null);
     }
 
-    public Product[] getProducts(String text, Double min, Double max, Long category) throws ApiException {
+    @HystrixCommand(fallbackMethod = "getProductsCache",
+            ignoreExceptions=ApiException.class)
+    public Product[] getProducts(String text, Double min, Double max, String category) throws ApiException {
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -62,7 +66,7 @@ public class ProductServiceClient {
         if(max!=null)
             headers.set("max", max.toString());
         if(category!=null)
-            headers.set("category", category.toString());
+            headers.set("category", category);
 
         //RequestEntity<Product> requestEntity = new RequestEntity<Product>();
 
@@ -70,15 +74,70 @@ public class ProductServiceClient {
 
         handle(response);
 
-        return response.getBody();
+        Product[] products = response.getBody();
+        for(Product product : products) {
+            cache.put(product.getId(), product);
+        }
+
+        return products;
     }
 
+    public Product[] getProductsCache(String text, Double min, Double max, String category) throws ApiException {
+
+        Stream<Product> allFoundProductsSream = cache.values().stream();
+
+        // Suche nach text - check
+        if(text != null)
+        {
+            allFoundProductsSream = allFoundProductsSream
+                    .filter(c -> (c.getDetails().contains(text) || c.getName().contains(text)));
+        }
+
+        // Suche nach min -
+        if( min != null)
+        {
+            allFoundProductsSream = allFoundProductsSream
+                    .filter(c -> c.getPrice() > min);
+        }
+
+        // Suche nach max
+        if(max != null)
+        {
+            allFoundProductsSream = allFoundProductsSream
+                    .filter(c -> c.getPrice() < max);
+        }
+
+        // Suche nach category
+        if(category != null)
+        {
+            allFoundProductsSream = allFoundProductsSream
+                    .filter(c -> c.getCategory().equals(category));
+        }
+
+        Product[] foundProducts = allFoundProductsSream.toArray(Product[]::new);
+
+        return foundProducts;
+    }
+
+    @HystrixCommand(fallbackMethod = "getProductByIdCache",
+            ignoreExceptions=ApiException.class)
     public Product getProductById(int id) throws ApiException {
         ResponseEntity<Product> response = restTemplate.getForEntity(baseUrl + "products/" + id, Product.class);
         handle(response);
 
-        return response.getBody();
+        Product product = response.getBody();
+        if(product != null)
+            cache.put(product.getId(), product);
 
+        return product;
+    }
+
+    public Product getProductByIdCache(int id) throws ApiException {
+        Product product = cache.getOrDefault((long) id, null);
+        if(product == null)
+            throw new ApiException(HttpStatus.NOT_FOUND.value(), "Category not found");
+
+        return product;
     }
 
     public void deleteProductById(int id) throws ApiException {
@@ -91,4 +150,5 @@ public class ProductServiceClient {
         if(response.getStatusCode() != HttpStatus.OK)
             throw new ApiException(response.getStatusCode().value(), response.getStatusCode().getReasonPhrase());
     }
+    
 }
