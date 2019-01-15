@@ -23,26 +23,36 @@ public class ProductServiceClientApplicationTests {
 
 		System.out.println("Starting test");
 
-
-		Product p1 = new Product("testClient1",1.0,1L,"test run1");
-		Gson gson = new Gson();
-		String json = gson.toJson(p1);
-		JsonElement jsonElement = gson.toJsonTree(p1, Product.class);
-		String element = jsonElement.toString();
-		Product product = client.postProduct(element);
-		System.out.println("Added: " + product);
+		Product product = client.postProduct("testClient1", 1.0, 1L, "test run1");
+		System.out.println("Added product1: " + product);
 
 
 
-		Product p2 = new Product("testClient2",2.0,2L,"test run2");
-		//json = gson.toJson(p2);
+		Product product2 = client.postProduct("tc2",2.0,2L,"tr2");
+		System.out.println("Added product2: " + product2);
+
+		Product product3 = client.postProduct("tc233",2.0,2L,"tr2");
+		System.out.println("Added product3: " + product3);
 
 		Product[] products = client.getProducts();
 		System.out.println("Got all: " + Arrays.toString(products));
 
 
-		products = client.getProducts("1");
-		System.out.println("Got specific: " + Arrays.toString(products));
+		products = client.getProducts("testClient1", null, null, null);
+		System.out.println("Got Products by Name: " + Arrays.toString(products));
+
+		products = client.getProducts("tc23", null, null, null);
+		System.out.println("Got Products by Name: " + Arrays.toString(products));
+
+		products = client.getProducts(null, 1.0, null, null);
+		System.out.println("Got Products by Price: " + Arrays.toString(products));
+
+		products = client.getProducts(null, null, 1L, null);
+		System.out.println("Got Products by Category: " + Arrays.toString(products));
+
+		products = client.getProducts(null, null, null, "tr2");
+		System.out.println("Got Products by Details: " + Arrays.toString(products));
+
 
 		Product product1 = client.getProductById(1);
 		System.out.println("Got by ID: " + product1);
