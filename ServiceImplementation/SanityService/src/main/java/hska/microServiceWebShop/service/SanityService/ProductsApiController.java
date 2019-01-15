@@ -99,7 +99,7 @@ public class ProductsApiController implements ProductsApi{
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                List<Product> ps = Arrays.asList(productsAPIClient.getProducts(query.getText(),query.getPriceMin(),query.getPriceMax(),query.getCategory()));
+                List<Product> ps = Arrays.asList(productsAPIClient.getProducts(query.getText(),query.getPriceMin(),query.getPriceMax(),query.getCategory().toString()));
                 return new ResponseEntity<List<Product>>(ps, HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
