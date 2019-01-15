@@ -8,8 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 @RestController
@@ -45,65 +48,46 @@ public class ProductEndpoints {
     // liefert einen bestimmten Product zurück, mit bestimmten Namen
     // wenn product leer ist, werden alle Produkte zurück geliefert
     @RequestMapping(value = "/products", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Iterable<Product>> getProducts(@RequestHeader(name = "name", required = false) String name,
-                                                         @RequestHeader(name = "price", required = false) Double price,
-                                                         @RequestHeader(name = "category", required = false) Long category,
-                                                         @RequestHeader(name = "details", required = false) String details) {
+    public ResponseEntity<List<Product>> getProducts(@RequestHeader(name = "text", required = false) String text,
+                                                         @RequestHeader(name = "min", required = false) Double min,
+                                                         @RequestHeader(name = "max", required = false) Double max,
+                                                         @RequestHeader(name = "category", required = false) String category) {
 
 
-        // wenn alle felder von Product null sind und name ein leerer String ist
-        // werden alle Producte zurück gegeben
-        if((name == null || name.isEmpty()) && details == null && category == null && price == null)
-            return new ResponseEntity<>(repo.findAll(), HttpStatus.OK);
+        Stream<Product> allFoundProductsSream = StreamSupport
+                .stream(repo.findAll().spliterator(), true);
 
-        // Suche nach Details
-        else if((name == null || name.isEmpty()) && (details != null && !details.isEmpty()) && category == null && price == null)
+        // Suche nach text - check
+        if(text != null)
         {
-            Iterable<Product> foundProducts = StreamSupport
-                    .stream(repo.findAll().spliterator(), true)
-                    .filter(c -> c.getDetails().contains(details)).collect(Collectors.toList());
-            return new ResponseEntity<>(foundProducts, HttpStatus.OK);
+            allFoundProductsSream = allFoundProductsSream
+                    .filter(c -> (c.getDetails().contains(text) || c.getName().contains(text)));
         }
 
-        // Suche nach Categorie
-        else if((name == null || name.isEmpty()) && details == null && category != null && price == null)
+        // Suche nach min -
+        if( min != null)
         {
-            Iterable<Product> foundProducts = StreamSupport
-                    .stream(repo.findAll().spliterator(), true)
-                    .filter(c -> c.getCategory().equals(category)).collect(Collectors.toList());
-            return new ResponseEntity<>(foundProducts, HttpStatus.OK);
+            allFoundProductsSream = allFoundProductsSream
+                    .filter(c -> c.getPrice() > min);
         }
 
-        // Suche nach Preis
-        else if((name == null || name.isEmpty()) && details == null && category == null && price != null)
+        // Suche nach max
+        if(max != null)
         {
-            Iterable<Product> foundProducts = StreamSupport
-                    .stream(repo.findAll().spliterator(), true)
-                    .filter(c -> c.getPrice().equals(price)).collect(Collectors.toList());
-            return new ResponseEntity<>(foundProducts, HttpStatus.OK);
+            allFoundProductsSream = allFoundProductsSream
+                    .filter(c -> c.getPrice() < max);
         }
 
-        // Suche nach Namen mit bestimmten Buchstaben
-        else if(!(name == null) && details == null && category == null && price == null)
+        // Suche nach category
+        if(category != null)
         {
-            Iterable<Product> foundProducts = StreamSupport
-                    .stream(repo.findAll().spliterator(), true)
-                    .filter(c -> c.getName().contains(name)).collect(Collectors.toList());
-            return new ResponseEntity<>(foundProducts, HttpStatus.OK);
+            allFoundProductsSream = allFoundProductsSream
+                    .filter(c -> c.getCategory().equals(category));
         }
 
-        else if(name == null  && details == null && category == null && price == null)
-        {
-            return new ResponseEntity<>(repo.findAll(), HttpStatus.OK);
-        }
+        List<Product> foundProducts = allFoundProductsSream.collect(Collectors.toList());
 
-        // wenn das Produkt nicht gefunden wird
-        else{
-            Iterable<Product> foundProducts = new ArrayList<>();
-            Product product = new Product("", 0.0, 0L, "");
-            ((ArrayList<Product>) foundProducts).add(product);
-            return new ResponseEntity<>(foundProducts, HttpStatus.NOT_FOUND);
-        }
+        return new ResponseEntity<List<Product>>(foundProducts, HttpStatus.OK);
 
     }
 
