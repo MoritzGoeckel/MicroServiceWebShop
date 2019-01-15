@@ -33,6 +33,6 @@ public interface RolesApi {
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity getRoles(@RequestHeader(value="Text",defaultValue = "") String text,
-                                        @RequestHeader(value="Level",defaultValue = "") int level);
+                                        @RequestHeader(value="Level",defaultValue = "") Integer level);
 
 }

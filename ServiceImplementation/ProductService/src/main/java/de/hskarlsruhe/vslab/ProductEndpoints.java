@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -21,11 +22,13 @@ public class ProductEndpoints {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE )
-    public ResponseEntity<Product> postProduct(@RequestBody String jsonElement) {
+    public ResponseEntity<Product> postProduct(@RequestHeader(name = "name", required = true) String name,
+                                               @RequestHeader(name = "price", required = true) Double price,
+                                               @RequestHeader(name = "category", required = true) Long category,
+                                               @RequestHeader(name = "details", required = true) String details) {
 
 
-        Gson gson = new Gson();
-        Product product = gson.fromJson(jsonElement, Product.class);
+        Product product = new Product(name, price, category, details);
 
         boolean nameAlreadyExists = StreamSupport
                 .stream(repo.findAll().spliterator(), true)
@@ -42,13 +45,11 @@ public class ProductEndpoints {
     // liefert einen bestimmten Product zurück, mit bestimmten Namen
     // wenn product leer ist, werden alle Produkte zurück geliefert
     @RequestMapping(value = "/products", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Iterable<Product>> getProducts(@RequestHeader(defaultValue = "") String query) {
+    public ResponseEntity<Iterable<Product>> getProducts(@RequestHeader(name = "name", required = false) String name,
+                                                         @RequestHeader(name = "price", required = false) Double price,
+                                                         @RequestHeader(name = "category", required = false) Long category,
+                                                         @RequestHeader(name = "details", required = false) String details) {
 
-        /*
-        String name = product.getName();
-        String details = product.getDetails();
-        Long category = product.getCategory();
-        Double price = product.getPrice();
 
         // wenn alle felder von Product null sind und name ein leerer String ist
         // werden alle Producte zurück gegeben
@@ -60,7 +61,7 @@ public class ProductEndpoints {
         {
             Iterable<Product> foundProducts = StreamSupport
                     .stream(repo.findAll().spliterator(), true)
-                    .filter(c -> c.getDetails().contains(product.getDetails())).collect(Collectors.toList());
+                    .filter(c -> c.getDetails().contains(details)).collect(Collectors.toList());
             return new ResponseEntity<>(foundProducts, HttpStatus.OK);
         }
 
@@ -69,16 +70,16 @@ public class ProductEndpoints {
         {
             Iterable<Product> foundProducts = StreamSupport
                     .stream(repo.findAll().spliterator(), true)
-                    .filter(c -> c.getCategory().equals(product.getCategory())).collect(Collectors.toList());
+                    .filter(c -> c.getCategory().equals(category)).collect(Collectors.toList());
             return new ResponseEntity<>(foundProducts, HttpStatus.OK);
         }
 
         // Suche nach Preis
-        else if((name == null || name.isEmpty()) && details == null && category != null && price == null)
+        else if((name == null || name.isEmpty()) && details == null && category == null && price != null)
         {
             Iterable<Product> foundProducts = StreamSupport
                     .stream(repo.findAll().spliterator(), true)
-                    .filter(c -> c.getPrice().equals(product.getPrice())).collect(Collectors.toList());
+                    .filter(c -> c.getPrice().equals(price)).collect(Collectors.toList());
             return new ResponseEntity<>(foundProducts, HttpStatus.OK);
         }
 
@@ -87,26 +88,23 @@ public class ProductEndpoints {
         {
             Iterable<Product> foundProducts = StreamSupport
                     .stream(repo.findAll().spliterator(), true)
-                    .filter(c -> c.getName().contains(product.getName())).collect(Collectors.toList());
+                    .filter(c -> c.getName().contains(name)).collect(Collectors.toList());
             return new ResponseEntity<>(foundProducts, HttpStatus.OK);
         }
 
-        else
+        else if(name == null  && details == null && category == null && price == null)
         {
-            Iterable<Product> foundProducts = new ArrayList<>();
-            Product p = new Product("",0.0,0L,"");
-            ((ArrayList<Product>) foundProducts).add(p);
-            return new ResponseEntity<>(foundProducts, HttpStatus.OK);
-        }
-    */
-        if(query == null || query.isEmpty())
             return new ResponseEntity<>(repo.findAll(), HttpStatus.OK);
+        }
 
-        Iterable<Product> foundCategories = StreamSupport
-                .stream(repo.findAll().spliterator(), true)
-                .filter(c -> c.getName().contains(query)).collect(Collectors.toList());
+        // wenn das Produkt nicht gefunden wird
+        else{
+            Iterable<Product> foundProducts = new ArrayList<>();
+            Product product = new Product("", 0.0, 0L, "");
+            ((ArrayList<Product>) foundProducts).add(product);
+            return new ResponseEntity<>(foundProducts, HttpStatus.NOT_FOUND);
+        }
 
-        return new ResponseEntity<>(foundCategories, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/products/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
