@@ -92,7 +92,7 @@ public class CategoryServiceClient {
     public Category getCategoriesByIdCache(int id) throws ApiException {
         Category category = cache.getOrDefault((long) id, null);
         if(category == null)
-            throw new ApiException(HttpStatus.NOT_FOUND.value(), "Category not found");
+            throw new ApiException(HttpStatus.NOT_FOUND.value(), "Category not found in cache");
 
         return category;
     }
