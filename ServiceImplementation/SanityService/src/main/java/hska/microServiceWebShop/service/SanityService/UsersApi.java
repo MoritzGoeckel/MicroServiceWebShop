@@ -32,7 +32,7 @@ public interface UsersApi {
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity getUsers(@RequestHeader(value="Text",defaultValue = "") String text,
-                            @RequestHeader(value="Role",defaultValue = "") Long level,
+                            @RequestHeader(value="Role",defaultValue = "") Long roleId,
                             @RequestHeader(value="Username",defaultValue = "") String name);
 
 }
