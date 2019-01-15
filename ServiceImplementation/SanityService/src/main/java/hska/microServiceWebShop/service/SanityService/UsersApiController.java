@@ -1,9 +1,11 @@
 package hska.microServiceWebShop.service.SanityService;
 
+import hska.microServiceWebShop.Clients.ApiException;
 import hska.microServiceWebShop.Clients.UserRoleApi;
 import hska.microServiceWebShop.models.*;
 import hska.microServiceWebShop.models.Error;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,23 +33,43 @@ public class UsersApiController implements UsersApi {
         try {
         User u = userRoleAPIClient.createUser(user);
         return ResponseEntity.ok().body(u);
-        } catch(Exception e) {
-        	throw e;
+        } catch (ApiException e) {
+            System.err.println(e.getCode());
+            e.printStackTrace();
+            Error error = new Error();
+            error.setDescription(e.getMessage());
+            return new ResponseEntity<Error>(error,HttpStatus.valueOf(e.getCode()));
         }
     }
 
     public ResponseEntity deleteUser(@PathVariable("id") Long id) {
         String accept = request.getHeader("Accept");
+        try {
         User u = userRoleAPIClient.getUser(id);
         userRoleAPIClient.deleteUser(id);
         return ResponseEntity.ok().body(u);
+        } catch (ApiException e) {
+            System.err.println(e.getCode());
+            e.printStackTrace();
+            Error error = new Error();
+            error.setDescription(e.getMessage());
+            return new ResponseEntity<Error>(error,HttpStatus.valueOf(e.getCode()));
+        }
     }
 
     public ResponseEntity getUserById(@PathVariable("id") Long id) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
+        	try {
             User u = userRoleAPIClient.getUser(id);
             return ResponseEntity.ok().body(u);
+        	} catch (ApiException e) {
+                System.err.println(e.getCode());
+                e.printStackTrace();
+                Error error = new Error();
+                error.setDescription(e.getMessage());
+                return new ResponseEntity<Error>(error,HttpStatus.valueOf(e.getCode()));
+            }
         }
 
         Error error = new Error();
@@ -64,8 +86,16 @@ public class UsersApiController implements UsersApi {
         query.setRole(roleId);
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
+        	try {
             List<User> us = userRoleAPIClient.getUsers(query.getUsername(),query.getText(),query.getRole());
             return ResponseEntity.ok().body(us);
+        	} catch (ApiException e) {
+                System.err.println(e.getCode());
+                e.printStackTrace();
+                Error error = new Error();
+                error.setDescription(e.getMessage());
+                return new ResponseEntity<Error>(error,HttpStatus.valueOf(e.getCode()));
+            }
         }
 
         Error error = new Error();
