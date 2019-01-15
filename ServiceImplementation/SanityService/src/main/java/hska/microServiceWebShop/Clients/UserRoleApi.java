@@ -21,6 +21,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Component
 public class UserRoleApi {
@@ -34,7 +36,8 @@ public class UserRoleApi {
 	private Map<Long, Role> roleCache = new HashMap<>();
 	private Map<Long, User> userCache = new HashMap<>();
 
-	public List<Role> getRoles(String typ, Integer level) throws ApiException {
+    @HystrixCommand(fallbackMethod = "getRolesCache", ignoreExceptions = ApiException.class)
+    public List<Role> getRoles(String typ, Integer level) throws ApiException {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString("http://userroleservice/roles");
 		if (typ != null) {
 			builder.queryParam("typ", typ);
@@ -55,6 +58,18 @@ public class UserRoleApi {
 			throw new ApiException(500, "should not happen");
 		}
 	}
+
+    public List<Role> getRolesCache(String typ, Integer level) {
+        Stream<Role> roleStream = roleCache.values().stream();
+
+        if(typ != null && !typ.isEmpty())
+            roleStream = roleStream.filter(r -> r.getTyp().equals(typ));
+
+        if(level != null)
+            roleStream = roleStream.filter(r -> r.getLevel().equals(level));
+
+        return roleStream.collect(Collectors.toList());
+    }
 
 	@HystrixCommand(fallbackMethod = "getRoleCache", ignoreExceptions = ApiException.class)
 	public Role getRole(long id) throws ApiException {
@@ -127,9 +142,20 @@ public class UserRoleApi {
 		}
 	}
 
-	// public List<User> getUsersCache(String username, String text, Long roleID){
+	public List<User> getUsersCache(String username, String text, Long roleID){
+        Stream<User> userStream = userCache.values().stream();
 
-	// }
+        if(username != null && !username.isEmpty())
+            userStream = userStream.filter(u -> u.getUsername().contains(username));
+
+        if(text != null && !text.isEmpty())
+            userStream = userStream.filter(u -> u.getUsername().contains(text) || u.getFirstName().contains(text) || u.getLastName().contains(text));
+
+        if(roleID != null)
+            userStream = userStream.filter(u -> u.getRoleID().equals(roleID));
+
+        return userStream.collect(Collectors.toList());
+    }
 
 	@HystrixCommand(fallbackMethod = "getUserCache", ignoreExceptions = ApiException.class)
 	public User getUser(long id) throws ApiException {
