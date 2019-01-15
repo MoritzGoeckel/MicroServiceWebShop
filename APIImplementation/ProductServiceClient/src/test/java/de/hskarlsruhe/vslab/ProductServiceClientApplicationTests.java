@@ -47,7 +47,7 @@ public class ProductServiceClientApplicationTests {
 		products = client.getProducts(null, 1.0, null, null);
 		System.out.println("Got Products by Price: " + Arrays.toString(products));
 
-		products = client.getProducts(null, null, 1L, null);
+		products = client.getProducts(null, null, 1.0, null);
 		System.out.println("Got Products by Category: " + Arrays.toString(products));
 
 		products = client.getProducts(null, null, null, "tr2");
