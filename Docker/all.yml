@@ -3,6 +3,7 @@ version: '3'
 services:
   discovery-service:
     image: discovery_service:latest
+    network_mode: host
     ports:
       - "8761:8761"
         #links:
@@ -11,57 +12,62 @@ services:
         #- sanity-service
         #- user-role-service
         #      - edge-server
-    networks: 
-      - backend
+        #networks: 
+        #- backend
   category-service:
     image: category_service:latest
+    network_mode: host
     ports:
       - "8083:8083"
-    links:
-      - discovery-service
-      - sanity-service
-    networks: 
-      - backend
+        #links:
+        #- discovery-service
+        #- sanity-service
+        #networks: 
+        #- backend
   product-service:
     image: product_service:latest
+    network_mode: host
     ports:
       - "8082:8082"
-    links:
-      - discovery-service
-      - sanity-service
-    networks: 
-      - backend
+        #links:
+        #- discovery-service
+        #- sanity-service
+        #networks: 
+        #- backend
   user-role-service:
     image: user_role_service:latest
+    network_mode: host
     ports:
       - "8086:8086"
-    links:
-      - discovery-service
-      - sanity-service
-    networks: 
-      - backend
+        #links:
+        #- discovery-service
+        #- sanity-service
+        #networks: 
+        #- backend
   sanity-service:
     image: sanity_service:latest
+    network_mode: host
     ports:
       - "8081:8081"
-    links:
-      - discovery-service
+        #links:
+        #- discovery-service
         #- user-role-service
         #- product-service
         #- category-service
-      - api-service
-    networks: 
-      - backend
+        #- api-service
+        #networks: 
+        #- backend
   api-service:
     image: api_service:latest
+    network_mode: host
     ports:
       - "8085:8085"
-    links:
-      - discovery-service
+        #links:
+        #- discovery-service
         #- sanity-service
         #- edge-service
-    networks: 
-      - backend
+        #networks: 
+        #- backend
         #  edge-service:
         #image: edge_service:latest
         #ports:
@@ -71,6 +77,6 @@ services:
         #- api-service
         #networks: 
         #- backend
-networks:
-  backend:
-    driver: "bridge"
+        #networks:
+        #backend:
+        #driver: "bridge"
