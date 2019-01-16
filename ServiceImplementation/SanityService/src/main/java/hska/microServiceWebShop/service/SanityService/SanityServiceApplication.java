@@ -19,7 +19,7 @@ import hska.microServiceWebShop.Clients.UserRoleApi;
 @EnableDiscoveryClient
 @EnableCircuitBreaker
 @EnableHystrixDashboard
-@RibbonClient("sanityproxy")
+@RibbonClient("sanity-service")
 public class SanityServiceApplication {
     public static void main(String[] args){
         SpringApplication.run(SanityServiceApplication.class, args);

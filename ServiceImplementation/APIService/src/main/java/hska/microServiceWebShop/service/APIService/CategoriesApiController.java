@@ -1,13 +1,19 @@
 package hska.microServiceWebShop.service.APIService;
 
+import hska.microServiceWebShop.ApiClient;
 import hska.microServiceWebShop.ApiException;
 import hska.microServiceWebShop.models.Category;
 import hska.microServiceWebShop.models.CategoryQuery;
 import hska.microServiceWebShop.models.Error;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -22,9 +28,11 @@ import java.util.List;
 
 @Controller
 public class CategoriesApiController implements CategoriesApi {
-
+	
     private static final Logger log = LoggerFactory.getLogger(CategoriesApiController.class);
-    hska.microServiceWebShop.api.CategoriesApi categoriesAPIClient = new hska.microServiceWebShop.api.CategoriesApi();
+    
+    @Autowired
+    hska.microServiceWebShop.api.CategoriesApi categoriesAPIClient;
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
@@ -36,7 +44,7 @@ public class CategoriesApiController implements CategoriesApi {
     }
 
     public ResponseEntity addCategory(@ApiParam(value = "The name of the category" ,required=true )  @Valid @RequestBody Category name) {
-        String accept = request.getHeader("Accept");
+    	String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
                 Category c = categoriesAPIClient.addCategory(name);

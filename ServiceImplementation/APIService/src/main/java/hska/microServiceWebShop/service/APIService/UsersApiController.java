@@ -1,5 +1,6 @@
 package hska.microServiceWebShop.service.APIService;
 
+import hska.microServiceWebShop.ApiClient;
 import hska.microServiceWebShop.ApiException;
 import hska.microServiceWebShop.models.Error;
 import hska.microServiceWebShop.models.User;
@@ -7,6 +8,7 @@ import hska.microServiceWebShop.models.UserQuery;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,7 +23,9 @@ import java.util.List;
 public class UsersApiController implements UsersApi {
 
     private static final Logger log = LoggerFactory.getLogger(UsersApiController.class);
-    hska.microServiceWebShop.api.UserRoleApi userRoleAPIClient = new hska.microServiceWebShop.api.UserRoleApi();
+    
+    @Autowired
+    hska.microServiceWebShop.api.UserRoleApi userRoleAPIClient;
 
     private final ObjectMapper objectMapper;
 
