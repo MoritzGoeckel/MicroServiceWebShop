@@ -13,12 +13,24 @@
 
 package hska.microServiceWebShop.api;
 
+import hska.microServiceWebShop.ApiCallback;
+import hska.microServiceWebShop.ApiClient;
+import hska.microServiceWebShop.ApiException;
+import hska.microServiceWebShop.ApiResponse;
+import hska.microServiceWebShop.Configuration;
+import hska.microServiceWebShop.Pair;
+import hska.microServiceWebShop.ProgressRequestBody;
+import hska.microServiceWebShop.ProgressResponseBody;
+
 import com.google.gson.reflect.TypeToken;
-import hska.microServiceWebShop.*;
-import hska.microServiceWebShop.models.Category;
-import hska.microServiceWebShop.models.CategoryQuery;
 
 import java.io.IOException;
+
+
+import hska.microServiceWebShop.models.Category;
+import hska.microServiceWebShop.models.CategoryQuery;
+import hska.microServiceWebShop.models.Error;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -80,7 +92,7 @@ public class CategoriesApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -95,12 +107,12 @@ public class CategoriesApi {
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call addCategoryValidateBeforeCall(Category name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-
+        
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling addCategory(Async)");
         }
-
+        
 
         com.squareup.okhttp.Call call = addCategoryCall(name, progressListener, progressRequestListener);
         return call;
@@ -109,7 +121,7 @@ public class CategoriesApi {
 
     /**
      * Adds a new category
-     *
+     * 
      * @param name The name of the category (required)
      * @return Category
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -125,7 +137,7 @@ public class CategoriesApi {
 
     /**
      * Adds a new category
-     *
+     * 
      * @param name The name of the category (required)
      * @return ApiResponse&lt;Category&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -138,7 +150,7 @@ public class CategoriesApi {
 
     /**
      * Adds a new category (asynchronously)
-     *
+     * 
      * @param name The name of the category (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -199,7 +211,7 @@ public class CategoriesApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -207,7 +219,7 @@ public class CategoriesApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -222,12 +234,12 @@ public class CategoriesApi {
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call deleteCategoryValidateBeforeCall(Long id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-
+        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteCategory(Async)");
         }
-
+        
 
         com.squareup.okhttp.Call call = deleteCategoryCall(id, progressListener, progressRequestListener);
         return call;
@@ -236,7 +248,7 @@ public class CategoriesApi {
 
     /**
      * Deletes a category
-     *
+     * 
      * @param id The id of the to be deleted category (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -246,7 +258,7 @@ public class CategoriesApi {
 
     /**
      * Deletes a category
-     *
+     * 
      * @param id The id of the to be deleted category (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -258,7 +270,7 @@ public class CategoriesApi {
 
     /**
      * Deletes a category (asynchronously)
-     *
+     * 
      * @param id The id of the to be deleted category (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -326,7 +338,7 @@ public class CategoriesApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -341,12 +353,12 @@ public class CategoriesApi {
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCategoryValidateBeforeCall(Long id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-
+        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getCategory(Async)");
         }
-
+        
 
         com.squareup.okhttp.Call call = getCategoryCall(id, progressListener, progressRequestListener);
         return call;
@@ -355,7 +367,7 @@ public class CategoriesApi {
 
     /**
      * Retrieves a category
-     *
+     * 
      * @param id The id of the to be retrieved category (required)
      * @return Category
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -367,7 +379,7 @@ public class CategoriesApi {
 
     /**
      * Retrieves a category
-     *
+     * 
      * @param id The id of the to be retrieved category (required)
      * @return ApiResponse&lt;Category&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -380,7 +392,7 @@ public class CategoriesApi {
 
     /**
      * Retrieves a category (asynchronously)
-     *
+     * 
      * @param id The id of the to be retrieved category (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -448,7 +460,7 @@ public class CategoriesApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))

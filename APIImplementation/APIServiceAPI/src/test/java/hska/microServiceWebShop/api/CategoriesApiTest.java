@@ -16,10 +16,14 @@ package hska.microServiceWebShop.api;
 import hska.microServiceWebShop.ApiException;
 import hska.microServiceWebShop.models.Category;
 import hska.microServiceWebShop.models.CategoryQuery;
-import org.junit.Ignore;
+import hska.microServiceWebShop.models.Error;
 import org.junit.Test;
+import org.junit.Ignore;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * API tests for CategoriesApi
@@ -51,6 +55,7 @@ public class CategoriesApiTest {
             System.err.println(e.getMessage());
             System.err.println(e.getResponseBody());
             System.err.println(e.getStackTrace());
+            assert false;
         }
 
     }
@@ -120,6 +125,7 @@ public class CategoriesApiTest {
             System.err.println(e.getMessage());
             System.err.println(e.getResponseBody());
             System.err.println(e.getStackTrace());
+            assert false;
         }
 
     }
@@ -141,9 +147,7 @@ public class CategoriesApiTest {
                 // Add cat4
                 System.out.println("Add cat4");
                 response = api.addCategory(name);
-                System.out.println(response.toString());
-                assert response.getName().equalsIgnoreCase("cat4");
-                assert response.getId() != null;
+                assert false;
             }catch (ApiException e){
                 System.out.println(e.getCode());
                 System.out.println(e.getMessage());
@@ -160,6 +164,7 @@ public class CategoriesApiTest {
             System.err.println(e.getMessage());
             System.err.println(e.getResponseBody());
             System.err.println(e.getStackTrace());
+            assert false;
         }
 
     }

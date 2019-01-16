@@ -13,14 +13,27 @@
 
 package hska.microServiceWebShop.api;
 
+import hska.microServiceWebShop.ApiCallback;
+import hska.microServiceWebShop.ApiClient;
+import hska.microServiceWebShop.ApiException;
+import hska.microServiceWebShop.ApiResponse;
+import hska.microServiceWebShop.Configuration;
+import hska.microServiceWebShop.Pair;
+import hska.microServiceWebShop.ProgressRequestBody;
+import hska.microServiceWebShop.ProgressResponseBody;
+
 import com.google.gson.reflect.TypeToken;
-import hska.microServiceWebShop.*;
+
+import java.io.IOException;
+
+import hska.microServiceWebShop.models.Category;
+import hska.microServiceWebShop.models.Error;
+import hska.microServiceWebShop.models.Product;
 import hska.microServiceWebShop.models.Role;
 import hska.microServiceWebShop.models.RoleQuery;
 import hska.microServiceWebShop.models.User;
 import hska.microServiceWebShop.models.UserQuery;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -82,7 +95,7 @@ public class UserRoleApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -97,12 +110,12 @@ public class UserRoleApi {
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call createRoleValidateBeforeCall(Role role, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-
+        
         // verify the required parameter 'role' is set
         if (role == null) {
             throw new ApiException("Missing the required parameter 'role' when calling createRole(Async)");
         }
-
+        
 
         com.squareup.okhttp.Call call = createRoleCall(role, progressListener, progressRequestListener);
         return call;
@@ -111,7 +124,7 @@ public class UserRoleApi {
 
     /**
      * Create role
-     *
+     * 
      * @param role  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -126,7 +139,7 @@ public class UserRoleApi {
 
     /**
      * Create role
-     *
+     * 
      * @param role  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -139,7 +152,7 @@ public class UserRoleApi {
 
     /**
      * Create role (asynchronously)
-     *
+     * 
      * @param role  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -197,7 +210,7 @@ public class UserRoleApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -205,7 +218,7 @@ public class UserRoleApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -220,12 +233,12 @@ public class UserRoleApi {
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call createUserValidateBeforeCall(User user, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-
+        
         // verify the required parameter 'user' is set
         if (user == null) {
             throw new ApiException("Missing the required parameter 'user' when calling createUser(Async)");
         }
-
+        
 
         com.squareup.okhttp.Call call = createUserCall(user, progressListener, progressRequestListener);
         return call;
@@ -234,29 +247,31 @@ public class UserRoleApi {
 
     /**
      * Create user
-     *
+     * 
      * @param user  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void createUser(User user) throws ApiException {
-        createUserWithHttpInfo(user);
+    public User createUser(User user) throws ApiException {
+    	ApiResponse<User> resp = createUserWithHttpInfo(user);
+        return resp.getData();
     }
 
     /**
      * Create user
-     *
+     * 
      * @param user  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> createUserWithHttpInfo(User user) throws ApiException {
+    public ApiResponse<User> createUserWithHttpInfo(User user) throws ApiException {
         com.squareup.okhttp.Call call = createUserValidateBeforeCall(user, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<User>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Create user (asynchronously)
-     *
+     * 
      * @param user  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -310,13 +325,13 @@ public class UserRoleApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-
+            
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -324,7 +339,7 @@ public class UserRoleApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -339,12 +354,12 @@ public class UserRoleApi {
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call deleteRoleValidateBeforeCall(Long id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-
+        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteRole(Async)");
         }
-
+        
 
         com.squareup.okhttp.Call call = deleteRoleCall(id, progressListener, progressRequestListener);
         return call;
@@ -353,7 +368,7 @@ public class UserRoleApi {
 
     /**
      * Delete role with Id
-     *
+     * 
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -363,7 +378,7 @@ public class UserRoleApi {
 
     /**
      * Delete role with Id
-     *
+     * 
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -375,7 +390,7 @@ public class UserRoleApi {
 
     /**
      * Delete role with Id (asynchronously)
-     *
+     * 
      * @param id  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -429,13 +444,13 @@ public class UserRoleApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-
+            
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -443,7 +458,7 @@ public class UserRoleApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -458,12 +473,12 @@ public class UserRoleApi {
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call deleteUserValidateBeforeCall(Long id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-
+        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteUser(Async)");
         }
-
+        
 
         com.squareup.okhttp.Call call = deleteUserCall(id, progressListener, progressRequestListener);
         return call;
@@ -472,7 +487,7 @@ public class UserRoleApi {
 
     /**
      * Delete user with Id
-     *
+     * 
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -482,7 +497,7 @@ public class UserRoleApi {
 
     /**
      * Delete user with Id
-     *
+     * 
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -494,7 +509,7 @@ public class UserRoleApi {
 
     /**
      * Delete user with Id (asynchronously)
-     *
+     * 
      * @param id  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -554,7 +569,7 @@ public class UserRoleApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -562,7 +577,7 @@ public class UserRoleApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -577,12 +592,12 @@ public class UserRoleApi {
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getRoleByIdValidateBeforeCall(Long id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-
+        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getRoleById(Async)");
         }
-
+        
 
         com.squareup.okhttp.Call call = getRoleByIdCall(id, progressListener, progressRequestListener);
         return call;
@@ -591,7 +606,7 @@ public class UserRoleApi {
 
     /**
      * Get role by Id
-     *
+     * 
      * @param id  (required)
      * @return Role
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -603,7 +618,7 @@ public class UserRoleApi {
 
     /**
      * Get role by Id
-     *
+     * 
      * @param id  (required)
      * @return ApiResponse&lt;Role&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -616,7 +631,7 @@ public class UserRoleApi {
 
     /**
      * Get role by Id (asynchronously)
-     *
+     * 
      * @param id  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -675,7 +690,7 @@ public class UserRoleApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -693,7 +708,7 @@ public class UserRoleApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -708,7 +723,7 @@ public class UserRoleApi {
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getRolesValidateBeforeCall(RoleQuery query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-
+        
 
         com.squareup.okhttp.Call call = getRolesCall(query, progressListener, progressRequestListener);
         return call;
@@ -717,7 +732,7 @@ public class UserRoleApi {
 
     /**
      * Get roles
-     *
+     * 
      * @param query Parameters of the role (optional)
      * @return List&lt;Role&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -729,7 +744,7 @@ public class UserRoleApi {
 
     /**
      * Get roles
-     *
+     * 
      * @param query Parameters of the role (optional)
      * @return ApiResponse&lt;List&lt;Role&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -742,7 +757,7 @@ public class UserRoleApi {
 
     /**
      * Get roles (asynchronously)
-     *
+     * 
      * @param query Parameters of the role (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -803,7 +818,7 @@ public class UserRoleApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -811,7 +826,7 @@ public class UserRoleApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -826,12 +841,12 @@ public class UserRoleApi {
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUserByIdValidateBeforeCall(Long id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-
+        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getUserById(Async)");
         }
-
+        
 
         com.squareup.okhttp.Call call = getUserByIdCall(id, progressListener, progressRequestListener);
         return call;
@@ -840,7 +855,7 @@ public class UserRoleApi {
 
     /**
      * Get user by Id
-     *
+     * 
      * @param id  (required)
      * @return User
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -852,7 +867,7 @@ public class UserRoleApi {
 
     /**
      * Get user by Id
-     *
+     * 
      * @param id  (required)
      * @return ApiResponse&lt;User&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -865,7 +880,7 @@ public class UserRoleApi {
 
     /**
      * Get user by Id (asynchronously)
-     *
+     * 
      * @param id  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -923,7 +938,7 @@ public class UserRoleApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -942,7 +957,7 @@ public class UserRoleApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))

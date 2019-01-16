@@ -36,8 +36,8 @@ public class UsersApiController implements UsersApi {
     public ResponseEntity createUser(@RequestBody User user) {
         String accept = request.getHeader("Accept");
         try {
-            userRoleAPIClient.createUser(user);
-            return ResponseEntity.ok().body(user);
+            User u = userRoleAPIClient.createUser(user);
+            return ResponseEntity.ok().body(u);
         } catch (ApiException e) {
             e.printStackTrace();
             Error error = new Error();

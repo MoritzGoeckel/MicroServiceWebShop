@@ -142,6 +142,10 @@ public class UserRoleApiTest {
         id = response.getId();
         api.deleteUser(id);
         
+        System.out.println("delete role1");
+        id = role.getId();
+        api.deleteRole(id);
+        
         System.out.println("try get user1");
         try {
         	api.getUserById(id);
