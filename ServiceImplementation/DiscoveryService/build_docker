@@ -1,1 +1,1 @@
-docker build -t discovery_service:latest .
+sudo -H docker build -t discovery_service:latest .

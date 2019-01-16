@@ -5,15 +5,15 @@ services:
     image: discovery_service:latest
     ports:
       - "8761:8761"
-    links:
-      - category-service
-      - product-service
-      - sanity-service
-      - user-role-service
-      - edge-server
+        #links:
+        #- category-service
+        #- product-service
+        #- sanity-service
+        #- user-role-service
+        #      - edge-server
     networks: 
       - backend
-category-service:
+  category-service:
     image: category_service:latest
     ports:
       - "8083:8083"
@@ -22,7 +22,7 @@ category-service:
       - sanity-service
     networks: 
       - backend
-product-service:
+  product-service:
     image: product_service:latest
     ports:
       - "8082:8082"
@@ -31,7 +31,7 @@ product-service:
       - sanity-service
     networks: 
       - backend
-user-role-service:
+  user-role-service:
     image: user_role_service:latest
     ports:
       - "8086:8086"
@@ -40,37 +40,37 @@ user-role-service:
       - sanity-service
     networks: 
       - backend
-sanity-service:
+  sanity-service:
     image: sanity_service:latest
     ports:
       - "8081:8081"
     links:
       - discovery-service
-      - user-role-service
-      - product-service
-      - category-service
+        #- user-role-service
+        #- product-service
+        #- category-service
       - api-service
     networks: 
       - backend
-api-service:
+  api-service:
     image: api_service:latest
     ports:
       - "8085:8085"
     links:
       - discovery-service
-      - sanity-service
-      - edge-service
+        #- sanity-service
+        #- edge-service
     networks: 
       - backend
-edge-service:
-    image: edge_service:latest
-    ports:
-      - "8091:8091"
-    links:
-      - discovery-service
-      - api-service
-    networks: 
-      - backend
+        #  edge-service:
+        #image: edge_service:latest
+        #ports:
+        #- "8091:8091"
+        #links:
+        #- discovery-service
+        #- api-service
+        #networks: 
+        #- backend
 networks:
   backend:
     driver: "bridge"
