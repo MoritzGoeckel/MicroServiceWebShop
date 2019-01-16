@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * API tests for UserRoleApi
  */
-//@Ignore
+@Ignore
 public class UserRoleApiTest {
 
     private final UserRoleApi api = new UserRoleApi();

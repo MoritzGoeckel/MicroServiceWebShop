@@ -2,6 +2,7 @@ package de.hskarlsruhe.vslab;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 
+@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ProductServiceApplicationTests {

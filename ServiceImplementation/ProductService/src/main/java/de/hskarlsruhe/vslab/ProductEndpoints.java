@@ -82,7 +82,7 @@ public class ProductEndpoints {
         if(category != null)
         {
             allFoundProductsSream = allFoundProductsSream
-                    .filter(c -> c.getCategory().equals(category));
+                    .filter(c -> c.getCategory().toString().equals(category));
         }
 
         List<Product> foundProducts = allFoundProductsSream.collect(Collectors.toList());
