@@ -6,77 +6,33 @@ services:
     network_mode: host
     ports:
       - "8761:8761"
-        #links:
-        #- category-service
-        #- product-service
-        #- sanity-service
-        #- user-role-service
-        #      - edge-server
-        #networks: 
-        #- backend
+  edge_service:
+    image: edge_service:latest
+    network_mode: host
+    ports:
+      - "8091:8091"
   category-service:
     image: category_service:latest
     network_mode: host
     ports:
       - "8083:8083"
-        #links:
-        #- discovery-service
-        #- sanity-service
-        #networks: 
-        #- backend
   product-service:
     image: product_service:latest
     network_mode: host
     ports:
       - "8082:8082"
-        #links:
-        #- discovery-service
-        #- sanity-service
-        #networks: 
-        #- backend
   user-role-service:
     image: user_role_service:latest
     network_mode: host
     ports:
       - "8086:8086"
-        #links:
-        #- discovery-service
-        #- sanity-service
-        #networks: 
-        #- backend
   sanity-service:
     image: sanity_service:latest
     network_mode: host
     ports:
       - "8081:8081"
-        #links:
-        #- discovery-service
-        #- user-role-service
-        #- product-service
-        #- category-service
-        #- api-service
-        #networks: 
-        #- backend
   api-service:
     image: api_service:latest
     network_mode: host
     ports:
       - "8085:8085"
-        #links:
-        #- discovery-service
-        #- sanity-service
-        #- edge-service
-        #networks: 
-        #- backend
-        #  edge-service:
-        #image: edge_service:latest
-        #ports:
-        #- "8091:8091"
-        #links:
-        #- discovery-service
-        #- api-service
-        #networks: 
-        #- backend
-        #networks:
-        #backend:
-        #driver: "bridge"
