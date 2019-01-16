@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * API tests for ProductsApi
  */
-@Ignore
+//@Ignore
 public class ProductsApiTest {
 
     private final ProductsApi api = new ProductsApi();

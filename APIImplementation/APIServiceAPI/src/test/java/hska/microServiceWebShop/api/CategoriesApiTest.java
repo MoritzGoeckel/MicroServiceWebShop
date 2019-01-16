@@ -28,7 +28,7 @@ import java.util.Map;
 /**
  * API tests for CategoriesApi
  */
-@Ignore
+//@Ignore
 public class CategoriesApiTest {
 
     private final CategoriesApi api = new CategoriesApi();
