@@ -14,11 +14,8 @@
 package hska.microServiceWebShop.api;
 
 import hska.microServiceWebShop.ApiException;
-import hska.microServiceWebShop.models.Category;
-import hska.microServiceWebShop.models.CategoryQuery;
+import hska.microServiceWebShop.models.*;
 import hska.microServiceWebShop.models.Error;
-import hska.microServiceWebShop.models.Product;
-import hska.microServiceWebShop.models.ProductQuery;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -30,7 +27,7 @@ import java.util.Map;
 /**
  * API tests for ProductsApi
  */
-//@Ignore
+@Ignore
 public class ProductsApiTest {
 
     private final ProductsApi api = new ProductsApi();
@@ -55,7 +52,7 @@ public class ProductsApiTest {
             assert response.getId() != null;
 
         	
-            Product pro = new Product();
+            ProductBackend pro = new ProductBackend();
             pro.setName("pro1");
             pro.setDetails("no details");
             pro.setCategory(response.getId());
@@ -104,7 +101,7 @@ public class ProductsApiTest {
             assert responseC.getName().equalsIgnoreCase("cat6");
             assert responseC.getId() != null;
         	
-            Product pro = new Product();
+            ProductBackend pro = new ProductBackend();
             pro.setName("pro2");
             pro.setDetails("no details");
             pro.setCategory(responseC.getId());
@@ -124,7 +121,7 @@ public class ProductsApiTest {
             System.out.println(response.toString());
             assert response2.getName().equalsIgnoreCase("pro2");
 
-            pro = new Product();
+            pro = new ProductBackend();
             pro.setName("pro3");
             pro.setDetails("no details");
             pro.setCategory(responseC.getId());
@@ -199,7 +196,7 @@ public class ProductsApiTest {
             assert responseC.getName().equalsIgnoreCase("cat7");
             assert responseC.getId() != null;
         	
-            Product pro = new Product();
+            ProductBackend pro = new ProductBackend();
             pro.setName("pro4");
             pro.setDetails("no details");
             pro.setCategory(responseC.getId());

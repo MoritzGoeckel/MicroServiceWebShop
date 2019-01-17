@@ -1,9 +1,9 @@
 package hska.microServiceWebShop.service.APIService;
 
-import hska.microServiceWebShop.ApiClient;
 import hska.microServiceWebShop.ApiException;
 import hska.microServiceWebShop.models.Error;
 import hska.microServiceWebShop.models.User;
+import hska.microServiceWebShop.models.UserBackend;
 import hska.microServiceWebShop.models.UserQuery;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -37,10 +37,10 @@ public class UsersApiController implements UsersApi {
         this.request = request;
     }
 
-    public ResponseEntity createUser(@RequestBody User user) {
+    public ResponseEntity createUser(@RequestBody UserBackend userBackend) {
         String accept = request.getHeader("Accept");
         try {
-            User u = userRoleAPIClient.createUser(user);
+            User u = userRoleAPIClient.createUser(userBackend);
             return ResponseEntity.ok().body(u);
         } catch (ApiException e) {
             e.printStackTrace();

@@ -2,15 +2,16 @@ package hska.microServiceWebShop.models;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
 /**
- * Product
+ * ProductBackend
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-03T22:24:38.514Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-04T00:32:34.965Z")
 
-public class Product   {
+public class ProductBackend {
   @JsonProperty("id")
   private Long id = null;
 
@@ -21,15 +22,22 @@ public class Product   {
   private Double price = null;
 
   @JsonProperty("category")
-  private Category category = null;
+  private Long category = null;
 
   @JsonProperty("details")
   private String details = null;
 
-  public Product id(Long id) {
+  public ProductBackend id(Long id) {
     this.id = id;
     return this;
   }
+
+  /**
+   * Get id
+   * @return id
+  **/
+  @ApiModelProperty(value = "")
+
 
   public Long getId() {
     return id;
@@ -39,10 +47,17 @@ public class Product   {
     this.id = id;
   }
 
-  public Product name(String name) {
+  public ProductBackend name(String name) {
     this.name = name;
     return this;
   }
+
+  /**
+   * Get name
+   * @return name
+  **/
+  @ApiModelProperty(value = "")
+
 
   public String getName() {
     return name;
@@ -52,10 +67,17 @@ public class Product   {
     this.name = name;
   }
 
-  public Product price(Double price) {
+  public ProductBackend price(Double price) {
     this.price = price;
     return this;
   }
+
+  /**
+   * Get price
+   * @return price
+  **/
+  @ApiModelProperty(value = "")
+
 
   public Double getPrice() {
     return price;
@@ -65,23 +87,37 @@ public class Product   {
     this.price = price;
   }
 
-  public Product category(Category category) {
+  public ProductBackend category(Long category) {
     this.category = category;
     return this;
   }
 
-  public Category getCategory() {
+  /**
+   * Get category
+   * @return category
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Long getCategory() {
     return category;
   }
 
-  public void setCategory(Category category) {
+  public void setCategory(Long category) {
     this.category = category;
   }
 
-  public Product details(String details) {
+  public ProductBackend details(String details) {
     this.details = details;
     return this;
   }
+
+  /**
+   * Get details
+   * @return details
+  **/
+  @ApiModelProperty(value = "")
+
 
   public String getDetails() {
     return details;
@@ -100,12 +136,12 @@ public class Product   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Product product = (Product) o;
-    return Objects.equals(this.id, product.id) &&
-        Objects.equals(this.name, product.name) &&
-        Objects.equals(this.price, product.price) &&
-        Objects.equals(this.category, product.category) &&
-        Objects.equals(this.details, product.details);
+    ProductBackend productBackend = (ProductBackend) o;
+    return Objects.equals(this.id, productBackend.id) &&
+        Objects.equals(this.name, productBackend.name) &&
+        Objects.equals(this.price, productBackend.price) &&
+        Objects.equals(this.category, productBackend.category) &&
+        Objects.equals(this.details, productBackend.details);
   }
 
   @Override
@@ -116,7 +152,7 @@ public class Product   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Product {\n");
+    sb.append("class ProductBackend {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");

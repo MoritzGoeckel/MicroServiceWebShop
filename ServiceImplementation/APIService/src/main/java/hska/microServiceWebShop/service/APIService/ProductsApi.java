@@ -5,7 +5,7 @@
  */
 package hska.microServiceWebShop.service.APIService;
 
-import hska.microServiceWebShop.models.Product;
+import hska.microServiceWebShop.models.ProductBackend;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +19,7 @@ public interface ProductsApi {
             produces = { "application/json" },
             consumes = { "application/json" },
             method = RequestMethod.POST)
-    ResponseEntity addProduct(@RequestBody Product product);
+    ResponseEntity addProduct(@RequestBody ProductBackend productBackend);
 
     @RequestMapping(value = "/products/{id}",
             produces = { "application/json" },

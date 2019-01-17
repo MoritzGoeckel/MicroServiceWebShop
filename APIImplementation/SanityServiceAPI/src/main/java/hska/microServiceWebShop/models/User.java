@@ -13,19 +13,13 @@
 
 package hska.microServiceWebShop.models;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
+import java.util.Objects;
 
 /**
- * User
+ * UserBackend
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-03T22:20:58.985Z")
 public class User {
@@ -45,7 +39,7 @@ public class User {
   private String password = null;
 
   @SerializedName("roleID")
-  private Long roleID = null;
+  private Role role = null;
 
   public User id(Long id) {
     this.id = id;
@@ -137,8 +131,8 @@ public class User {
     this.password = password;
   }
 
-  public User roleID(Long roleID) {
-    this.roleID = roleID;
+  public User role(Role role) {
+    this.role = role;
     return this;
   }
 
@@ -147,49 +141,49 @@ public class User {
    * @return roleID
   **/
   @ApiModelProperty(value = "")
-  public Long getRoleID() {
-    return roleID;
+  public Role getRole() {
+    return role;
   }
 
-  public void setRoleID(Long roleID) {
-    this.roleID = roleID;
+  public void setRole(Role role) {
+    this.role = role;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    User user = (User) o;
-    return Objects.equals(this.id, user.id) &&
-        Objects.equals(this.username, user.username) &&
-        Objects.equals(this.firstName, user.firstName) &&
-        Objects.equals(this.lastName, user.lastName) &&
-        Objects.equals(this.password, user.password) &&
-        Objects.equals(this.roleID, user.roleID);
+    User userBackend = (User) o;
+    return Objects.equals(this.id, userBackend.id) &&
+        Objects.equals(this.username, userBackend.username) &&
+        Objects.equals(this.firstName, userBackend.firstName) &&
+        Objects.equals(this.lastName, userBackend.lastName) &&
+        Objects.equals(this.password, userBackend.password) &&
+        Objects.equals(this.role, userBackend.role);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, firstName, lastName, password, roleID);
+    return Objects.hash(id, username, firstName, lastName, password, role);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class User {\n");
-    
+    sb.append("class UserBackend {\n");
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    roleID: ").append(toIndentedString(roleID)).append("\n");
+    sb.append("    roleID: ").append(toIndentedString(role)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -198,7 +192,7 @@ public class User {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

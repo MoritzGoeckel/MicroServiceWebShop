@@ -2,8 +2,6 @@ package hska.microServiceWebShop.service.SanityService;
 
 import hska.microServiceWebShop.Clients.ApiException;
 import hska.microServiceWebShop.Clients.UserRoleApi;
-import hska.microServiceWebShop.models.Category;
-import hska.microServiceWebShop.models.CategoryQuery;
 import hska.microServiceWebShop.models.Error;
 import hska.microServiceWebShop.models.Role;
 import hska.microServiceWebShop.models.RoleQuery;

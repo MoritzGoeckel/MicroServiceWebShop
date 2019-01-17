@@ -6,12 +6,12 @@ import org.springframework.validation.annotation.Validated;
 import java.util.Objects;
 
 /**
- * User
+ * UserBackend
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-03T22:24:38.514Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-04T00:32:34.965Z")
 
-public class User {
+public class UserBackend {
   @JsonProperty("id")
   private Long id = null;
 
@@ -27,10 +27,10 @@ public class User {
   @JsonProperty("password")
   private String password = null;
 
-  @JsonProperty("role")
-  private Role role = null;
+  @JsonProperty("roleID")
+  private Long roleID = null;
 
-  public User id(Long id) {
+  public UserBackend id(Long id) {
     this.id = id;
     return this;
   }
@@ -43,7 +43,7 @@ public class User {
     this.id = id;
   }
 
-  public User username(String username) {
+  public UserBackend username(String username) {
     this.username = username;
     return this;
   }
@@ -56,7 +56,7 @@ public class User {
     this.username = username;
   }
 
-  public User firstName(String firstName) {
+  public UserBackend firstName(String firstName) {
     this.firstName = firstName;
     return this;
   }
@@ -69,7 +69,7 @@ public class User {
     this.firstName = firstName;
   }
 
-  public User lastName(String lastName) {
+  public UserBackend lastName(String lastName) {
     this.lastName = lastName;
     return this;
   }
@@ -82,7 +82,7 @@ public class User {
     this.lastName = lastName;
   }
 
-  public User password(String password) {
+  public UserBackend password(String password) {
     this.password = password;
     return this;
   }
@@ -95,17 +95,17 @@ public class User {
     this.password = password;
   }
 
-  public User role(Role role) {
-    this.role = role;
+  public UserBackend roleID(Long roleID) {
+    this.roleID = roleID;
     return this;
   }
 
-  public Role getRole() {
-    return role;
+  public Long getRoleID() {
+    return roleID;
   }
 
-  public void setRole(Role role) {
-    this.role = role;
+  public void setRoleID(Long roleID) {
+    this.roleID = roleID;
   }
 
 
@@ -117,31 +117,31 @@ public class User {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    User user = (User) o;
-    return Objects.equals(this.id, user.id) &&
-        Objects.equals(this.username, user.username) &&
-        Objects.equals(this.firstName, user.firstName) &&
-        Objects.equals(this.lastName, user.lastName) &&
-        Objects.equals(this.password, user.password) &&
-        Objects.equals(this.role, user.role);
+    UserBackend userBackend = (UserBackend) o;
+    return Objects.equals(this.id, userBackend.id) &&
+        Objects.equals(this.username, userBackend.username) &&
+        Objects.equals(this.firstName, userBackend.firstName) &&
+        Objects.equals(this.lastName, userBackend.lastName) &&
+        Objects.equals(this.password, userBackend.password) &&
+        Objects.equals(this.roleID, userBackend.roleID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, firstName, lastName, password, role);
+    return Objects.hash(id, username, firstName, lastName, password, roleID);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class User {\n");
+    sb.append("class UserBackend {\n");
 
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    role: ").append(toIndentedString(role)).append("\n");
+    sb.append("    roleID: ").append(toIndentedString(roleID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

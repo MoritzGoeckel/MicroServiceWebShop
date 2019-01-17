@@ -2,14 +2,11 @@ package hska.microServiceWebShop.Clients;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import hska.microServiceWebShop.models.Category;
 import hska.microServiceWebShop.models.Error;
 import hska.microServiceWebShop.models.Role;
 import hska.microServiceWebShop.models.User;
+import hska.microServiceWebShop.models.UserBackend;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -152,7 +149,7 @@ public class UserRoleApi {
             userStream = userStream.filter(u -> u.getUsername().contains(text) || u.getFirstName().contains(text) || u.getLastName().contains(text));
 
         if(roleID != null)
-            userStream = userStream.filter(u -> u.getRoleID().equals(roleID));
+            userStream = userStream.filter(u -> u.getRole().equals(roleID));
 
         return userStream.collect(Collectors.toList());
     }
@@ -179,7 +176,7 @@ public class UserRoleApi {
 		return user;
 	}
 
-	public User createUser(User user) throws ApiException {
+	public User createUser(UserBackend user) throws ApiException {
 		try {
 			ResponseEntity<User> response = restTemplate.postForEntity("http://userroleservice/users", user,
 					User.class);

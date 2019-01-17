@@ -14,18 +14,12 @@
 package hska.microServiceWebShop.api;
 
 import hska.microServiceWebShop.ApiException;
-import hska.microServiceWebShop.models.Error;
-import hska.microServiceWebShop.models.Role;
-import hska.microServiceWebShop.models.RoleQuery;
-import hska.microServiceWebShop.models.User;
-import hska.microServiceWebShop.models.UserQuery;
+import hska.microServiceWebShop.models.*;
+import hska.microServiceWebShop.models.UserBackend;
 import org.junit.Test;
 import org.junit.Ignore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * API tests for UserRoleApi
@@ -103,19 +97,19 @@ public class UserRoleApiTest {
         role = api.createRole(role);
         System.out.println(role.toString());
 
-        User user = new User();
-        user.setFirstName("John");
-        user.setLastName("Doe");
-        user.setPassword("1234");
-        user.setRoleID(role.getId());
-        user.setUsername("User");
+        UserBackend userBackend = new UserBackend();
+        userBackend.setFirstName("John");
+        userBackend.setLastName("Doe");
+        userBackend.setPassword("1234");
+        userBackend.setRoleID(role.getId());
+        userBackend.setUsername("UserBackend");
         
-        System.out.println("create user");
-        user = api.createUser(user);
-        System.out.println(user.toString());
+        System.out.println("create userBackend");
+        User user = api.createUser(userBackend);
+        System.out.println(userBackend.toString());
         
         System.out.println("get userbyid");
-        Long id = user.getId();
+        Long id = userBackend.getId();
         User response = api.getUserById(id);
         
         System.out.println(response.toString());
@@ -130,7 +124,7 @@ public class UserRoleApiTest {
         
         System.out.println("query user1");
         query = new UserQuery();
-        query.setText("User");
+        query.setText("UserBackend");
         responses = api.getUsers(query);
         
         for(User r: responses) {

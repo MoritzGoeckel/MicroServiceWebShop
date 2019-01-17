@@ -25,8 +25,8 @@ public class User   {
   @JsonProperty("password")
   private String password = null;
 
-  @JsonProperty("roleID")
-  private Long roleID = null;
+  @JsonProperty("role")
+  private Role role = null;
 
   public User id(Long id) {
     this.id = id;
@@ -93,17 +93,17 @@ public class User   {
     this.password = password;
   }
 
-  public User roleID(Long roleID) {
-    this.roleID = roleID;
+  public User role(Role role) {
+    this.role = role;
     return this;
   }
 
-  public Long getRoleID() {
-    return roleID;
+  public Role getRole() {
+    return role;
   }
 
-  public void setRoleID(Long roleID) {
-    this.roleID = roleID;
+  public void setRole(Role role) {
+    this.role = role;
   }
 
 
@@ -121,12 +121,12 @@ public class User   {
         Objects.equals(this.firstName, user.firstName) &&
         Objects.equals(this.lastName, user.lastName) &&
         Objects.equals(this.password, user.password) &&
-        Objects.equals(this.roleID, user.roleID);
+        Objects.equals(this.role, user.role);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, firstName, lastName, password, roleID);
+    return Objects.hash(id, username, firstName, lastName, password, role);
   }
 
   @Override
@@ -139,7 +139,7 @@ public class User   {
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    roleID: ").append(toIndentedString(roleID)).append("\n");
+    sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("}");
     return sb.toString();
   }

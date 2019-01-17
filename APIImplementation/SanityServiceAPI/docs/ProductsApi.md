@@ -4,17 +4,17 @@ All URIs are relative to *https://localhost:8081*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addProduct**](ProductsApi.md#addProduct) | **POST** /products | Adds a new product
-[**deleteProduct**](ProductsApi.md#deleteProduct) | **DELETE** /products/{id} | Deletes a product
-[**getProduct**](ProductsApi.md#getProduct) | **GET** /products/{id} | Retrieves a product
+[**addProduct**](ProductsApi.md#addProduct) | **POST** /products | Adds a new productBackend
+[**deleteProduct**](ProductsApi.md#deleteProduct) | **DELETE** /products/{id} | Deletes a productBackend
+[**getProduct**](ProductsApi.md#getProduct) | **GET** /products/{id} | Retrieves a productBackend
 [**queryProducts**](ProductsApi.md#queryProducts) | **GET** /products | Queries products. If no parameters is provided all products will be returned
 
 
 <a name="addProduct"></a>
 # **addProduct**
-> Product addProduct(product)
+> Product addProduct(productBackend)
 
-Adds a new product
+Adds a new productBackend
 
 
 
@@ -26,9 +26,9 @@ Adds a new product
 
 
 ProductsApi apiInstance = new ProductsApi();
-Product product = new Product(); // Product | The inserted product
+Product productBackend = new Product(); // Product | The inserted productBackend
 try {
-    Product result = apiInstance.addProduct(product);
+    Product result = apiInstance.addProduct(productBackend);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ProductsApi#addProduct");
@@ -40,7 +40,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **product** | [**Product**](Product.md)| The inserted product |
+ **productBackend** | [**Product**](Product.md)| The inserted productBackend |
 
 ### Return type
 
@@ -59,7 +59,7 @@ No authorization required
 # **deleteProduct**
 > deleteProduct(id)
 
-Deletes a product
+Deletes a productBackend
 
 
 
@@ -71,7 +71,7 @@ Deletes a product
 
 
 ProductsApi apiInstance = new ProductsApi();
-Long id = 789L; // Long | The id of the to be deleted product
+Long id = 789L; // Long | The id of the to be deleted productBackend
 try {
     apiInstance.deleteProduct(id);
 } catch (ApiException e) {
@@ -84,7 +84,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Long**| The id of the to be deleted product |
+ **id** | **Long**| The id of the to be deleted productBackend |
 
 ### Return type
 
@@ -103,7 +103,7 @@ No authorization required
 # **getProduct**
 > Product getProduct(id)
 
-Retrieves a product
+Retrieves a productBackend
 
 
 
@@ -115,7 +115,7 @@ Retrieves a product
 
 
 ProductsApi apiInstance = new ProductsApi();
-Long id = 789L; // Long | The id of the to be retrieved product
+Long id = 789L; // Long | The id of the to be retrieved productBackend
 try {
     Product result = apiInstance.getProduct(id);
     System.out.println(result);
@@ -129,7 +129,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Long**| The id of the to be retrieved product |
+ **id** | **Long**| The id of the to be retrieved productBackend |
 
 ### Return type
 
@@ -160,7 +160,7 @@ Queries products. If no parameters is provided all products will be returned
 
 
 ProductsApi apiInstance = new ProductsApi();
-ProductQuery query = new ProductQuery(); // ProductQuery | The name of the product
+ProductQuery query = new ProductQuery(); // ProductQuery | The name of the productBackend
 try {
     List<Product> result = apiInstance.queryProducts(query);
     System.out.println(result);
@@ -174,7 +174,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | [**ProductQuery**](ProductQuery.md)| The name of the product | [optional]
+ **query** | [**ProductQuery**](ProductQuery.md)| The name of the productBackend | [optional]
 
 ### Return type
 

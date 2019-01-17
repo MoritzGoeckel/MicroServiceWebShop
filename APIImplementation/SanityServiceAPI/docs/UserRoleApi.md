@@ -5,12 +5,12 @@ All URIs are relative to *https://localhost:8081*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createRole**](UserRoleApi.md#createRole) | **POST** /roles | Create role
-[**createUser**](UserRoleApi.md#createUser) | **POST** /users | Create user
+[**createUser**](UserRoleApi.md#createUser) | **POST** /users | Create userBackend
 [**deleteRole**](UserRoleApi.md#deleteRole) | **DELETE** /roles/{id} | Delete role with Id
-[**deleteUser**](UserRoleApi.md#deleteUser) | **DELETE** /users/{id} | Delete user with Id
+[**deleteUser**](UserRoleApi.md#deleteUser) | **DELETE** /users/{id} | Delete userBackend with Id
 [**getRoleById**](UserRoleApi.md#getRoleById) | **GET** /roles/{id} | Get role by Id
 [**getRoles**](UserRoleApi.md#getRoles) | **GET** /roles | Get roles
-[**getUserById**](UserRoleApi.md#getUserById) | **GET** /users/{id} | Get user by Id
+[**getUserById**](UserRoleApi.md#getUserById) | **GET** /users/{id} | Get userBackend by Id
 [**getUsers**](UserRoleApi.md#getUsers) | **GET** /users | Get users
 
 
@@ -58,9 +58,9 @@ No authorization required
 
 <a name="createUser"></a>
 # **createUser**
-> createUser(user)
+> createUser(userBackend)
 
-Create user
+Create userBackend
 
 ### Example
 ```java
@@ -70,9 +70,9 @@ Create user
 
 
 UserRoleApi apiInstance = new UserRoleApi();
-User user = new User(); // User | 
+User userBackend = new User(); // User | 
 try {
-    apiInstance.createUser(user);
+    apiInstance.createUser(userBackend);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserRoleApi#createUser");
     e.printStackTrace();
@@ -83,7 +83,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user** | [**User**](User.md)|  |
+ **userBackend** | [**User**](User.md)|  |
 
 ### Return type
 
@@ -144,7 +144,7 @@ No authorization required
 # **deleteUser**
 > deleteUser(id)
 
-Delete user with Id
+Delete userBackend with Id
 
 ### Example
 ```java
@@ -272,7 +272,7 @@ No authorization required
 # **getUserById**
 > User getUserById(id)
 
-Get user by Id
+Get userBackend by Id
 
 ### Example
 ```java
@@ -325,7 +325,7 @@ Get users
 
 
 UserRoleApi apiInstance = new UserRoleApi();
-UserQuery query = new UserQuery(); // UserQuery | Parameters of the user
+UserQuery query = new UserQuery(); // UserQuery | Parameters of the userBackend
 try {
     List<User> result = apiInstance.getUsers(query);
     System.out.println(result);
@@ -339,7 +339,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | [**UserQuery**](UserQuery.md)| Parameters of the user | [optional]
+ **query** | [**UserQuery**](UserQuery.md)| Parameters of the userBackend | [optional]
 
 ### Return type
 

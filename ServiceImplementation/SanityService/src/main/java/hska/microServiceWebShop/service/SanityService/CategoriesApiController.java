@@ -62,7 +62,7 @@ public class CategoriesApiController  implements CategoriesApi{
             Category c = categoriesAPIClient.getCategoryById(id.intValue());
             ProductQuery pq = new ProductQuery();
             pq.category(id);
-            List<Product> ps = Arrays.asList(productsAPIClient.getProducts(null,null,null,pq.getCategory()));
+            List<ProductBackend> ps = Arrays.asList(productsAPIClient.getProducts(null,null,null,pq.getCategory()));
             if(ps.size() == 0){
                 categoriesAPIClient.deleteCategoryById(id.intValue());
                 return new ResponseEntity<Category>(c,HttpStatus.OK);

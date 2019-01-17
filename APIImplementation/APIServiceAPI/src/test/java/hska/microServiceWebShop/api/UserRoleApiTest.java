@@ -14,11 +14,8 @@
 package hska.microServiceWebShop.api;
 
 import hska.microServiceWebShop.ApiException;
+import hska.microServiceWebShop.models.*;
 import hska.microServiceWebShop.models.Error;
-import hska.microServiceWebShop.models.Role;
-import hska.microServiceWebShop.models.RoleQuery;
-import hska.microServiceWebShop.models.User;
-import hska.microServiceWebShop.models.UserQuery;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -30,7 +27,7 @@ import java.util.Map;
 /**
  * API tests for UserRoleApi
  */
-//@Ignore
+@Ignore
 public class UserRoleApiTest {
 
     private final UserRoleApi api = new UserRoleApi();
@@ -109,7 +106,7 @@ public class UserRoleApiTest {
         role = api.createRole(role);
         System.out.println(role.toString());
 
-        User user = new User();
+        UserBackend user = new UserBackend();
         user.setFirstName("John");
         user.setLastName("Doe");
         user.setPassword("1234");
@@ -117,11 +114,11 @@ public class UserRoleApiTest {
         user.setUsername("User");
         
         System.out.println("create user");
-        user = api.createUser(user);
-        System.out.println(user.toString());
+        User userFront = api.createUser(user);
+        System.out.println(userFront.toString());
         
         System.out.println("get userbyid");
-        Long id = user.getId();
+        Long id = userFront.getId();
         User response = api.getUserById(id);
         
         System.out.println(response.toString());

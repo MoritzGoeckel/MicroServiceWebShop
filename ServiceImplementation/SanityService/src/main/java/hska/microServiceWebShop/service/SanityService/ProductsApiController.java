@@ -3,9 +3,8 @@ package hska.microServiceWebShop.service.SanityService;
 import hska.microServiceWebShop.Clients.ApiException;
 import hska.microServiceWebShop.Clients.CategoryServiceClient;
 import hska.microServiceWebShop.Clients.ProductServiceClient;
+import hska.microServiceWebShop.models.*;
 import hska.microServiceWebShop.models.Error;
-import hska.microServiceWebShop.models.Product;
-import hska.microServiceWebShop.models.ProductQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,13 +34,19 @@ public class ProductsApiController implements ProductsApi{
         this.request = request;
     }
 
-    public ResponseEntity addProduct(@RequestBody Product product) {
+    public ResponseEntity addProduct(@RequestBody ProductBackend product) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-            	categoriesAPIClient.getCategoryById(product.getCategory().intValue());
-                Product p = productsAPIClient.postProduct(product.getName(),product.getPrice(),product.getCategory(),product.getDetails());
-                return new ResponseEntity<Product>(p, HttpStatus.OK);
+            	Category c = categoriesAPIClient.getCategoryById(product.getCategory().intValue());
+                ProductBackend p = productsAPIClient.postProduct(product.getName(),product.getPrice(),product.getCategory(),product.getDetails());
+                Product productNew = new Product();
+                productNew.setId(p.getId());
+                productNew.setName(p.getName());
+                productNew.setPrice(p.getPrice());
+                productNew.setDetails(p.getDetails());
+                productNew.setCategory(c);
+                return new ResponseEntity<Product>(productNew, HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
                 Error error = new Error();
@@ -57,9 +63,8 @@ public class ProductsApiController implements ProductsApi{
     public ResponseEntity deleteProduct(@PathVariable("id") Long id) {
         String accept = request.getHeader("Accept");
         try {
-            Product p = productsAPIClient.getProductById(id.intValue());
             productsAPIClient.deleteProductById(id.intValue());
-            return new ResponseEntity<Product>(p, HttpStatus.OK);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (ApiException e) {
             e.printStackTrace();
             Error error = new Error();
@@ -72,8 +77,15 @@ public class ProductsApiController implements ProductsApi{
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                Product p = productsAPIClient.getProductById(id.intValue());
-                return new ResponseEntity<Product>(p, HttpStatus.OK);
+                ProductBackend p = productsAPIClient.getProductById(id.intValue());
+                Category c = categoriesAPIClient.getCategoryById(p.getCategory().intValue());
+                Product productNew = new Product();
+                productNew.setId(p.getId());
+                productNew.setName(p.getName());
+                productNew.setPrice(p.getPrice());
+                productNew.setDetails(p.getDetails());
+                productNew.setCategory(c);
+                return new ResponseEntity<Product>(productNew, HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
                 Error error = new Error();
@@ -99,8 +111,19 @@ public class ProductsApiController implements ProductsApi{
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                List<Product> ps = Arrays.asList(productsAPIClient.getProducts(query.getText(),query.getPriceMin(),query.getPriceMax(),query.getCategory()));
-                return new ResponseEntity<List<Product>>(ps, HttpStatus.OK);
+                List<ProductBackend> ps = Arrays.asList(productsAPIClient.getProducts(query.getText(),query.getPriceMin(),query.getPriceMax(),query.getCategory()));
+                List<Product> psNew = new ArrayList<>(ps.size());
+                for(ProductBackend p : ps){
+                    Category c = categoriesAPIClient.getCategoryById(p.getCategory().intValue());
+                    Product productNew = new Product();
+                    productNew.setId(p.getId());
+                    productNew.setName(p.getName());
+                    productNew.setPrice(p.getPrice());
+                    productNew.setDetails(p.getDetails());
+                    productNew.setCategory(c);
+                    psNew.add(productNew);
+                }
+                return new ResponseEntity<List<Product>>(psNew, HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();
                 Error error = new Error();

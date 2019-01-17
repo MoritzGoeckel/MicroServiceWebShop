@@ -113,12 +113,12 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**getProduct**](docs/ProductsApi.md#getProduct) | **GET** /products/{id} | Retrieves a product
 *ProductsApi* | [**queryProducts**](docs/ProductsApi.md#queryProducts) | **GET** /products | Queries products. If no parameters is provided all products will be returned
 *UserRoleApi* | [**createRole**](docs/UserRoleApi.md#createRole) | **POST** /roles | Create role
-*UserRoleApi* | [**createUser**](docs/UserRoleApi.md#createUser) | **POST** /users | Create user
+*UserRoleApi* | [**createUser**](docs/UserRoleApi.md#createUser) | **POST** /users | Create userBackend
 *UserRoleApi* | [**deleteRole**](docs/UserRoleApi.md#deleteRole) | **DELETE** /roles/{id} | Delete role with Id
-*UserRoleApi* | [**deleteUser**](docs/UserRoleApi.md#deleteUser) | **DELETE** /users/{id} | Delete user with Id
+*UserRoleApi* | [**deleteUser**](docs/UserRoleApi.md#deleteUser) | **DELETE** /users/{id} | Delete userBackend with Id
 *UserRoleApi* | [**getRoleById**](docs/UserRoleApi.md#getRoleById) | **GET** /roles/{id} | Get role by Id
 *UserRoleApi* | [**getRoles**](docs/UserRoleApi.md#getRoles) | **GET** /roles | Get roles
-*UserRoleApi* | [**getUserById**](docs/UserRoleApi.md#getUserById) | **GET** /users/{id} | Get user by Id
+*UserRoleApi* | [**getUserById**](docs/UserRoleApi.md#getUserById) | **GET** /users/{id} | Get userBackend by Id
 *UserRoleApi* | [**getUsers**](docs/UserRoleApi.md#getUsers) | **GET** /users | Get users
 
 

@@ -1,21 +1,17 @@
 package hska.microServiceWebShop.models;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+
+import java.util.Objects;
 
 /**
  * Product
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-04T00:32:34.965Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-03T22:24:38.514Z")
 
-public class Product   {
+public class Product {
   @JsonProperty("id")
   private Long id = null;
 
@@ -26,7 +22,7 @@ public class Product   {
   private Double price = null;
 
   @JsonProperty("category")
-  private Long category = null;
+  private Category category = null;
 
   @JsonProperty("details")
   private String details = null;
@@ -35,13 +31,6 @@ public class Product   {
     this.id = id;
     return this;
   }
-
-  /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
-
 
   public Long getId() {
     return id;
@@ -56,13 +45,6 @@ public class Product   {
     return this;
   }
 
-  /**
-   * Get name
-   * @return name
-  **/
-  @ApiModelProperty(value = "")
-
-
   public String getName() {
     return name;
   }
@@ -76,13 +58,6 @@ public class Product   {
     return this;
   }
 
-  /**
-   * Get price
-   * @return price
-  **/
-  @ApiModelProperty(value = "")
-
-
   public Double getPrice() {
     return price;
   }
@@ -91,23 +66,16 @@ public class Product   {
     this.price = price;
   }
 
-  public Product category(Long category) {
+  public Product category(Category category) {
     this.category = category;
     return this;
   }
 
-  /**
-   * Get category
-   * @return category
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getCategory() {
+  public Category getCategory() {
     return category;
   }
 
-  public void setCategory(Long category) {
+  public void setCategory(Category category) {
     this.category = category;
   }
 
@@ -115,13 +83,6 @@ public class Product   {
     this.details = details;
     return this;
   }
-
-  /**
-   * Get details
-   * @return details
-  **/
-  @ApiModelProperty(value = "")
-
 
   public String getDetails() {
     return details;
@@ -133,7 +94,7 @@ public class Product   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -157,7 +118,7 @@ public class Product   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Product {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
@@ -171,7 +132,7 @@ public class Product   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

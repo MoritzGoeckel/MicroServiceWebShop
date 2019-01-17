@@ -1,9 +1,9 @@
 package hska.microServiceWebShop.service.APIService;
 
-import hska.microServiceWebShop.ApiClient;
 import hska.microServiceWebShop.ApiException;
 import hska.microServiceWebShop.models.Error;
 import hska.microServiceWebShop.models.Product;
+import hska.microServiceWebShop.models.ProductBackend;
 import hska.microServiceWebShop.models.ProductQuery;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
@@ -16,14 +16,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.*;
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-04T00:32:34.965Z")
 
@@ -45,11 +40,11 @@ public class ProductsApiController implements ProductsApi {
         this.request = request;
     }
 
-    public ResponseEntity addProduct(@ApiParam(value = "The inserted product" ,required=true )  @Valid @RequestBody Product product) {
+    public ResponseEntity addProduct(@ApiParam(value = "The inserted productBackend" ,required=true )  @Valid @RequestBody ProductBackend productBackend) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                Product p = productsAPIClient.addProduct(product);
+                Product p = productsAPIClient.addProduct(productBackend);
                 return new ResponseEntity<Product>(p, HttpStatus.OK);
             } catch (ApiException e) {
                 e.printStackTrace();

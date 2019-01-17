@@ -86,7 +86,7 @@ public class ApiClient {
 
         json = new JSON();
 
-        // Set default User-Agent.
+        // Set default UserBackend-Agent.
         setUserAgent("Swagger-Codegen/1.0.0/java");
 
         // Setup authentications (key: authentication name, value: authentication).
@@ -341,13 +341,13 @@ public class ApiClient {
     }
 
     /**
-     * Set the User-Agent header's value (by adding to the default header map).
+     * Set the UserBackend-Agent header's value (by adding to the default header map).
      *
      * @param userAgent HTTP request's user agent
      * @return ApiClient
      */
     public ApiClient setUserAgent(String userAgent) {
-        addDefaultHeader("User-Agent", userAgent);
+        addDefaultHeader("UserBackend-Agent", userAgent);
         return this;
     }
 

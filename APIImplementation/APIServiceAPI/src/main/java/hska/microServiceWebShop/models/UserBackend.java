@@ -22,7 +22,7 @@ import java.util.Objects;
  * UserBackend
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-03T22:20:58.985Z")
-public class User {
+public class UserBackend {
   @SerializedName("id")
   private Long id = null;
 
@@ -39,9 +39,9 @@ public class User {
   private String password = null;
 
   @SerializedName("roleID")
-  private Role role = null;
+  private Long roleID = null;
 
-  public User id(Long id) {
+  public UserBackend id(Long id) {
     this.id = id;
     return this;
   }
@@ -59,7 +59,7 @@ public class User {
     this.id = id;
   }
 
-  public User username(String username) {
+  public UserBackend username(String username) {
     this.username = username;
     return this;
   }
@@ -77,7 +77,7 @@ public class User {
     this.username = username;
   }
 
-  public User firstName(String firstName) {
+  public UserBackend firstName(String firstName) {
     this.firstName = firstName;
     return this;
   }
@@ -95,7 +95,7 @@ public class User {
     this.firstName = firstName;
   }
 
-  public User lastName(String lastName) {
+  public UserBackend lastName(String lastName) {
     this.lastName = lastName;
     return this;
   }
@@ -113,7 +113,7 @@ public class User {
     this.lastName = lastName;
   }
 
-  public User password(String password) {
+  public UserBackend password(String password) {
     this.password = password;
     return this;
   }
@@ -131,8 +131,8 @@ public class User {
     this.password = password;
   }
 
-  public User role(Role role) {
-    this.role = role;
+  public UserBackend roleID(Long roleID) {
+    this.roleID = roleID;
     return this;
   }
 
@@ -141,35 +141,35 @@ public class User {
    * @return roleID
   **/
   @ApiModelProperty(value = "")
-  public Role getRole() {
-    return role;
+  public Long getRoleID() {
+    return roleID;
   }
 
-  public void setRole(Role role) {
-    this.role = role;
+  public void setRoleID(Long roleID) {
+    this.roleID = roleID;
   }
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    User userBackend = (User) o;
+    UserBackend userBackend = (UserBackend) o;
     return Objects.equals(this.id, userBackend.id) &&
         Objects.equals(this.username, userBackend.username) &&
         Objects.equals(this.firstName, userBackend.firstName) &&
         Objects.equals(this.lastName, userBackend.lastName) &&
         Objects.equals(this.password, userBackend.password) &&
-        Objects.equals(this.role, userBackend.role);
+        Objects.equals(this.roleID, userBackend.roleID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, firstName, lastName, password, role);
+    return Objects.hash(id, username, firstName, lastName, password, roleID);
   }
 
 
@@ -183,7 +183,7 @@ public class User {
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    roleID: ").append(toIndentedString(role)).append("\n");
+    sb.append("    roleID: ").append(toIndentedString(roleID)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -192,7 +192,7 @@ public class User {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

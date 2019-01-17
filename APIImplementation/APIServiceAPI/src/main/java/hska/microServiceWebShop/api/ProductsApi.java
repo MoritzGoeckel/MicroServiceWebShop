@@ -13,24 +13,13 @@
 
 package hska.microServiceWebShop.api;
 
-import hska.microServiceWebShop.ApiCallback;
-import hska.microServiceWebShop.ApiClient;
-import hska.microServiceWebShop.ApiException;
-import hska.microServiceWebShop.ApiResponse;
-import hska.microServiceWebShop.Configuration;
-import hska.microServiceWebShop.Pair;
-import hska.microServiceWebShop.ProgressRequestBody;
-import hska.microServiceWebShop.ProgressResponseBody;
-
 import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
-import hska.microServiceWebShop.models.Error;
+import hska.microServiceWebShop.*;
 import hska.microServiceWebShop.models.Product;
+import hska.microServiceWebShop.models.ProductBackend;
 import hska.microServiceWebShop.models.ProductQuery;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,14 +47,14 @@ public class ProductsApi {
 
     /**
      * Build call for addProduct
-     * @param product The inserted product (required)
+     * @param productBackend The inserted product (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call addProductCall(Product product, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = product;
+    public com.squareup.okhttp.Call addProductCall(ProductBackend productBackend, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = productBackend;
 
         // create path and map variables
         String localVarPath = "/products";
@@ -92,7 +81,7 @@ public class ProductsApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -106,53 +95,53 @@ public class ProductsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call addProductValidateBeforeCall(Product product, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
+    private com.squareup.okhttp.Call addProductValidateBeforeCall(ProductBackend productBackend, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+
         // verify the required parameter 'product' is set
-        if (product == null) {
+        if (productBackend == null) {
             throw new ApiException("Missing the required parameter 'product' when calling addProduct(Async)");
         }
-        
 
-        com.squareup.okhttp.Call call = addProductCall(product, progressListener, progressRequestListener);
+
+        com.squareup.okhttp.Call call = addProductCall(productBackend, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Adds a new product
-     * 
-     * @param product The inserted product (required)
+     *
+     * @param productBackend The inserted product (required)
      * @return Product
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Product addProduct(Product product) throws ApiException {
-        ApiResponse<Product> resp = addProductWithHttpInfo(product);
+    public Product addProduct(ProductBackend productBackend) throws ApiException {
+        ApiResponse<Product> resp = addProductWithHttpInfo(productBackend);
         return resp.getData();
     }
 
     /**
      * Adds a new product
-     * 
-     * @param product The inserted product (required)
+     *
+     * @param productBackend The inserted product (required)
      * @return ApiResponse&lt;Product&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Product> addProductWithHttpInfo(Product product) throws ApiException {
-        com.squareup.okhttp.Call call = addProductValidateBeforeCall(product, null, null);
+    public ApiResponse<Product> addProductWithHttpInfo(ProductBackend productBackend) throws ApiException {
+        com.squareup.okhttp.Call call = addProductValidateBeforeCall(productBackend, null, null);
         Type localVarReturnType = new TypeToken<Product>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Adds a new product (asynchronously)
-     * 
-     * @param product The inserted product (required)
+     *
+     * @param productBackend The inserted product (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addProductAsync(Product product, final ApiCallback<Product> callback) throws ApiException {
+    public com.squareup.okhttp.Call addProductAsync(ProductBackend productBackend, final ApiCallback<ProductBackend> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -173,8 +162,8 @@ public class ProductsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = addProductValidateBeforeCall(product, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Product>(){}.getType();
+        com.squareup.okhttp.Call call = addProductValidateBeforeCall(productBackend, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ProductBackend>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -207,7 +196,7 @@ public class ProductsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -215,7 +204,7 @@ public class ProductsApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -230,12 +219,12 @@ public class ProductsApi {
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call deleteProductValidateBeforeCall(Long id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteProduct(Async)");
         }
-        
+
 
         com.squareup.okhttp.Call call = deleteProductCall(id, progressListener, progressRequestListener);
         return call;
@@ -244,7 +233,7 @@ public class ProductsApi {
 
     /**
      * Deletes a product
-     * 
+     *
      * @param id The id of the to be deleted product (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -254,7 +243,7 @@ public class ProductsApi {
 
     /**
      * Deletes a product
-     * 
+     *
      * @param id The id of the to be deleted product (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -266,7 +255,7 @@ public class ProductsApi {
 
     /**
      * Deletes a product (asynchronously)
-     * 
+     *
      * @param id The id of the to be deleted product (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -326,7 +315,7 @@ public class ProductsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -334,7 +323,7 @@ public class ProductsApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -349,12 +338,12 @@ public class ProductsApi {
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getProductValidateBeforeCall(Long id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getProduct(Async)");
         }
-        
+
 
         com.squareup.okhttp.Call call = getProductCall(id, progressListener, progressRequestListener);
         return call;
@@ -363,7 +352,7 @@ public class ProductsApi {
 
     /**
      * Retrieves a product
-     * 
+     *
      * @param id The id of the to be retrieved product (required)
      * @return Product
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -375,7 +364,7 @@ public class ProductsApi {
 
     /**
      * Retrieves a product
-     * 
+     *
      * @param id The id of the to be retrieved product (required)
      * @return ApiResponse&lt;Product&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -388,13 +377,13 @@ public class ProductsApi {
 
     /**
      * Retrieves a product (asynchronously)
-     * 
+     *
      * @param id The id of the to be retrieved product (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getProductAsync(Long id, final ApiCallback<Product> callback) throws ApiException {
+    public com.squareup.okhttp.Call getProductAsync(Long id, final ApiCallback<ProductBackend> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -416,7 +405,7 @@ public class ProductsApi {
         }
 
         com.squareup.okhttp.Call call = getProductValidateBeforeCall(id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Product>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProductBackend>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -468,7 +457,7 @@ public class ProductsApi {
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
@@ -523,7 +512,7 @@ public class ProductsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call queryProductsAsync(ProductQuery query, final ApiCallback<List<Product>> callback) throws ApiException {
+    public com.squareup.okhttp.Call queryProductsAsync(ProductQuery query, final ApiCallback<List<ProductBackend>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -545,7 +534,7 @@ public class ProductsApi {
         }
 
         com.squareup.okhttp.Call call = queryProductsValidateBeforeCall(query, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<Product>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProductBackend>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

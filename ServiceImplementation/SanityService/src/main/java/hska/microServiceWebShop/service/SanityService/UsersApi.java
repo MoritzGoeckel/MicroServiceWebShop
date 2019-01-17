@@ -6,6 +6,7 @@
 package hska.microServiceWebShop.service.SanityService;
 
 import hska.microServiceWebShop.models.User;
+import hska.microServiceWebShop.models.UserBackend;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ public interface UsersApi {
     @RequestMapping(value = "/users",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity createUser(@RequestBody User user);
+    ResponseEntity createUser(@RequestBody UserBackend user);
 
     @RequestMapping(value = "/users/{id}",
         method = RequestMethod.DELETE)

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import hska.microServiceWebShop.models.ProductBackend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -13,12 +14,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
-import hska.microServiceWebShop.models.Product;
-
 @Controller
 public class ProductServiceClient {
 
-  private Map<Long, Product> cache = new HashMap<>();
+  private Map<Long, ProductBackend> cache = new HashMap<>();
 
     private String baseUrl;
 
@@ -36,7 +35,7 @@ public class ProductServiceClient {
     public ProductServiceClient(String baseUrl){ this.baseUrl = baseUrl;}
 
 
-    public Product postProduct(String name, Double price, Long category, String details) throws ApiException{
+    public ProductBackend postProduct(String name, Double price, Long category, String details) throws ApiException{
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -48,20 +47,20 @@ public class ProductServiceClient {
 
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        ResponseEntity<Product> response = restTemplate.postForEntity(baseUrl + "products", new HttpEntity<>(headers), Product.class);
+        ResponseEntity<ProductBackend> response = restTemplate.postForEntity(baseUrl + "products", new HttpEntity<>(headers), ProductBackend.class);
 
         handle(response);
 
         return response.getBody();
     }
 
-    public Product[] getProducts() throws ApiException {
+    public ProductBackend[] getProducts() throws ApiException {
         return getProducts(null, null, null, null);
     }
 
     @HystrixCommand(fallbackMethod = "getProductsCache",
             ignoreExceptions=ApiException.class)
-    public Product[] getProducts(String text, Double min, Double max, Long category) throws ApiException {
+    public ProductBackend[] getProducts(String text, Double min, Double max, Long category) throws ApiException {
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -76,21 +75,21 @@ public class ProductServiceClient {
 
         //RequestEntity<Product> requestEntity = new RequestEntity<Product>();
 
-        ResponseEntity<Product[]> response = restTemplate.exchange(baseUrl + "products", HttpMethod.GET, new HttpEntity(headers), Product[].class);
+        ResponseEntity<ProductBackend[]> response = restTemplate.exchange(baseUrl + "products", HttpMethod.GET, new HttpEntity(headers), ProductBackend[].class);
 
         handle(response);
 
-        Product[] products = response.getBody();
-        for(Product product : products) {
+        ProductBackend[] products = response.getBody();
+        for(ProductBackend product : products) {
             cache.put(product.getId(), product);
         }
 
         return products;
     }
 
-    public Product[] getProductsCache(String text, Double min, Double max, Long category) throws ApiException {
+    public ProductBackend[] getProductsCache(String text, Double min, Double max, Long category) throws ApiException {
 
-        Stream<Product> allFoundProductsSream = cache.values().stream();
+        Stream<ProductBackend> allFoundProductsSream = cache.values().stream();
 
         // Suche nach text - check
         if(text != null)
@@ -120,26 +119,26 @@ public class ProductServiceClient {
                     .filter(c -> c.getCategory().equals(category));
         }
 
-        Product[] foundProducts = allFoundProductsSream.toArray(Product[]::new);
+        ProductBackend[] foundProducts = allFoundProductsSream.toArray(ProductBackend[]::new);
 
         return foundProducts;
     }
 
     @HystrixCommand(fallbackMethod = "getProductByIdCache",
             ignoreExceptions=ApiException.class)
-    public Product getProductById(int id) throws ApiException {
-        ResponseEntity<Product> response = restTemplate.getForEntity(baseUrl + "products/" + id, Product.class);
+    public ProductBackend getProductById(int id) throws ApiException {
+        ResponseEntity<ProductBackend> response = restTemplate.getForEntity(baseUrl + "products/" + id, ProductBackend.class);
         handle(response);
 
-        Product product = response.getBody();
+        ProductBackend product = response.getBody();
         if(product != null)
             cache.put(product.getId(), product);
 
         return product;
     }
 
-    public Product getProductByIdCache(int id) throws ApiException {
-        Product product = cache.getOrDefault((long) id, null);
+    public ProductBackend getProductByIdCache(int id) throws ApiException {
+        ProductBackend product = cache.getOrDefault((long) id, null);
         if(product == null)
             throw new ApiException(HttpStatus.NOT_FOUND.value(), "Category not found");
 
@@ -147,7 +146,7 @@ public class ProductServiceClient {
     }
 
     public void deleteProductById(int id) throws ApiException {
-        ResponseEntity<Product> response = restTemplate.exchange(baseUrl + "products/" + id, HttpMethod.DELETE, new HttpEntity(new HttpHeaders()), Product.class);
+        ResponseEntity<ProductBackend> response = restTemplate.exchange(baseUrl + "products/" + id, HttpMethod.DELETE, new HttpEntity(new HttpHeaders()), ProductBackend.class);
         handle(response);
 
     }

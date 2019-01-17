@@ -13,19 +13,13 @@
 
 package hska.microServiceWebShop.models;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
+import java.util.Objects;
 
 /**
- * Product
+ * ProductBackend
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-03T22:20:58.985Z")
 public class Product {
@@ -39,7 +33,7 @@ public class Product {
   private Double price = null;
 
   @SerializedName("category")
-  private Long category = null;
+  private Category category = null;
 
   @SerializedName("details")
   private String details = null;
@@ -98,7 +92,7 @@ public class Product {
     this.price = price;
   }
 
-  public Product category(Long category) {
+  public Product category(Category category) {
     this.category = category;
     return this;
   }
@@ -108,11 +102,11 @@ public class Product {
    * @return category
   **/
   @ApiModelProperty(value = "")
-  public Long getCategory() {
+  public Category getCategory() {
     return category;
   }
 
-  public void setCategory(Long category) {
+  public void setCategory(Category category) {
     this.category = category;
   }
 
@@ -136,19 +130,19 @@ public class Product {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Product product = (Product) o;
-    return Objects.equals(this.id, product.id) &&
-        Objects.equals(this.name, product.name) &&
-        Objects.equals(this.price, product.price) &&
-        Objects.equals(this.category, product.category) &&
-        Objects.equals(this.details, product.details);
+    Product productBackend = (Product) o;
+    return Objects.equals(this.id, productBackend.id) &&
+        Objects.equals(this.name, productBackend.name) &&
+        Objects.equals(this.price, productBackend.price) &&
+        Objects.equals(this.category, productBackend.category) &&
+        Objects.equals(this.details, productBackend.details);
   }
 
   @Override
@@ -160,8 +154,8 @@ public class Product {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Product {\n");
-    
+    sb.append("class ProductBackend {\n");
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
@@ -175,7 +169,7 @@ public class Product {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

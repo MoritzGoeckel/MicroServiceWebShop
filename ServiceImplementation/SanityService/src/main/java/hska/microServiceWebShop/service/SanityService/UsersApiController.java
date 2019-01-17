@@ -2,8 +2,10 @@ package hska.microServiceWebShop.service.SanityService;
 
 import hska.microServiceWebShop.Clients.ApiException;
 import hska.microServiceWebShop.Clients.UserRoleApi;
-import hska.microServiceWebShop.models.*;
 import hska.microServiceWebShop.models.Error;
+import hska.microServiceWebShop.models.User;
+import hska.microServiceWebShop.models.UserBackend;
+import hska.microServiceWebShop.models.UserQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +30,7 @@ public class UsersApiController implements UsersApi {
         this.request = request;
     }
 
-    public ResponseEntity createUser(@RequestBody User user) {
+    public ResponseEntity createUser(@RequestBody UserBackend user) {
         String accept = request.getHeader("Accept");
         try {
         User u = userRoleAPIClient.createUser(user);
