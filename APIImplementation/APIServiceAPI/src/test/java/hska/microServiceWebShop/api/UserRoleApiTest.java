@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * API tests for UserRoleApi
  */
-@Ignore
+//@Ignore
 public class UserRoleApiTest {
 
     private final UserRoleApi api = new UserRoleApi();
@@ -45,7 +45,10 @@ public class UserRoleApiTest {
      *          if the Api call fails
      */
     @Test
-    public void createRoleTest() throws ApiException {
+    public void allRoleTest() throws ApiException {
+        System.out.println("AllRoleTest");
+        System.out.println("------------------------");
+        System.out.println();
         Role role = new Role();
         role.setTyp("role1");
         role.setLevel(1);
@@ -94,7 +97,10 @@ public class UserRoleApiTest {
     }
     
     @Test
-    public void creatUserTest() throws ApiException {
+    public void allUserTest() throws ApiException {
+        System.out.println("AllUserTest");
+        System.out.println("------------------------");
+        System.out.println();
         Role role = new Role();
         role.setTyp("role2");
         role.setLevel(1);

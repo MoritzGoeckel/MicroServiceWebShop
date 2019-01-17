@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * API tests for ProductsApi
  */
-@Ignore
+//@Ignore
 public class ProductsApiTest {
 
     private final ProductsApi api = new ProductsApi();
@@ -38,7 +38,10 @@ public class ProductsApiTest {
 
     
     @Test
-    public void addAndDeleteCategoryTest() throws ApiException {
+    public void addAndDeleteProductTest() throws ApiException {
+        System.out.println("AddAndDeleteProductTest");
+        System.out.println("------------------------");
+        System.out.println();
         try {
         	
         	Category name = new Category();
@@ -86,7 +89,10 @@ public class ProductsApiTest {
     }
 
     @Test
-    public void addAndQueryCategoryTest() throws ApiException {
+    public void addAndQueryProductTest() throws ApiException {
+        System.out.println("AddAndQueryProductTest");
+        System.out.println("------------------------");
+        System.out.println();
         try {
         	Category name = new Category();
             name.setName("cat6");
@@ -177,7 +183,10 @@ public class ProductsApiTest {
     }
 
     @Test
-    public void addTwoTimesCategoryTest() throws ApiException {
+    public void addTwoTimesProductTest() throws ApiException {
+        System.out.println("AddTwoTimesProductTest");
+        System.out.println("------------------------");
+        System.out.println();
         try {
         	
         	Category name = new Category();

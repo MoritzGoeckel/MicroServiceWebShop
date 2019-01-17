@@ -28,13 +28,17 @@ import java.util.Map;
 /**
  * API tests for CategoriesApi
  */
-@Ignore
+//@Ignore
 public class CategoriesApiTest {
 
     private final CategoriesApi api = new CategoriesApi();
 
     @Test
     public void addAndDeleteCategoryTest() throws ApiException {
+    	System.out.println();
+    	System.out.println("AddAndDeleteCategoryTest");
+    	System.out.println("------------------------");
+    	System.out.println();
         try {
             Category name = new Category();
             name.setName("cat1");
@@ -62,6 +66,10 @@ public class CategoriesApiTest {
 
     @Test
     public void addAndQueryCategoryTest() throws ApiException {
+    	System.out.println();
+    	System.out.println("AddAndQueryCategoryTest");
+    	System.out.println("------------------------");
+    	System.out.println();
         try {
             Category name = new Category();
             name.setName("cat2");
@@ -132,6 +140,10 @@ public class CategoriesApiTest {
 
     @Test
     public void addTwoTimesCategoryTest() throws ApiException {
+    	System.out.println();
+    	System.out.println("AddTwoTimesCategoryTest");
+    	System.out.println("------------------------");
+    	System.out.println();
         try {
             Category name = new Category();
             name.setName("cat4");

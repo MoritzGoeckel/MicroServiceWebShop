@@ -1,9 +1,10 @@
 package de.hskarlsruhe.vslab.category_service;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Arrays;
-
+@Ignore
 public class CategoryServiceApplicationTests {
 
     private CategoryServiceClient client = new CategoryServiceClient();
