@@ -22,24 +22,25 @@ public class UserEndpoint {
 	@Autowired
 	private UserRepository repo;
 
+	
 	@Autowired
 	private RoleRepository repoRole;
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public ResponseEntity<Iterable<User>> getUsers(@RequestParam(name = "username", required = false) String username,
+	public ResponseEntity<Iterable<RepoUser>> getUsers(@RequestParam(name = "username", required = false) String username,
 			@RequestParam(name = "text", required = false) String text,
 			@RequestParam(name = "roleID", required = false) Long roleID) {
-		Iterable<User> usersDB = null;
+		Iterable<RepoUser> usersDB = null;
 		if (username != null && !username.isEmpty()) {
 			if (text != null && !text.isEmpty()) {
 				if (roleID != null) {
-					usersDB = repo.findAllByUsernameAndTextAndRoleID(username, text, roleID);
+					usersDB = repo.findAllByUsernameAndTextAndRole_Id(username, text, roleID);
 				} else {
 					usersDB = repo.findAllByUsernameAndText(username, text);
 				}
 			} else {
 				if (roleID != null) {
-					usersDB = repo.findAllByUsernameAndRoleID(username, roleID);
+					usersDB = repo.findAllByUsernameAndRole_Id(username, roleID);
 				} else {
 					usersDB = repo.findAllByUsername(username);
 				}
@@ -47,43 +48,48 @@ public class UserEndpoint {
 		} else {
 			if (text != null && !text.isEmpty()) {
 				if (roleID != null) {
-					usersDB = repo.findAllByTextAndRoleID(text, roleID);
+					usersDB = repo.findAllByTextAndRole_Id(text, roleID);
 				} else {
 					usersDB = repo.findAllByText(text);
 				}
 			} else {
 				if (roleID != null) {
-					usersDB = repo.findAllByRoleID(roleID);
+					usersDB = repo.findAllByRole_Id(roleID);
 				} else {
 					usersDB = repo.findAll();
 				}
 			}
 		}
-		return new ResponseEntity<Iterable<User>>(usersDB, HttpStatus.OK);
+		return new ResponseEntity<Iterable<RepoUser>>(usersDB, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
-	public ResponseEntity<User> getUser(@PathVariable(required = true, name = "id") long id) throws NotFoundException {
-		Optional<User> userDB = repo.findById(id);
+	public ResponseEntity<RepoUser> getUser(@PathVariable(required = true, name = "id") long id) throws NotFoundException {
+		Optional<RepoUser> userDB = repo.findById(id);
 		if (!userDB.isPresent()) {
 			throw new NotFoundException("Benutzer");
 		}
-		return new ResponseEntity<User>(userDB.get(), HttpStatus.OK);
+		return new ResponseEntity<RepoUser>(userDB.get(), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/users", method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<User> addUser(@RequestBody(required = true) User user) throws BadRequestException, ConflictException {
+	public ResponseEntity<RepoUser> addUser(@RequestBody(required = true) User user) throws BadRequestException, ConflictException {
 		checkPostBody(user);
 		if (repo.findAllByUsername(user.getUsername()).iterator().hasNext()) {
 			throw new ConflictException("Benutzer existiert bereits");
 		}
-		User userDB = repo.save(user);
-		return new ResponseEntity<User>(userDB, HttpStatus.OK);
+		Optional<Role> role = repoRole.findById(user.getRoleID());
+		if(!role.isPresent()) {
+			throw new ConflictException("Rolle existiert nicht");
+		}
+		RepoUser userDB = new RepoUser(user.getUsername(), user.getFirstName(), user.getLastName(), user.getPassword(), role.get());
+		userDB = repo.save(userDB);
+		return new ResponseEntity<RepoUser>(userDB, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> deleteUser(@PathVariable(required = true, name = "id") long id) throws NotFoundException {
-		Optional<User> userDB = repo.findById(id);
+		Optional<RepoUser> userDB = repo.findById(id);
 		if (!userDB.isPresent()) {
 			throw new NotFoundException("Benutzer");
 		}

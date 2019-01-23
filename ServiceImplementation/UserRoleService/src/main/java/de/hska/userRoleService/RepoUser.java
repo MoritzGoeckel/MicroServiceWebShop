@@ -1,31 +1,47 @@
 package de.hska.userRoleService;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-public class User {
+@Entity
+public class RepoUser {
 
+	@Id
+    @GeneratedValue
+    @Column(name="id")
 	private long id;
 	
+	@Column(name="username")
 	private String username;
 	
+	@Column(name="firstName")
 	private String firstName;
 	
+	@Column(name="lastName")
 	private String lastName;
 	
+	@Column(name="password")
 	private String password;
 	
-	private Long roleID;
+	@ManyToOne
+    @JoinColumn(name = "roleID")
+	private Role role;
 	
 	
-	public User() {
+	public RepoUser() {
 		
 	}
 	
-	public User(String username, String firstname, String lastname, String password, Long roleID) {
+	public RepoUser(String username, String firstname, String lastname, String password, Role role) {
 		this.username = username;
 		this.firstName = firstname;
 		this.lastName = lastname;
 		this.password = password;
-		this.roleID = roleID;
+		this.role = role;
 	}
 	
 	public long getId() {
@@ -64,12 +80,12 @@ public class User {
 		this.password = password;
 	}
 
-	public Long getRoleID() {
-		return this.roleID;
+	public Role getRole() {
+		return this.role;
 	}
 
-	public void setRoleID(Long roleID) {
-		this.roleID = roleID;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 	
 	

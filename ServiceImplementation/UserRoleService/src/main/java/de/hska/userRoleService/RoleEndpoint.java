@@ -77,7 +77,7 @@ public class RoleEndpoint {
 		if (!roleDB.isPresent()) {
 			throw new NotFoundException("Rolle");
 		}
-		Iterable<User> users = repoUser.findAllByRoleID(id);
+		Iterable<RepoUser> users = repoUser.findAllByRole_Id(id);
 		if (users.iterator().hasNext()) {
 			throw new ConflictException("Rolle ist noch einem Benutzer zugewiesen");
 		}

@@ -190,8 +190,8 @@ public class UserRoleServiceApplicationTests {
 		ResponseEntity<Role> responseAdd = rest.postForEntity(HOST + ROLERESOURCE, role, Role.class);
 		Role roleRest = responseAdd.getBody();
 
-		User user = new User("User", "John", "Doe", "1234", roleRest.getId());
-		User userRest = rest.postForEntity(HOST + USERRESOURCE, user, User.class).getBody();
+		RepoUser user = new RepoUser("User", "John", "Doe", "1234", roleRest);
+		RepoUser userRest = rest.postForEntity(HOST + USERRESOURCE, user, RepoUser.class).getBody();
 
 		HttpEntity<Void> request = new HttpEntity<>(null, null);
 		try {
@@ -217,10 +217,11 @@ public class UserRoleServiceApplicationTests {
 		ResponseEntity<Role> responseAdd = rest.postForEntity(HOST + ROLERESOURCE, role, Role.class);
 		Role roleRest = responseAdd.getBody();
 
-		User user = new User("User", "John", "Doe", "1234", roleRest.getId());
-		ResponseEntity<User> response = rest.postForEntity(HOST + USERRESOURCE, user, User.class);
+		User userPost = new User("User", "John", "Doe", "1234", roleRest.getId());
+		RepoUser user = new RepoUser("User", "John", "Doe", "1234", roleRest);
+		ResponseEntity<RepoUser> response = rest.postForEntity(HOST + USERRESOURCE, userPost, RepoUser.class);
 
-		User userRest = response.getBody();
+		RepoUser userRest = response.getBody();
 		checkUser(user, userRest);
 
 		rest.delete(HOST + USERRESOURCE + "/" + userRest.getId());
@@ -234,10 +235,10 @@ public class UserRoleServiceApplicationTests {
 		ResponseEntity<Role> responseAdd = rest.postForEntity(HOST + ROLERESOURCE, role, Role.class);
 		Role roleRest = responseAdd.getBody();
 
-		User user = new User("User", "John", "Doe", "1234", roleRest.getId());
-		User userRest = rest.postForEntity(HOST + USERRESOURCE, user, User.class).getBody();
+		User userPost = new User("User", "John", "Doe", "1234", roleRest.getId());
+		RepoUser userRest = rest.postForEntity(HOST + USERRESOURCE, userPost, RepoUser.class).getBody();
 		try {
-			rest.postForEntity(HOST + USERRESOURCE, user, User.class);
+			rest.postForEntity(HOST + USERRESOURCE, userPost, RepoUser.class);
 		} catch (HttpClientErrorException e) {
 			HttpStatus code = e.getStatusCode();
 			String message = e.getResponseBodyAsString();
@@ -261,23 +262,30 @@ public class UserRoleServiceApplicationTests {
 		ResponseEntity<Role> responseAdd2 = rest.postForEntity(HOST + ROLERESOURCE, role2, Role.class);
 		Role roleRest1 = responseAdd1.getBody();
 		Role roleRest2 = responseAdd2.getBody();
+		
+		List<User> usersPost = new ArrayList<>();
+		usersPost.add(new User("User", "John", "Doe", "1234", roleRest1.getId()));
+		usersPost.add(new User("User2", "Johnny", "Doe", "1234", roleRest1.getId()));
+		usersPost.add(new User("User3", "John", "Doey", "1234", roleRest1.getId()));
+		usersPost.add(new User("User4", "John", "Doe", "12345", roleRest1.getId()));
+		usersPost.add(new User("User5", "John", "Doe", "1234", roleRest2.getId()));
 
-		List<User> users = new ArrayList<>();
-		users.add(new User("User", "John", "Doe", "1234", roleRest1.getId()));
-		users.add(new User("User2", "Johnny", "Doe", "1234", roleRest1.getId()));
-		users.add(new User("User3", "John", "Doey", "1234", roleRest1.getId()));
-		users.add(new User("User4", "John", "Doe", "12345", roleRest1.getId()));
-		users.add(new User("User5", "John", "Doe", "1234", roleRest2.getId()));
+		List<RepoUser> users = new ArrayList<>();
+		users.add(new RepoUser("User", "John", "Doe", "1234", roleRest1));
+		users.add(new RepoUser("User2", "Johnny", "Doe", "1234", roleRest1));
+		users.add(new RepoUser("User3", "John", "Doey", "1234", roleRest1));
+		users.add(new RepoUser("User4", "John", "Doe", "12345", roleRest1));
+		users.add(new RepoUser("User5", "John", "Doe", "1234", roleRest2));
 
-		List<User> usersRest = new ArrayList<>();
+		List<RepoUser> usersRest = new ArrayList<>();
 
 		for (int i = 0; i < users.size(); i++) {
-			usersRest.add(rest.postForEntity(HOST + USERRESOURCE, users.get(i), User.class).getBody());
+			usersRest.add(rest.postForEntity(HOST + USERRESOURCE, usersPost.get(i), RepoUser.class).getBody());
 		}
 
-		ResponseEntity<User[]> response = rest.getForEntity(HOST + USERRESOURCE, User[].class);
+		ResponseEntity<RepoUser[]> response = rest.getForEntity(HOST + USERRESOURCE, RepoUser[].class);
 
-		List<User> usersRestGet = Arrays.asList(response.getBody());
+		List<RepoUser> usersRestGet = Arrays.asList(response.getBody());
 		checkUsers(users, usersRestGet);
 
 		for (int i = 0; i < usersRest.size(); i++) {
@@ -295,23 +303,29 @@ public class UserRoleServiceApplicationTests {
 		ResponseEntity<Role> responseAdd = rest.postForEntity(HOST + ROLERESOURCE, role, Role.class);
 		Role roleRest = responseAdd.getBody();
 
-		List<User> users = new ArrayList<>();
-		users.add(new User("User1", "John", "Doe", "1234", roleRest.getId()));
-		users.add(new User("User2", "Johnny", "Doe", "1234", roleRest.getId()));
-		users.add(new User("User3", "John", "Doey", "1234", roleRest.getId()));
-		users.add(new User("User4", "John", "Doe", "12345", roleRest.getId()));
+		List<User> usersPost = new ArrayList<>();
+		usersPost.add(new User("User1", "John", "Doe", "1234", roleRest.getId()));
+		usersPost.add(new User("User2", "Johnny", "Doe", "1234", roleRest.getId()));
+		usersPost.add(new User("User3", "John", "Doey", "1234", roleRest.getId()));
+		usersPost.add(new User("User4", "John", "Doe", "12345", roleRest.getId()));
+		
+		List<RepoUser> users = new ArrayList<>();
+		users.add(new RepoUser("User1", "John", "Doe", "1234", roleRest));
+		users.add(new RepoUser("User2", "Johnny", "Doe", "1234", roleRest));
+		users.add(new RepoUser("User3", "John", "Doey", "1234", roleRest));
+		users.add(new RepoUser("User4", "John", "Doe", "12345", roleRest));
 
-		List<User> usersRest = new ArrayList<>();
+		List<RepoUser> usersRest = new ArrayList<>();
 
 		for (int i = 0; i < users.size(); i++) {
-			usersRest.add(rest.postForEntity(HOST + USERRESOURCE, users.get(i), User.class).getBody());
+			usersRest.add(rest.postForEntity(HOST + USERRESOURCE, usersPost.get(i), RepoUser.class).getBody());
 		}
 
 		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(HOST + USERRESOURCE);
 		builder.queryParam("username", "User1");
-		ResponseEntity<User[]> response = rest.getForEntity(builder.toUriString(), User[].class);
+		ResponseEntity<RepoUser[]> response = rest.getForEntity(builder.toUriString(), RepoUser[].class);
 
-		List<User> usersRestGet = Arrays.asList(response.getBody());
+		List<RepoUser> usersRestGet = Arrays.asList(response.getBody());
 		Assert.assertEquals(1, usersRestGet.size());
 		checkUser(users.get(0), usersRestGet.get(0));
 
@@ -329,23 +343,30 @@ public class UserRoleServiceApplicationTests {
 		ResponseEntity<Role> responseAdd = rest.postForEntity(HOST + ROLERESOURCE, role, Role.class);
 		Role roleRest = responseAdd.getBody();
 
-		List<User> users = new ArrayList<>();
-		users.add(new User("User1", "John", "Doe", "1234", roleRest.getId()));
-		users.add(new User("User2", "Johnny", "Doe", "1234", roleRest.getId()));
-		users.add(new User("User3", "Jo", "Doey", "1234", roleRest.getId()));
-		users.add(new User("User4", "Johnathan", "Doe", "12345", roleRest.getId()));
+		List<User> usersPost = new ArrayList<>();
+		usersPost.add(new User("User1", "John", "Doe", "1234", roleRest.getId()));
+		usersPost.add(new User("User2", "Johnny", "Doe", "1234", roleRest.getId()));
+		usersPost.add(new User("User3", "Jo", "Doey", "1234", roleRest.getId()));
+		usersPost.add(new User("User4", "Johnathan", "Doe", "12345", roleRest.getId()));
+		
+		List<RepoUser> users = new ArrayList<>();
+		users.add(new RepoUser("User1", "John", "Doe", "1234", roleRest));
+		users.add(new RepoUser("User2", "Johnny", "Doe", "1234", roleRest));
+		users.add(new RepoUser("User3", "Jo", "Doey", "1234", roleRest));
+		users.add(new RepoUser("User4", "Johnathan", "Doe", "12345", roleRest));
+		
 
-		List<User> usersRest = new ArrayList<>();
+		List<RepoUser> usersRest = new ArrayList<>();
 
 		for (int i = 0; i < users.size(); i++) {
-			usersRest.add(rest.postForEntity(HOST + USERRESOURCE, users.get(i), User.class).getBody());
+			usersRest.add(rest.postForEntity(HOST + USERRESOURCE, usersPost.get(i), RepoUser.class).getBody());
 		}
 
 		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(HOST + USERRESOURCE);
 		builder.queryParam("text", "John");
-		ResponseEntity<User[]> response = rest.getForEntity(builder.toUriString(), User[].class);
+		ResponseEntity<RepoUser[]> response = rest.getForEntity(builder.toUriString(), RepoUser[].class);
 
-		List<User> usersRestGet = Arrays.asList(response.getBody());
+		List<RepoUser> usersRestGet = Arrays.asList(response.getBody());
 		Assert.assertEquals(1, usersRestGet.size());
 		checkUser(users.get(0), usersRestGet.get(0));
 
@@ -362,14 +383,15 @@ public class UserRoleServiceApplicationTests {
 		Role role = new Role("Admin", 1);
 		ResponseEntity<Role> responseAddRole = rest.postForEntity(HOST + ROLERESOURCE, role, Role.class);
 		Role roleRest = responseAddRole.getBody();
+		
+		User userPost = new User("User1", "John", "Doe", "1234", roleRest.getId());
+		RepoUser user = new RepoUser("User1", "John", "Doe", "1234", roleRest);
+		ResponseEntity<RepoUser> responseAddUser = rest.postForEntity(HOST + USERRESOURCE, userPost, RepoUser.class);
+		RepoUser userApi = responseAddUser.getBody();
 
-		User user = new User("User1", "John", "Doe", "1234", roleRest.getId());
-		ResponseEntity<User> responseAddUser = rest.postForEntity(HOST + USERRESOURCE, user, User.class);
-		User userApi = responseAddUser.getBody();
+		ResponseEntity<RepoUser> response = rest.getForEntity(HOST + USERRESOURCE + "/" + userApi.getId(), RepoUser.class);
 
-		ResponseEntity<User> response = rest.getForEntity(HOST + USERRESOURCE + "/" + userApi.getId(), User.class);
-
-		User userRest = response.getBody();
+		RepoUser userRest = response.getBody();
 		checkUser(user, userRest);
 
 		rest.delete(HOST + USERRESOURCE + "/" + userRest.getId());
@@ -383,15 +405,15 @@ public class UserRoleServiceApplicationTests {
 		ResponseEntity<Role> responseAddRole = rest.postForEntity(HOST + ROLERESOURCE, role, Role.class);
 		Role roleRest = responseAddRole.getBody();
 
-		User user = new User("User1", "John", "Doe", "1234", roleRest.getId());
-		ResponseEntity<User> responseAddUser = rest.postForEntity(HOST + USERRESOURCE, user, User.class);
-		User userApi = responseAddUser.getBody();
+		User userPost = new User("User1", "John", "Doe", "1234", roleRest.getId());
+		ResponseEntity<RepoUser> responseAddUser = rest.postForEntity(HOST + USERRESOURCE, userPost, RepoUser.class);
+		RepoUser userApi = responseAddUser.getBody();
 
 		HttpEntity<Void> request = new HttpEntity<>(null, null);
 		rest.exchange(HOST + USERRESOURCE + "/" + userApi.getId(), HttpMethod.DELETE, request, Void.class);
 
 		try {
-			rest.getForEntity(HOST + USERRESOURCE + "/" + userApi.getId(), User.class);
+			rest.getForEntity(HOST + USERRESOURCE + "/" + userApi.getId(), RepoUser.class);
 		} catch (HttpClientErrorException e) {
 			HttpStatus code = e.getStatusCode();
 			String message = e.getResponseBodyAsString();
@@ -422,7 +444,7 @@ public class UserRoleServiceApplicationTests {
 		}
 	}
 
-	private void checkUser(User expected, User actual) {
+	private void checkUser(RepoUser expected, RepoUser actual) {
 		if ((expected != null && actual == null) || (expected == null && actual != null)) {
 			fail();
 		} else if (expected != null && actual != null) {
@@ -431,11 +453,13 @@ public class UserRoleServiceApplicationTests {
 			Assert.assertEquals(expected.getFirstName(), actual.getFirstName());
 			Assert.assertEquals(expected.getLastName(), actual.getLastName());
 			Assert.assertEquals(expected.getPassword(), actual.getPassword());
-			Assert.assertEquals(expected.getRoleID(), actual.getRoleID());
+			Assert.assertEquals(expected.getRole().getId(), actual.getRole().getId());
+			Assert.assertEquals(expected.getRole().getTyp(), actual.getRole().getTyp());
+			Assert.assertEquals(expected.getRole().getLevel(), actual.getRole().getLevel());
 		}
 	}
 
-	private void checkUsers(List<User> expected, List<User> actual) {
+	private void checkUsers(List<RepoUser> expected, List<RepoUser> actual) {
 		Assert.assertEquals(expected.size(), actual.size());
 		for (int i = 0; i < expected.size(); i++) {
 			checkUser(expected.get(i), actual.get(i));
