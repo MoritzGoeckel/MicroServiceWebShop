@@ -1,0 +1,15 @@
+cd ./APIService/
+dir
+sh build_docker
+cd ../CategoryService/
+sh build_docker
+cd ../DiscoveryService/
+sh build_docker
+cd ../EdgeService/
+sh build_docker
+cd ../ProductService/
+sh build_docker
+cd ../SanityService/
+sh build_docker
+cd ../UserRoleService/
+sh build_docker

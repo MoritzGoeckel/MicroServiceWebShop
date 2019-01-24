@@ -1,0 +1,4 @@
+ 
+sudo docker build -t frontend:latest .
+
+sudo docker run -i --rm --name frontendContainer -p 4200:8080 frontend:latest
