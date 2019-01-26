@@ -38,7 +38,7 @@ public class User {
   @SerializedName("password")
   private String password = null;
 
-  @SerializedName("roleID")
+  @SerializedName("role")
   private Role role = null;
 
   public User id(Long id) {
@@ -183,7 +183,7 @@ public class User {
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    roleID: ").append(toIndentedString(role)).append("\n");
+    sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("}");
     return sb.toString();
   }

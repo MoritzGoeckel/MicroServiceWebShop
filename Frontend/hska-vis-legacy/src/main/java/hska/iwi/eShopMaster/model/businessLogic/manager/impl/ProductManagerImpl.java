@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hska.iwi.eShopMaster.model.businessLogic.manager.ProductManager;
+import hska.microServiceWebShop.ApiClient;
 import hska.microServiceWebShop.ApiException;
+import hska.microServiceWebShop.api.CategoriesApi;
 import hska.microServiceWebShop.api.ProductsApi;
 import hska.microServiceWebShop.models.Product;
 import hska.microServiceWebShop.models.ProductBackend;
@@ -15,7 +17,9 @@ public class ProductManagerImpl implements ProductManager {
 	ProductsApi apiInstance;
 	
 	public ProductManagerImpl() {
-		apiInstance = new ProductsApi();
+		ApiClient apiClient = new ApiClient();
+		apiClient.setBasePath("http://localhost:8091/api/");
+		apiInstance = new ProductsApi(apiClient);
 	}
 
 	public List<Product> getProducts() {

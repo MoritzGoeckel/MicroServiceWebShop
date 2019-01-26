@@ -4,6 +4,7 @@ package hska.iwi.eShopMaster.model.businessLogic.manager.impl;
 import java.util.List;
 
 import hska.iwi.eShopMaster.model.businessLogic.manager.UserManager;
+import hska.microServiceWebShop.ApiClient;
 import hska.microServiceWebShop.ApiException;
 import hska.microServiceWebShop.api.UserRoleApi;
 import hska.microServiceWebShop.models.Role;
@@ -18,7 +19,9 @@ public class UserManagerImpl implements UserManager {
 	UserRoleApi apiInstance;
 	
 	public UserManagerImpl() {
-		apiInstance = new UserRoleApi();
+		ApiClient apiClient = new ApiClient();
+		apiClient.setBasePath("http://localhost:8091/api/");
+		apiInstance = new UserRoleApi(apiClient);
 	}
 
 	
@@ -74,8 +77,11 @@ public class UserManagerImpl implements UserManager {
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.err.println("ERROR MSG: " + e.getMessage());
+			System.err.println("ERROR Res Body: " + e.getResponseBody());
 		}
 		if(roles == null || roles.isEmpty()) {
+			System.err.println("Aufruf gleich NULL!!!!!!!!!!!!!");
 			return null;
 		}
 		return roles.get(0);

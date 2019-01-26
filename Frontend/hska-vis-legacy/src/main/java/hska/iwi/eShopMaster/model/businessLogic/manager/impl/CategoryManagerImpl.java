@@ -4,13 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hska.iwi.eShopMaster.model.businessLogic.manager.CategoryManager;
+import hska.microServiceWebShop.ApiClient;
 import hska.microServiceWebShop.ApiException;
 import hska.microServiceWebShop.api.CategoriesApi;
+import hska.microServiceWebShop.api.UserRoleApi;
 import hska.microServiceWebShop.models.Category;
 
 public class CategoryManagerImpl implements CategoryManager{
 
-	CategoriesApi apiInstance = new CategoriesApi();
+	CategoriesApi apiInstance;
+	
+	public CategoryManagerImpl() {
+		ApiClient apiClient = new ApiClient();
+		apiClient.setBasePath("http://localhost:8091/api/");
+		apiInstance = new CategoriesApi(apiClient);
+	}
 	
 	public List<Category> getCategories() {
 		List<Category> all = null;

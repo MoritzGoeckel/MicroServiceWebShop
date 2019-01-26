@@ -27,16 +27,21 @@ public class LoginAction extends ActionSupport {
 
 		// Return string:
 		String result = "input";
+		
+		System.err.println("Hallo");
 
 		UserManager myCManager = new UserManagerImpl();
 		
 		// Get user from DB:
 		User user = myCManager.getUserByUsername(getUsername());
 
+		System.err.println("Username: " + user.toString());
+		
 		// Does user exist?
 		if (user != null) {
 			// Is the password correct?
 			if (user.getPassword().equals(getPassword())) {
+				System.err.println("Passwort: " + user.getPassword() + " " + getPassword());
 				// Get session to save user role and login:
 				Map<String, Object> session = ActionContext.getContext().getSession();
 				
@@ -46,6 +51,7 @@ public class LoginAction extends ActionSupport {
 				firstname= user.getFirstName();
 				lastname = user.getLastName();
 				role = user.getRole().getTyp();
+				System.err.println("Läuft immernoch");
 				result = "success";
 			}
 			else {
