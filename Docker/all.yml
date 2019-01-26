@@ -40,4 +40,4 @@ services:
     image: frontend:latest
     network_mode: host
     ports:
-      - "4200:8080"
+      - "4200:4200"
