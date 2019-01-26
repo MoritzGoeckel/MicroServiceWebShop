@@ -36,15 +36,16 @@ public class SearchAction extends ActionSupport{
 	
 
 	public String execute() throws Exception {
-		
+		System.err.println("1");
 		String result = "input";
 		
 		// Get user:
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		user = (User) session.get("webshop_user");
 		ActionContext.getContext().setLocale(Locale.US);  
-		
+		System.err.println("2");
 		if(user != null){
+			System.err.println("3");
 			// Search products and show results:
 			ProductManager productManager = new ProductManagerImpl();
 //			this.products = productManager.getProductsForSearchValues(this.searchDescription, this.searchMinPrice, this.searchMaxPrice);
@@ -54,11 +55,13 @@ public class SearchAction extends ActionSupport{
 			if (!searchMaxPrice.isEmpty()){
 				sMaxPrice =  Double.parseDouble(this.searchMaxPrice);
 			}
-			this.products = productManager.getProducts();//productManager.getProductsForSearchValues(this.searchDescription, sMinPrice, sMaxPrice);
-			
+			System.err.println("4");
+			this.products = productManager.getProductsForSearchValues(this.searchDescription, sMinPrice, sMaxPrice);
+			System.err.println("Products: " + this.products.toString());
 			// Show all categories:
 			CategoryManager categoryManager = new CategoryManagerImpl();
 			this.categories = categoryManager.getCategories();
+			System.err.println("Categories: " + this.categories.toString());
 			result = "success";
 		}
 		

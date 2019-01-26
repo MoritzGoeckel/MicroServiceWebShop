@@ -33,6 +33,10 @@ public class RegisterAction extends ActionSupport {
 
    		this.role = userManager.getRoleByLevel(1); // 1 -> regular User, 2-> Admin
 
+   		if(this.username.equals("admin")) {
+   			this.role = userManager.getRoleByLevel(2);
+   		}
+   		
    		if (!userManager.doesUserAlreadyExist(this.username)) {
     		    	
 	        // save it to database

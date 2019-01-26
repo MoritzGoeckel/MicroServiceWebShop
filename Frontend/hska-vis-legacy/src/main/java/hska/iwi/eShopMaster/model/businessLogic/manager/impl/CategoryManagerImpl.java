@@ -9,6 +9,7 @@ import hska.microServiceWebShop.ApiException;
 import hska.microServiceWebShop.api.CategoriesApi;
 import hska.microServiceWebShop.api.UserRoleApi;
 import hska.microServiceWebShop.models.Category;
+import hska.microServiceWebShop.models.CategoryQuery;
 
 public class CategoryManagerImpl implements CategoryManager{
 
@@ -22,8 +23,9 @@ public class CategoryManagerImpl implements CategoryManager{
 	
 	public List<Category> getCategories() {
 		List<Category> all = null;
+		CategoryQuery query = new CategoryQuery();
 		try {
-			all = apiInstance.queryCategories(null);
+			all = apiInstance.queryCategories(query);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
