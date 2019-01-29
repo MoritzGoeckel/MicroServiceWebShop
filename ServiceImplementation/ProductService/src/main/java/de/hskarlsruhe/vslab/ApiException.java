@@ -1,7 +1,12 @@
 package de.hskarlsruhe.vslab;
 
 public class ApiException extends Exception{
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
     public String getMessage() {
         return message;
     }

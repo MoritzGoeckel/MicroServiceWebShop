@@ -30,7 +30,7 @@ public class CategoryServiceClient {
         HttpHeaders headers = new HttpHeaders();
         headers.set("query", query);
 
-        ResponseEntity<Category[]> response = restTemplate.exchange(baseUrl + "categories", HttpMethod.GET, new HttpEntity(headers), Category[].class);
+        ResponseEntity<Category[]> response = restTemplate.exchange(baseUrl + "categories", HttpMethod.GET, new HttpEntity<String>(headers), Category[].class);
 
         handle(response);
 
@@ -47,13 +47,13 @@ public class CategoryServiceClient {
     }
 
     public void deleteCategoryById(int id) throws ApiException {
-        ResponseEntity<Category> response = restTemplate.exchange(baseUrl + "categories/" + id, HttpMethod.DELETE, new HttpEntity(new HttpHeaders()), Category.class);
+        ResponseEntity<Category> response = restTemplate.exchange(baseUrl + "categories/" + id, HttpMethod.DELETE, new HttpEntity<String>(new HttpHeaders()), Category.class);
         handle(response);
 
         //restTemplate.delete(baseUrl + "categories/" + id);
     }
 
-    private void handle(ResponseEntity response) throws ApiException {
+    private void handle(ResponseEntity<?> response) throws ApiException {
         if(response.getStatusCode() != HttpStatus.OK)
             throw new ApiException(response.getStatusCode().value(), response.getStatusCode().getReasonPhrase());
     }

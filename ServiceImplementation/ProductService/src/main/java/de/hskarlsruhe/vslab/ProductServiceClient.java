@@ -40,7 +40,7 @@ public class ProductServiceClient {
         HttpHeaders headers = new HttpHeaders();
         headers.set("query", query);
 
-        ResponseEntity<Product[]> response = restTemplate.exchange(baseUrl + "products", HttpMethod.GET, new HttpEntity(headers), Product[].class);
+        ResponseEntity<Product[]> response = restTemplate.exchange(baseUrl + "products", HttpMethod.GET, new HttpEntity<String>(headers), Product[].class);
 
         handle(response);
 
@@ -56,12 +56,12 @@ public class ProductServiceClient {
     }
 
     public void deleteProductById(int id) throws ApiException {
-        ResponseEntity<Product> response = restTemplate.exchange(baseUrl + "products/" + id, HttpMethod.DELETE, new HttpEntity(new HttpHeaders()), Product.class);
+        ResponseEntity<Product> response = restTemplate.exchange(baseUrl + "products/" + id, HttpMethod.DELETE, new HttpEntity<String>(new HttpHeaders()), Product.class);
         handle(response);
 
     }
 
-    private void handle(ResponseEntity response) throws ApiException {
+    private void handle(ResponseEntity<?> response) throws ApiException {
         if(response.getStatusCode() != HttpStatus.OK)
             throw new ApiException(response.getStatusCode().value(), response.getStatusCode().getReasonPhrase());
     }

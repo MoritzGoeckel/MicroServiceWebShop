@@ -27,7 +27,7 @@ public class ProductServiceApplicationTests {
 
 		Product p1 = new Product("testClient1",1.0,1L,"test run1");
 		Gson gson = new Gson();
-		String json = gson.toJson(p1);
+		//String json = gson.toJson(p1);
 		JsonElement jsonElement = gson.toJsonTree(p1, Product.class);
 		String element = jsonElement.toString();
 		Product product = client.postProduct(element);
@@ -35,7 +35,7 @@ public class ProductServiceApplicationTests {
 
 
 
-		Product p2 = new Product("testClient2",2.0,2L,"test run2");
+		//Product p2 = new Product("testClient2",2.0,2L,"test run2");
 		//json = gson.toJson(p2);
 
 		Product[] products = client.getProducts();
