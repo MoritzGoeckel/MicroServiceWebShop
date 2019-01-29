@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,7 +21,7 @@ public class CategoryServiceClient {
 	private String baseUrl;
 
 	@Autowired
-	private RestTemplate restTemplate;
+	private OAuth2RestTemplate restTemplate;
 
 	public CategoryServiceClient() {
 		this.baseUrl = "http://" + "category-service" + "/" + "categories";

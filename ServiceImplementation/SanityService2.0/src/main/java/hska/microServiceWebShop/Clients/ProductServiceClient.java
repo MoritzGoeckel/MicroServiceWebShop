@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.*;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,14 +22,8 @@ public class ProductServiceClient {
 
     private String baseUrl;
 
-    @LoadBalanced
-    @Bean
-    RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-
     @Autowired
-    private RestTemplate restTemplate;
+    private OAuth2RestTemplate restTemplate;
 
     public ProductServiceClient(){ this.baseUrl = "http://" + "productservice" + "/";}
 
