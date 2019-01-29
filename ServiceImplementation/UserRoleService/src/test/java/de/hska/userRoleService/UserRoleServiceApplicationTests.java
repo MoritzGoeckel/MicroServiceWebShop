@@ -19,6 +19,10 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import de.hska.userRoleService.model.RepoUser;
+import de.hska.userRoleService.model.Role;
+import de.hska.userRoleService.model.User;
+
 @Ignore
 @RunWith(SpringRunner.class)
 public class UserRoleServiceApplicationTests {

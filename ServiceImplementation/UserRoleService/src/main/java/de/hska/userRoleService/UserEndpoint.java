@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import de.hska.userRoleService.exception.BadRequestException;
 import de.hska.userRoleService.exception.ConflictException;
 import de.hska.userRoleService.exception.NotFoundException;
+import de.hska.userRoleService.model.RepoUser;
+import de.hska.userRoleService.model.Role;
+import de.hska.userRoleService.model.User;
 
 @RestController
 public class UserEndpoint {

@@ -1,4 +1,4 @@
-package de.hska.userRoleService;
+package de.hska.userRoleService.model;
 
 
 public class ErrorMessage {

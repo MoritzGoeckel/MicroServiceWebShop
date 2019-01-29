@@ -10,6 +10,7 @@ import de.hska.userRoleService.exception.BadRequestException;
 import de.hska.userRoleService.exception.ConflictException;
 import de.hska.userRoleService.exception.NotFoundException;
 import de.hska.userRoleService.exception.UnsupportedMediaTypeException;
+import de.hska.userRoleService.model.ErrorMessage;
 
 @ControllerAdvice
 public class UserRoleServiceExceptionHandler {

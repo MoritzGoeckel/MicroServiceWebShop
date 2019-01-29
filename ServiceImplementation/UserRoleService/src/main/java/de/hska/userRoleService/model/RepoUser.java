@@ -1,4 +1,4 @@
-package de.hska.userRoleService;
+package de.hska.userRoleService.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
