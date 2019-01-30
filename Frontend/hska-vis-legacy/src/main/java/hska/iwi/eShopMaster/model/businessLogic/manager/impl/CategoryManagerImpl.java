@@ -1,31 +1,29 @@
 package hska.iwi.eShopMaster.model.businessLogic.manager.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import hska.iwi.eShopMaster.Clients.ApiException;
+import hska.iwi.eShopMaster.Clients.CategoryServiceClient;
 import hska.iwi.eShopMaster.model.businessLogic.manager.CategoryManager;
-import hska.microServiceWebShop.ApiClient;
-import hska.microServiceWebShop.ApiException;
-import hska.microServiceWebShop.api.CategoriesApi;
-import hska.microServiceWebShop.api.UserRoleApi;
-import hska.microServiceWebShop.models.Category;
-import hska.microServiceWebShop.models.CategoryQuery;
+import hska.iwi.eShopMaster.model.businessLogic.manager.OAuth2RestManager;
+import hska.iwi.eShopMaster.models.Category;
+import hska.iwi.eShopMaster.models.CategoryQuery;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CategoryManagerImpl implements CategoryManager{
 
-	CategoriesApi apiInstance;
+	private CategoryServiceClient apiInstance;
 	
 	public CategoryManagerImpl() {
-		ApiClient apiClient = new ApiClient();
-		apiClient.setBasePath("http://localhost:8091/api/");
-		apiInstance = new CategoriesApi(apiClient);
+		apiInstance = new CategoryServiceClient(OAuth2RestManager.getInstance());
 	}
 	
 	public List<Category> getCategories() {
 		List<Category> all = null;
 		CategoryQuery query = new CategoryQuery();
 		try {
-			all = apiInstance.queryCategories(query);
+			all = Arrays.asList(apiInstance.getCategories(query.getText()));
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -37,7 +35,7 @@ public class CategoryManagerImpl implements CategoryManager{
 	public Category getCategory(int id) {
 		Category cat = null;
 		try {
-			cat = apiInstance.getCategory((long)id);
+			cat = apiInstance.getCategoryById(id);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,10 +44,8 @@ public class CategoryManagerImpl implements CategoryManager{
 	}
 
 	public void addCategory(String name) {
-		Category category = new Category();
-		category.setName(name);
 		try {
-			apiInstance.addCategory(category);
+			apiInstance.postCategory(name);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,7 +55,7 @@ public class CategoryManagerImpl implements CategoryManager{
 
 	public void delCategoryById(int id) {
 		try {
-			apiInstance.deleteCategory((long)id);
+			apiInstance.deleteCategoryById(id);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

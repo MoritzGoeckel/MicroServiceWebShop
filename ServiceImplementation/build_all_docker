@@ -1,6 +1,4 @@
-cd ./APIService/
-dir
-sh build_docker
+cd ./APIService
 cd ../CategoryService/
 sh build_docker
 cd ../DiscoveryService/
@@ -9,7 +7,9 @@ cd ../EdgeService/
 sh build_docker
 cd ../ProductService/
 sh build_docker
-cd ../SanityService/
+cd ../SanityService2.0/
 sh build_docker
 cd ../UserRoleService/
+sh build_docker
+cd ../OAuth2/
 sh build_docker

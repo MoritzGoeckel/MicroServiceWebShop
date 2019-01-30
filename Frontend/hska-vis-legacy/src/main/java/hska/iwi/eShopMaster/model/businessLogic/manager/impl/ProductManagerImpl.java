@@ -1,58 +1,50 @@
 package hska.iwi.eShopMaster.model.businessLogic.manager.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import hska.iwi.eShopMaster.Clients.ApiException;
+import hska.iwi.eShopMaster.Clients.ProductServiceClient;
+import hska.iwi.eShopMaster.model.businessLogic.manager.OAuth2RestManager;
 import hska.iwi.eShopMaster.model.businessLogic.manager.ProductManager;
-import hska.microServiceWebShop.ApiClient;
-import hska.microServiceWebShop.ApiException;
-import hska.microServiceWebShop.api.CategoriesApi;
-import hska.microServiceWebShop.api.ProductsApi;
-import hska.microServiceWebShop.models.Product;
-import hska.microServiceWebShop.models.ProductBackend;
-import hska.microServiceWebShop.models.ProductQuery;
+import hska.iwi.eShopMaster.models.ProductBackend;
 
 public class ProductManagerImpl implements ProductManager {
 
-	ProductsApi apiInstance;
+	private ProductServiceClient apiInstance;
 	
 	public ProductManagerImpl() {
-		ApiClient apiClient = new ApiClient();
-		apiClient.setBasePath("http://localhost:8091/api/");
-		apiInstance = new ProductsApi(apiClient);
+		apiInstance = new ProductServiceClient(OAuth2RestManager.getInstance());
 	}
 
-	public List<Product> getProducts() {
-		List<Product> all = null;
+	public List<ProductBackend> getProducts() {
+		List<ProductBackend> all = null;
 		try {
-			all = apiInstance.queryProducts(null);
+			all = Arrays.asList(apiInstance.getProducts());
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			all = new ArrayList<Product>();
+			all = new ArrayList<ProductBackend>();
 		}
 		return all;
 	}
 	
-	public List<Product> getProductsForSearchValues(String searchValue, Double searchMinPrice, Double searchMaxPrice) {
-		List<Product> all = null;
-		ProductQuery query = new ProductQuery();
-		query.setText(searchValue);
-		query.setPriceMax(searchMaxPrice);
-		query.setPriceMin(searchMinPrice);
+	public List<ProductBackend> getProductsForSearchValues(String searchValue, Double searchMinPrice, Double searchMaxPrice, Long categroyId) {
+		List<ProductBackend> all = null;
 		try {
-			all = apiInstance.queryProducts(query);
+			all = Arrays.asList(apiInstance.getProducts(searchValue, searchMinPrice, searchMaxPrice, categroyId));
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			all = new ArrayList<Product>();
+			all = new ArrayList<ProductBackend>();
 		}
 		return all;
 	}
 
-	public Product getProductById(int id) {
+	public ProductBackend getProductById(int id) {
 		try {
-			return apiInstance.getProduct((long)id);
+			return apiInstance.getProductById(id);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,14 +53,8 @@ public class ProductManagerImpl implements ProductManager {
 	}
 	
 	public long addProduct(String name, double price, int categoryId, String details) {
-		ProductBackend product = new ProductBackend();
-		product.setCategory((long)categoryId);
-		product.setName(name);
-		product.setPrice(price);
-		product.setDetails(details);
-		
 		try {
-			return apiInstance.addProduct(product).getId();
+			return apiInstance.postProduct(name, price, (long) categoryId, details).getId();
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -80,7 +66,7 @@ public class ProductManagerImpl implements ProductManager {
 
 	public void deleteProductById(int id) {
 		try {
-			apiInstance.deleteProduct((long)id);
+			apiInstance.deleteProductById(id);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -90,6 +76,5 @@ public class ProductManagerImpl implements ProductManager {
 	public boolean deleteProductsByCategoryId(int categoryId) {
 		return false;
 	}
-
 
 }

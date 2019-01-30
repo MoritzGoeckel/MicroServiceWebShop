@@ -2,8 +2,7 @@ package hska.iwi.eShopMaster.model.businessLogic.manager;
 
 import java.util.List;
 
-import hska.microServiceWebShop.models.Category;
-
+import hska.iwi.eShopMaster.models.Category;
 
 public interface CategoryManager {
 

@@ -1,7 +1,7 @@
 package hska.iwi.eShopMaster.model.businessLogic.manager;
 
-import hska.microServiceWebShop.models.Role;
-import hska.microServiceWebShop.models.User;
+import hska.iwi.eShopMaster.models.Role;
+import hska.iwi.eShopMaster.models.User;
 
 public interface UserManager {
     

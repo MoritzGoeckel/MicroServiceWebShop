@@ -4,9 +4,9 @@ import hska.iwi.eShopMaster.model.businessLogic.manager.CategoryManager;
 import hska.iwi.eShopMaster.model.businessLogic.manager.ProductManager;
 import hska.iwi.eShopMaster.model.businessLogic.manager.impl.CategoryManagerImpl;
 import hska.iwi.eShopMaster.model.businessLogic.manager.impl.ProductManagerImpl;
-import hska.microServiceWebShop.models.Category;
-import hska.microServiceWebShop.models.Product;
-import hska.microServiceWebShop.models.User;
+import hska.iwi.eShopMaster.models.Category;
+import hska.iwi.eShopMaster.models.ProductBackend;
+import hska.iwi.eShopMaster.models.User;
 
 import java.util.List;
 import java.util.Locale;
@@ -31,7 +31,7 @@ public class SearchAction extends ActionSupport{
 	private Double sMaxPrice = null;
 	
 	private User user;
-	private List<Product> products;
+	private List<ProductBackend> products;
 	private List<Category> categories;
 	
 
@@ -56,7 +56,7 @@ public class SearchAction extends ActionSupport{
 				sMaxPrice =  Double.parseDouble(this.searchMaxPrice);
 			}
 			System.err.println("4");
-			this.products = productManager.getProductsForSearchValues(this.searchDescription, sMinPrice, sMaxPrice);
+			this.products = productManager.getProductsForSearchValues(this.searchDescription, sMinPrice, sMaxPrice, null);
 			System.err.println("Products: " + this.products.toString());
 			// Show all categories:
 			CategoryManager categoryManager = new CategoryManagerImpl();
@@ -77,11 +77,11 @@ public class SearchAction extends ActionSupport{
 			this.user = user;
 		}
 		
-		public List<Product> getProducts() {
+		public List<ProductBackend> getProducts() {
 			return products;
 		}
 
-		public void setProducts(List<Product> products) {
+		public void setProducts(List<ProductBackend> products) {
 			this.products = products;
 		}
 		

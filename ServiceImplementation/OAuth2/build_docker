@@ -1,0 +1,1 @@
+sudo -H docker build -t oauth:latest .

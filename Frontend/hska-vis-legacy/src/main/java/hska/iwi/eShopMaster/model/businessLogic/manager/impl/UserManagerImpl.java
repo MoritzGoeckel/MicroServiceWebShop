@@ -3,25 +3,18 @@ package hska.iwi.eShopMaster.model.businessLogic.manager.impl;
 
 import java.util.List;
 
+import hska.iwi.eShopMaster.Clients.ApiException;
+import hska.iwi.eShopMaster.Clients.UserRoleApi;
+import hska.iwi.eShopMaster.model.businessLogic.manager.OAuth2RestManager;
 import hska.iwi.eShopMaster.model.businessLogic.manager.UserManager;
-import hska.microServiceWebShop.ApiClient;
-import hska.microServiceWebShop.ApiException;
-import hska.microServiceWebShop.api.UserRoleApi;
-import hska.microServiceWebShop.models.Role;
-import hska.microServiceWebShop.models.RoleQuery;
-import hska.microServiceWebShop.models.User;
-import hska.microServiceWebShop.models.UserBackend;
-import hska.microServiceWebShop.models.UserQuery;
-
+import hska.iwi.eShopMaster.models.*;
 
 public class UserManagerImpl implements UserManager {
 	
-	UserRoleApi apiInstance;
+	private UserRoleApi apiInstance;
 	
 	public UserManagerImpl() {
-		ApiClient apiClient = new ApiClient();
-		apiClient.setBasePath("http://localhost:8091/api/");
-		apiInstance = new UserRoleApi(apiClient);
+		apiInstance = new UserRoleApi(OAuth2RestManager.getInstance());
 	}
 
 	
@@ -43,10 +36,8 @@ public class UserManagerImpl implements UserManager {
 	
 	public User getUserByUsername(String username) {
 		List<User> users = null;
-		UserQuery query = new UserQuery();
-		query.setUsername(username);
 		try {
-			users = apiInstance.getUsers(query);
+			users = apiInstance.getUsers(username, null, null);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,15 +61,13 @@ public class UserManagerImpl implements UserManager {
 
 	public Role getRoleByLevel(int level) {
 		List<Role> roles = null;
-		RoleQuery query = new RoleQuery();
-		query.setLevel(level);
 		try {
-			roles = apiInstance.getRoles(query);
+			roles = apiInstance.getRoles(null, level);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.err.println("ERROR MSG: " + e.getMessage());
-			System.err.println("ERROR Res Body: " + e.getResponseBody());
+			System.err.println("ERROR Code: " + e.getCode());
 		}
 		if(roles == null || roles.isEmpty()) {
 			System.err.println("Aufruf gleich NULL!!!!!!!!!!!!!");
@@ -92,7 +81,7 @@ public class UserManagerImpl implements UserManager {
 		UserQuery query = new UserQuery();
 		query.setUsername(username);
 		try {
-			users = apiInstance.getUsers(query);
+			users = apiInstance.getUsers(username, null, null);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -109,16 +98,16 @@ public class UserManagerImpl implements UserManager {
 		UserQuery query = new UserQuery();
 		query.setUsername(user.getUsername());
 		try {
-			users = apiInstance.getUsers(query);
+			users = apiInstance.getUsers(user.getUsername(), null, null);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(users == null || users.isEmpty()) {
 			return false;
-		} 
-		for(int i = 0; i < users.size(); i++) {
-			if(users.get(i).getPassword().equals(user.getPassword())) {
+		}
+		for (User user1 : users) {
+			if (user1.getPassword().equals(user.getPassword())) {
 				return true;
 			}
 		}
