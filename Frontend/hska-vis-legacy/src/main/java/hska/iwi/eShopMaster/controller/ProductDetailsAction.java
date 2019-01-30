@@ -1,14 +1,14 @@
 package hska.iwi.eShopMaster.controller;
 
-import hska.iwi.eShopMaster.model.businessLogic.manager.ProductManager;
-import hska.iwi.eShopMaster.model.businessLogic.manager.impl.ProductManagerImpl;
-import hska.microServiceWebShop.models.Product;
-import hska.microServiceWebShop.models.User;
-
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import hska.iwi.eShopMaster.model.businessLogic.manager.ProductManager;
+import hska.iwi.eShopMaster.model.businessLogic.manager.impl.ProductManagerImpl;
+import hska.iwi.eShopMaster.models.Product;
+import hska.iwi.eShopMaster.models.User;
 
 public class ProductDetailsAction extends ActionSupport {
 	

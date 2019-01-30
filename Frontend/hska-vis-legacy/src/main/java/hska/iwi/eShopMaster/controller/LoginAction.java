@@ -1,13 +1,13 @@
 package hska.iwi.eShopMaster.controller;
 
-import hska.iwi.eShopMaster.model.businessLogic.manager.UserManager;
-import hska.iwi.eShopMaster.model.businessLogic.manager.impl.UserManagerImpl;
-import hska.microServiceWebShop.models.User;
-
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import hska.iwi.eShopMaster.model.businessLogic.manager.UserManager;
+import hska.iwi.eShopMaster.model.businessLogic.manager.impl.UserManagerImpl;
+import hska.iwi.eShopMaster.models.User;
 
 public class LoginAction extends ActionSupport {
 
@@ -35,6 +35,7 @@ public class LoginAction extends ActionSupport {
 
 		// Does user exist?
 		if (user != null) {
+			System.err.println("Login User: " + user.toString());
 			// Is the password correct?
 			if (user.getPassword().equals(getPassword())) {
 				// Get session to save user role and login:

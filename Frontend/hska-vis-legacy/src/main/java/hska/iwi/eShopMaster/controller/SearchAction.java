@@ -5,7 +5,7 @@ import hska.iwi.eShopMaster.model.businessLogic.manager.ProductManager;
 import hska.iwi.eShopMaster.model.businessLogic.manager.impl.CategoryManagerImpl;
 import hska.iwi.eShopMaster.model.businessLogic.manager.impl.ProductManagerImpl;
 import hska.iwi.eShopMaster.models.Category;
-import hska.iwi.eShopMaster.models.ProductBackend;
+import hska.iwi.eShopMaster.models.Product;
 import hska.iwi.eShopMaster.models.User;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class SearchAction extends ActionSupport{
 	private Double sMaxPrice = null;
 	
 	private User user;
-	private List<ProductBackend> products;
+	private List<Product> products;
 	private List<Category> categories;
 	
 
@@ -77,11 +77,11 @@ public class SearchAction extends ActionSupport{
 			this.user = user;
 		}
 		
-		public List<ProductBackend> getProducts() {
+		public List<Product> getProducts() {
 			return products;
 		}
 
-		public void setProducts(List<ProductBackend> products) {
+		public void setProducts(List<Product> products) {
 			this.products = products;
 		}
 		

@@ -1,15 +1,15 @@
 package hska.iwi.eShopMaster.controller;
 
-import hska.iwi.eShopMaster.model.businessLogic.manager.CategoryManager;
-import hska.iwi.eShopMaster.model.businessLogic.manager.impl.CategoryManagerImpl;
-import hska.microServiceWebShop.models.Category;
-import hska.microServiceWebShop.models.User;
-
 import java.util.List;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import hska.iwi.eShopMaster.model.businessLogic.manager.CategoryManager;
+import hska.iwi.eShopMaster.model.businessLogic.manager.impl.CategoryManagerImpl;
+import hska.iwi.eShopMaster.models.Category;
+import hska.iwi.eShopMaster.models.User;
 
 public class InitCategorySiteAction extends ActionSupport {
 

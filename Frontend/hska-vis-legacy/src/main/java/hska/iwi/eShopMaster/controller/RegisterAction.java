@@ -1,13 +1,13 @@
 package hska.iwi.eShopMaster.controller;
 
-import hska.iwi.eShopMaster.model.businessLogic.manager.UserManager;
-import hska.iwi.eShopMaster.model.businessLogic.manager.impl.UserManagerImpl;
-import hska.microServiceWebShop.models.Role;
-
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import hska.iwi.eShopMaster.model.businessLogic.manager.UserManager;
+import hska.iwi.eShopMaster.model.businessLogic.manager.impl.UserManagerImpl;
+import hska.iwi.eShopMaster.models.Role;
 
 public class RegisterAction extends ActionSupport {
 
@@ -31,16 +31,16 @@ public class RegisterAction extends ActionSupport {
 
         UserManager userManager = new UserManagerImpl();
 
-   		this.role = userManager.getRoleByLevel(1); // 1 -> regular User, 2-> Admin
-
-   		if(this.username.equals("admin")) {
-   			this.role = userManager.getRoleByLevel(2);
-   		}
+//   		this.role = userManager.getRoleByLevel(1); // 1 -> regular User, 2-> Admin
+//
+//   		if(this.username.equals("admin")) {
+//   			this.role = userManager.getRoleByLevel(2);
+//   		}
    		
    		if (!userManager.doesUserAlreadyExist(this.username)) {
     		    	
 	        // save it to database
-	        userManager.registerUser(this.username, this.firstname, this.lastname, this.password1, this.role);
+	        userManager.registerUser(this.username, this.firstname, this.lastname, this.password1, 1);
 	            // User has been saved successfully to databse:
 	        	addActionMessage("user registered, please login");
 	        	addActionError("user registered, please login");

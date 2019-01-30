@@ -46,7 +46,7 @@ public class UserRoleApi {
 
 	public Role getRole(long id) throws ApiException {
 		try {
-			ResponseEntity<Role> response = restTemplate.getForEntity("http://userroleservice/roles/" + id, Role.class);
+			ResponseEntity<Role> response = restTemplate.getForEntity(baseUrl + "roles/" + id, Role.class);
 
 			return response.getBody();
 		} catch (HttpClientErrorException e) {
@@ -57,7 +57,7 @@ public class UserRoleApi {
 
 	public Role createRole(Role role) throws ApiException {
 		try {
-			ResponseEntity<Role> response = restTemplate.postForEntity("http://userroleservice/roles", role,
+			ResponseEntity<Role> response = restTemplate.postForEntity(baseUrl + "roles", role,
 					Role.class);
 			return response.getBody();
 		} catch (HttpClientErrorException e) {
@@ -77,7 +77,7 @@ public class UserRoleApi {
 	}
 
 	public List<User> getUsers(String username, String text, Long roleID) throws ApiException {
-		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString("http://userroleservice/users");
+		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(baseUrl + "users");
 		if (username != null && !username.isEmpty()) {
 			builder.queryParam("username", username);
 		}
@@ -99,7 +99,7 @@ public class UserRoleApi {
 
 	public User getUser(long id) throws ApiException {
 		try {
-			ResponseEntity<User> response = restTemplate.getForEntity("http://userroleservice/users/" + id, User.class);
+			ResponseEntity<User> response = restTemplate.getForEntity(baseUrl + "users/" + id, User.class);
 
 			return response.getBody();
 		} catch (HttpClientErrorException e) {
@@ -110,7 +110,7 @@ public class UserRoleApi {
 
 	public User createUser(UserBackend user) throws ApiException {
 		try {
-			ResponseEntity<User> response = restTemplate.postForEntity("http://userroleservice/users", user,
+			ResponseEntity<User> response = restTemplate.postForEntity(baseUrl + "users", user,
 					User.class);
 			return response.getBody();
 		} catch (HttpClientErrorException e) {

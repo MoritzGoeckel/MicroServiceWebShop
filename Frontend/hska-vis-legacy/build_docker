@@ -1,1 +1,2 @@
+cp target/EShop-1.0.0.war .
 sudo -H docker build -t frontend:latest .

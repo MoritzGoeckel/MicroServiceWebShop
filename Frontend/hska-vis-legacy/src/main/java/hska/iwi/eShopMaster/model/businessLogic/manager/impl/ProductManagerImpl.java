@@ -8,7 +8,7 @@ import hska.iwi.eShopMaster.Clients.ApiException;
 import hska.iwi.eShopMaster.Clients.ProductServiceClient;
 import hska.iwi.eShopMaster.model.businessLogic.manager.OAuth2RestManager;
 import hska.iwi.eShopMaster.model.businessLogic.manager.ProductManager;
-import hska.iwi.eShopMaster.models.ProductBackend;
+import hska.iwi.eShopMaster.models.Product;
 
 public class ProductManagerImpl implements ProductManager {
 
@@ -18,31 +18,31 @@ public class ProductManagerImpl implements ProductManager {
 		apiInstance = new ProductServiceClient(OAuth2RestManager.getInstance());
 	}
 
-	public List<ProductBackend> getProducts() {
-		List<ProductBackend> all = null;
+	public List<Product> getProducts() {
+		List<Product> all = null;
 		try {
 			all = Arrays.asList(apiInstance.getProducts());
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			all = new ArrayList<ProductBackend>();
+			all = new ArrayList<Product>();
 		}
 		return all;
 	}
 	
-	public List<ProductBackend> getProductsForSearchValues(String searchValue, Double searchMinPrice, Double searchMaxPrice, Long categroyId) {
-		List<ProductBackend> all = null;
+	public List<Product> getProductsForSearchValues(String searchValue, Double searchMinPrice, Double searchMaxPrice, Long categroyId) {
+		List<Product> all = null;
 		try {
 			all = Arrays.asList(apiInstance.getProducts(searchValue, searchMinPrice, searchMaxPrice, categroyId));
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			all = new ArrayList<ProductBackend>();
+			all = new ArrayList<Product>();
 		}
 		return all;
 	}
 
-	public ProductBackend getProductById(int id) {
+	public Product getProductById(int id) {
 		try {
 			return apiInstance.getProductById(id);
 		} catch (ApiException e) {

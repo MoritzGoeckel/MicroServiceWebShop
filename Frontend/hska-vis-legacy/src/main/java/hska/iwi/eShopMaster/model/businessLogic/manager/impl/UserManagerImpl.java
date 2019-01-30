@@ -18,15 +18,17 @@ public class UserManagerImpl implements UserManager {
 	}
 
 	
-	public void registerUser(String username, String name, String lastname, String password, Role role) {
+	public void registerUser(String username, String name, String lastname, String password, long roleID) {
 		UserBackend userBackend = new UserBackend();
 		userBackend.setFirstName(name);
 		userBackend.lastName(lastname);
 		userBackend.setUsername(username);
 		userBackend.setPassword(password);
-		userBackend.setRoleID(role.getId());
+		userBackend.setRoleID(roleID);
+		
 		try {
-			apiInstance.createUser(userBackend);
+			User user = apiInstance.createUser(userBackend);
+			System.err.println("UserManagerImpl registerUser: " + user.toString());
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,6 +40,7 @@ public class UserManagerImpl implements UserManager {
 		List<User> users = null;
 		try {
 			users = apiInstance.getUsers(username, null, null);
+			System.err.println("UserManagerImpl getUserByUsername: " + users.toString());
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,9 +51,9 @@ public class UserManagerImpl implements UserManager {
 		return users.get(0);
 	}
 
-	public boolean deleteUserById(int id) {
+	public boolean deleteUserById(long id) {
 		try {
-			apiInstance.deleteUser((long)id);
+			apiInstance.deleteUser(id);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,7 +73,6 @@ public class UserManagerImpl implements UserManager {
 			System.err.println("ERROR Code: " + e.getCode());
 		}
 		if(roles == null || roles.isEmpty()) {
-			System.err.println("Aufruf gleich NULL!!!!!!!!!!!!!");
 			return null;
 		}
 		return roles.get(0);
@@ -82,6 +84,7 @@ public class UserManagerImpl implements UserManager {
 		query.setUsername(username);
 		try {
 			users = apiInstance.getUsers(username, null, null);
+			System.err.println("UserManagerImpl doesUserAlreadyExist: " + users.toString());
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
