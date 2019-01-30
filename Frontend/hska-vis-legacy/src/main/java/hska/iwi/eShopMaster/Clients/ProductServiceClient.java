@@ -1,6 +1,6 @@
 package hska.iwi.eShopMaster.Clients;
 
-import hska.iwi.eShopMaster.models.ProductBackend;
+import hska.iwi.eShopMaster.models.Product;
 import org.springframework.http.*;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 
@@ -14,7 +14,7 @@ public class ProductServiceClient {
         this.baseUrl = "http://" + "localhost:8091" + "/api/";
     }
 
-    public ProductBackend postProduct(String name, Double price, Long category, String details) throws ApiException{
+    public Product postProduct(String name, Double price, Long category, String details) throws ApiException{
 
         HttpHeaders headers = new HttpHeaders();
 
@@ -25,18 +25,18 @@ public class ProductServiceClient {
 
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        ResponseEntity<ProductBackend> response = restTemplate.postForEntity(baseUrl + "products", new HttpEntity<String>(headers), ProductBackend.class);
+        ResponseEntity<Product> response = restTemplate.postForEntity(baseUrl + "products", new HttpEntity<String>(headers), Product.class);
 
         handle(response);
 
         return response.getBody();
     }
 
-    public ProductBackend[] getProducts() throws ApiException {
+    public Product[] getProducts() throws ApiException {
         return getProducts(null, null, null, null);
     }
 
-    public ProductBackend[] getProducts(String text, Double min, Double max, Long category) throws ApiException {
+    public Product[] getProducts(String text, Double min, Double max, Long category) throws ApiException {
         HttpHeaders headers = new HttpHeaders();
         if(text!=null)
             headers.set("text", text);
@@ -48,22 +48,22 @@ public class ProductServiceClient {
             headers.set("category", category.toString());
 
 
-        ResponseEntity<ProductBackend[]> response = restTemplate.exchange(baseUrl + "products", HttpMethod.GET, new HttpEntity<String>(headers), ProductBackend[].class);
+        ResponseEntity<Product[]> response = restTemplate.exchange(baseUrl + "products", HttpMethod.GET, new HttpEntity<String>(headers), Product[].class);
 
         handle(response);
 
         return response.getBody();
     }
 
-    public ProductBackend getProductById(int id) throws ApiException {
-        ResponseEntity<ProductBackend> response = restTemplate.getForEntity(baseUrl + "products/" + id, ProductBackend.class);
+    public Product getProductById(int id) throws ApiException {
+        ResponseEntity<Product> response = restTemplate.getForEntity(baseUrl + "products/" + id, Product.class);
         handle(response);
 
         return response.getBody();
     }
 
     public void deleteProductById(int id) throws ApiException {
-        ResponseEntity<ProductBackend> response = restTemplate.exchange(baseUrl + "products/" + id, HttpMethod.DELETE, new HttpEntity<String>(new HttpHeaders()), ProductBackend.class);
+        ResponseEntity<Product> response = restTemplate.exchange(baseUrl + "products/" + id, HttpMethod.DELETE, new HttpEntity<String>(new HttpHeaders()), Product.class);
         handle(response);
 
     }
