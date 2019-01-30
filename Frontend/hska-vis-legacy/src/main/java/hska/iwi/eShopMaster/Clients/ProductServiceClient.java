@@ -44,13 +44,13 @@ public class ProductServiceClient {
 	public Product[] getProducts(String text, Double min, Double max, Long category) throws ApiException {
 		HttpHeaders headers = new HttpHeaders();
 		if (text != null)
-			headers.set("text", text);
+			headers.set("Text", text);
 		if (min != null)
-			headers.set("min", min.toString());
+			headers.set("PriceMin", min.toString());
 		if (max != null)
-			headers.set("max", max.toString());
+			headers.set("PriceMax", max.toString());
 		if (category != null)
-			headers.set("category", category.toString());
+			headers.set("Category", category.toString());
 
 		ResponseEntity<Product[]> response = restTemplate.exchange(baseUrl + "products", HttpMethod.GET,
 				new HttpEntity<String>(headers), Product[].class);

@@ -8,6 +8,8 @@ import hska.iwi.eShopMaster.models.User;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.client.HttpClientErrorException;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -17,32 +19,35 @@ public class DeleteCategoryAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = 1254575994729199914L;
-	
+
 	private int catId;
 	private List<Category> categories;
 
 	public String execute() throws Exception {
-		
+
 		String res = "input";
-		
+
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		User user = (User) session.get("webshop_user");
-		
-		if(user != null && (user.getRole().getTyp().equals("admin"))) {
+
+		if (user != null && (user.getRole().getTyp().equals("admin"))) {
 
 			// Helper inserts new Category in DB:
 			CategoryManager categoryManager = new CategoryManagerImpl();
-		
-			categoryManager.delCategoryById(catId);
+
+			try {
+				categoryManager.delCategoryById(catId);
+				res = "success";
+			} catch (HttpClientErrorException e) {
+				res = "error";
+			}
 
 			categories = categoryManager.getCategories();
-				
-			res = "success";
 
 		}
-		
+
 		return res;
-		
+
 	}
 
 	public int getCatId() {
