@@ -1,16 +1,17 @@
 package hska.iwi.eShopMaster.Clients;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import hska.iwi.eShopMaster.models.ErrorMessage;
 import hska.iwi.eShopMaster.models.Role;
 import hska.iwi.eShopMaster.models.User;
 import hska.iwi.eShopMaster.models.UserBackend;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -27,15 +28,16 @@ public class UserRoleApi {
 	}
 
     public List<Role> getRoles(String typ, Integer level) throws ApiException {
-		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(baseUrl + "roles");
+    	HttpHeaders headers = new HttpHeaders();
 		if (typ != null) {
-			builder.queryParam("typ", typ);
+			headers.add("typ", typ);
 		}
 		if (level != null) {
-			builder.queryParam("level", level.intValue());
+			headers.add("level", level.toString());
 		}
 		try {
-			ResponseEntity<Role[]> response = restTemplate.getForEntity(builder.build().toUriString(), Role[].class);
+			ResponseEntity<Role[]> response = restTemplate.exchange(baseUrl + "role", HttpMethod.GET,
+					new HttpEntity<String>(headers), Role[].class);
 
 			return Arrays.asList(response.getBody());
 		} catch (HttpClientErrorException e) {
@@ -46,7 +48,7 @@ public class UserRoleApi {
 
 	public Role getRole(long id) throws ApiException {
 		try {
-			ResponseEntity<Role> response = restTemplate.getForEntity("http://userroleservice/roles/" + id, Role.class);
+			ResponseEntity<Role> response = restTemplate.getForEntity(baseUrl + "roles/" + id, Role.class);
 
 			return response.getBody();
 		} catch (HttpClientErrorException e) {
@@ -57,7 +59,7 @@ public class UserRoleApi {
 
 	public Role createRole(Role role) throws ApiException {
 		try {
-			ResponseEntity<Role> response = restTemplate.postForEntity("http://userroleservice/roles", role,
+			ResponseEntity<Role> response = restTemplate.postForEntity(baseUrl + "roles", role,
 					Role.class);
 			return response.getBody();
 		} catch (HttpClientErrorException e) {
@@ -69,7 +71,7 @@ public class UserRoleApi {
 	public void deleteRole(long id) throws ApiException {
 		HttpEntity<Void> request = new HttpEntity<Void>(null, null);
 		try {
-			restTemplate.exchange("http://userroleservice/roles/" + id, HttpMethod.DELETE, request, Void.class);
+			restTemplate.exchange(baseUrl + "roles/" + id, HttpMethod.DELETE, request, Void.class);
 		} catch (HttpClientErrorException e) {
 			handle(e);
 			throw new ApiException(500, "should not happen");
@@ -77,19 +79,19 @@ public class UserRoleApi {
 	}
 
 	public List<User> getUsers(String username, String text, Long roleID) throws ApiException {
-		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString("http://userroleservice/users");
+    	HttpHeaders headers = new HttpHeaders();
 		if (username != null && !username.isEmpty()) {
-			builder.queryParam("username", username);
+			headers.add("username", username);
 		}
 		if (text != null && !text.isEmpty()) {
-			builder.queryParam("text", text);
+			headers.add("text", text);
 		}
 		if (roleID != null) {
-			builder.queryParam("roleID", roleID);
+			headers.add("roleID", roleID.toString());
 		}
 		try {
-			ResponseEntity<User[]> response = restTemplate.getForEntity(builder.build().toUriString(), User[].class);
-
+			ResponseEntity<User[]> response = restTemplate.exchange(baseUrl + "role", HttpMethod.GET,
+					new HttpEntity<String>(headers), User[].class);
 			return Arrays.asList(response.getBody());
 		} catch (HttpClientErrorException e) {
 			handle(e);
@@ -99,7 +101,7 @@ public class UserRoleApi {
 
 	public User getUser(long id) throws ApiException {
 		try {
-			ResponseEntity<User> response = restTemplate.getForEntity("http://userroleservice/users/" + id, User.class);
+			ResponseEntity<User> response = restTemplate.getForEntity(baseUrl + "users/" + id, User.class);
 
 			return response.getBody();
 		} catch (HttpClientErrorException e) {
@@ -110,7 +112,7 @@ public class UserRoleApi {
 
 	public User createUser(UserBackend user) throws ApiException {
 		try {
-			ResponseEntity<User> response = restTemplate.postForEntity("http://userroleservice/users", user,
+			ResponseEntity<User> response = restTemplate.postForEntity(baseUrl + "users", user,
 					User.class);
 			return response.getBody();
 		} catch (HttpClientErrorException e) {
@@ -122,7 +124,7 @@ public class UserRoleApi {
 	public void deleteUser(long id) throws ApiException {
 		HttpEntity<Void> request = new HttpEntity<Void>(null, null);
 		try {
-			restTemplate.exchange("http://userroleservice/users/" + id, HttpMethod.DELETE, request, Void.class);
+			restTemplate.exchange(baseUrl + "users/" + id, HttpMethod.DELETE, request, Void.class);
 		} catch (HttpClientErrorException e) {
 			handle(e);
 		}

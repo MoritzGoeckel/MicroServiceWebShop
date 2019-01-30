@@ -2,7 +2,7 @@ package hska.iwi.eShopMaster.controller;
 
 import hska.iwi.eShopMaster.model.businessLogic.manager.UserManager;
 import hska.iwi.eShopMaster.model.businessLogic.manager.impl.UserManagerImpl;
-import hska.microServiceWebShop.models.Role;
+import hska.iwi.eShopMaster.models.Role;
 
 import java.util.Map;
 
@@ -40,7 +40,7 @@ public class RegisterAction extends ActionSupport {
    		if (!userManager.doesUserAlreadyExist(this.username)) {
     		    	
 	        // save it to database
-	        userManager.registerUser(this.username, this.firstname, this.lastname, this.password1, this.role);
+	        userManager.registerUser(this.username, this.firstname, this.lastname, this.password1, this.role.getId());
 	            // User has been saved successfully to databse:
 	        	addActionMessage("user registered, please login");
 	        	addActionError("user registered, please login");

@@ -6,7 +6,8 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import hska.microServiceWebShop.models.User;
+import hska.iwi.eShopMaster.models.User;
+
 
 public class DeleteProductAction extends ActionSupport {
 

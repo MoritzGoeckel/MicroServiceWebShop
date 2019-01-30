@@ -18,13 +18,13 @@ public class UserManagerImpl implements UserManager {
 	}
 
 	
-	public void registerUser(String username, String name, String lastname, String password, Role role) {
+	public void registerUser(String username, String name, String lastname, String password, Long role) {
 		UserBackend userBackend = new UserBackend();
 		userBackend.setFirstName(name);
 		userBackend.lastName(lastname);
 		userBackend.setUsername(username);
 		userBackend.setPassword(password);
-		userBackend.setRoleID(role.getId());
+		userBackend.setRoleID(role);
 		try {
 			apiInstance.createUser(userBackend);
 		} catch (ApiException e) {
@@ -48,9 +48,9 @@ public class UserManagerImpl implements UserManager {
 		return users.get(0);
 	}
 
-	public boolean deleteUserById(int id) {
+	public boolean deleteUserById(long id) {
 		try {
-			apiInstance.deleteUser((long)id);
+			apiInstance.deleteUser(id);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

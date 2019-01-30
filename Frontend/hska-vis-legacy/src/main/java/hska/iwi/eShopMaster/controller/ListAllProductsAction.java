@@ -2,8 +2,8 @@ package hska.iwi.eShopMaster.controller;
 
 import hska.iwi.eShopMaster.model.businessLogic.manager.ProductManager;
 import hska.iwi.eShopMaster.model.businessLogic.manager.impl.ProductManagerImpl;
-import hska.microServiceWebShop.models.Product;
-import hska.microServiceWebShop.models.User;
+import hska.iwi.eShopMaster.models.Product;
+import hska.iwi.eShopMaster.models.User;
 
 import java.util.List;
 import java.util.Map;
