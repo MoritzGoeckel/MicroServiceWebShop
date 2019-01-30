@@ -42,5 +42,10 @@ public class OAuth2Application {
 
 		return new OAuth2RestTemplate(resourceDetails, new DefaultOAuth2ClientContext());
 	}
+	
+	@Bean
+	public CustomUserDetailsService costumUserDetailsService() {
+		return new CustomUserDetailsService();
+	}
 
 }

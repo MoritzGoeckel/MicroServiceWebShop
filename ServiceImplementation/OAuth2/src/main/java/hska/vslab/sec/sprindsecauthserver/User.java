@@ -24,25 +24,26 @@ public class User implements UserDetails{
 	
 	private String password;
 	
-	private Long roleID;
+	private Role role;
 	
 	
 	public User() {
 		
 	}
 	
-	public User(String username, String firstname, String lastname, String password, Long roleID) {
+	public User(String username, String firstname, String lastname, String password, Role role) {
 		this.username = username;
 		this.firstName = firstname;
 		this.lastName = lastname;
 		this.password = password;
-		this.roleID = roleID;
+		this.role = role;
 	}
 	
 	public long getId() {
 		return this.id;
 	}
 
+	@Override
 	public String getUsername() {
 		return this.username;
 	}
@@ -67,6 +68,7 @@ public class User implements UserDetails{
 		this.lastName = lastname;
 	}
 
+	@Override
 	public String getPassword() {
 		return this.password;
 	}
@@ -75,18 +77,18 @@ public class User implements UserDetails{
 		this.password = password;
 	}
 
-	public Long getRoleID() {
-		return this.roleID;
+	public Role getRole() {
+		return this.role;
 	}
 
-	public void setRoleID(Long roleID) {
-		this.roleID = roleID;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Collection<GrantedAuthority> authorities = new ArrayList<>();
-		if(roleID == 2) {
+		if(role.getTyp().equals("admin")) {
 			authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 		}else {
 			authorities.add(new SimpleGrantedAuthority("ROLE_USER"));		
