@@ -15,10 +15,6 @@ public class UserManagerImpl implements UserManager {
 	
 	private UserRoleApi apiInstance;
 	
-	public UserManagerImpl() {
-		apiInstance = new UserRoleApi(OAuth2RestManager.getInstance());
-	}
-	
 	public UserManagerImpl(OAuth2RestTemplate restTemplate) {
 		apiInstance = new UserRoleApi(restTemplate);
 	}

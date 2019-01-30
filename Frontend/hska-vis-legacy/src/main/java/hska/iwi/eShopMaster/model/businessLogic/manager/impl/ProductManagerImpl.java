@@ -16,11 +16,6 @@ public class ProductManagerImpl implements ProductManager {
 
 	private ProductServiceClient apiInstance;
 	
-	// TODO Delete
-	public ProductManagerImpl() {
-		apiInstance = new ProductServiceClient(OAuth2RestManager.getInstance());
-	}
-	
 	public ProductManagerImpl(OAuth2RestTemplate restTemplate) {
 		apiInstance = new ProductServiceClient(restTemplate);
 	}

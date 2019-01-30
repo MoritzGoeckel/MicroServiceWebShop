@@ -44,7 +44,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory()
 		.withClient("frontendId")
-		.authorizedGrantTypes("password", "authorization_code", "refresh_token")
+		.authorizedGrantTypes("password", "authorization_code", "refresh_token", "client_credentials")
 		.authorities("ROLE_USER", "ROLE_ADMIN")
 		.scopes("read", "write")
 		.autoApprove(true)

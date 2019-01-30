@@ -11,12 +11,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+
 public class CategoryManagerImpl implements CategoryManager{
 
 	private CategoryServiceClient apiInstance;
 	
-	public CategoryManagerImpl() {
-		apiInstance = new CategoryServiceClient(OAuth2RestManager.getInstance());
+	public CategoryManagerImpl(OAuth2RestTemplate restTemplate) {
+		apiInstance = new CategoryServiceClient(restTemplate);
 	}
 	
 	public List<Category> getCategories() {

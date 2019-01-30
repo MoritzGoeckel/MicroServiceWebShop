@@ -3,10 +3,15 @@ package de.hska.frontend;
 import static org.junit.Assert.assertArrayEquals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordResourceDetails;
+
+import com.opensymphony.xwork2.interceptor.annotations.Before;
 
 import hska.iwi.eShopMaster.model.businessLogic.manager.CategoryManager;
 import hska.iwi.eShopMaster.model.businessLogic.manager.ProductManager;
@@ -21,10 +26,30 @@ import hska.iwi.eShopMaster.models.User;
 
 public class ManagerTests {
 
-	private ProductManager productManager = new ProductManagerImpl();
-	private CategoryManager categoryManager = new CategoryManagerImpl();
-	private UserManager userManager = new UserManagerImpl();
+	
+	
+	private ProductManager productManager;
+	private CategoryManager categoryManager;
+	private UserManager userManager;
 
+	@Before
+	public void Setup() {
+		ResourceOwnerPasswordResourceDetails resource = new ResourceOwnerPasswordResourceDetails();
+		resource.setPassword("pw");
+		resource.setUsername("bob");
+		resource.setAccessTokenUri("http://localhost:8092/oauth/token");
+		resource.setClientId("frontendId");
+		resource.setClientSecret("frontendSecret");
+		resource.setGrantType("password");
+		resource.setScope(Arrays.asList("read", "write"));
+
+		OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resource);
+		
+		productManager = new ProductManagerImpl(restTemplate);
+		categoryManager = new CategoryManagerImpl(restTemplate);
+		userManager = new UserManagerImpl(restTemplate);
+	}
+	
 	@Test
 	public void UserRoleTest() {
 

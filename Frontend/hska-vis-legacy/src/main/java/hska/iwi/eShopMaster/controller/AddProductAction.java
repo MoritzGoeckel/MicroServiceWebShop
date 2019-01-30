@@ -10,6 +10,8 @@ import hska.iwi.eShopMaster.models.User;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -30,7 +32,7 @@ public class AddProductAction extends ActionSupport {
 
 		if(user != null && (user.getRole().getTyp().equals("admin"))) {
 
-			ProductManager productManager = new ProductManagerImpl();
+			ProductManager productManager = new ProductManagerImpl((OAuth2RestTemplate)session.get("restTemplate"));
 			long productId = productManager.addProduct(name, Double.parseDouble(price), categoryId,
 					details);
 
@@ -44,7 +46,8 @@ public class AddProductAction extends ActionSupport {
 
 	@Override
 	public void validate() {
-		CategoryManager categoryManager = new CategoryManagerImpl();
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		CategoryManager categoryManager = new CategoryManagerImpl((OAuth2RestTemplate)session.get("restTemplate"));
 		this.setCategories(categoryManager.getCategories());
 		// Validate name:
 

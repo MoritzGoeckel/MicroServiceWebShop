@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.NotImplementedException;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.web.client.HttpClientErrorException;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -34,7 +35,7 @@ public class DeleteCategoryAction extends ActionSupport {
 		if (user != null && (user.getRole().getTyp().equals("admin"))) {
 
 			// Helper inserts new Category in DB:
-			CategoryManager categoryManager = new CategoryManagerImpl();
+			CategoryManager categoryManager = new CategoryManagerImpl((OAuth2RestTemplate)session.get("restTemplate"));
 
 			try {
 				categoryManager.delCategoryById(catId);

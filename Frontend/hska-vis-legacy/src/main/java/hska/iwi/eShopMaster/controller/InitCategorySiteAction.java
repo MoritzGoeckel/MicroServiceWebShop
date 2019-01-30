@@ -8,6 +8,8 @@ import hska.iwi.eShopMaster.models.User;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -32,7 +34,7 @@ public class InitCategorySiteAction extends ActionSupport {
 		boolean isAdmin = true;
 		if(user != null && isAdmin) {
 
-			CategoryManager categoryManager = new CategoryManagerImpl();
+			CategoryManager categoryManager = new CategoryManagerImpl((OAuth2RestTemplate)session.get("restTemplate"));
 			this.setCategories(categoryManager.getCategories());
 			
 			if(pageToGoTo != null){
