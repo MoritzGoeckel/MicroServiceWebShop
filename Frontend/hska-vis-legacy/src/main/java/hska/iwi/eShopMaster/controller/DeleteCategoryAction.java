@@ -8,6 +8,7 @@ import hska.iwi.eShopMaster.models.User;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.web.client.HttpClientErrorException;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -40,6 +41,7 @@ public class DeleteCategoryAction extends ActionSupport {
 				res = "success";
 			} catch (HttpClientErrorException e) {
 				res = "error";
+				throw new NotImplementedException("Sajeel, hier ist der Fehler");
 			}
 
 			categories = categoryManager.getCategories();
