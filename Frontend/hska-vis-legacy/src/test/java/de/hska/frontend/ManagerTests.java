@@ -22,21 +22,25 @@ public class ManagerTests {
 	@Test
 	public void UserRoleTest() {
 		
-		Assert.assertTrue(userManager.doesUserAlreadyExist("Bob"));
+		System.out.println("Check User Exists");
+		Assert.assertTrue(userManager.doesUserAlreadyExist("bob"));
 
+		System.out.println("Check User Role");
 		Role role = userManager.getRoleByLevel(1);
-		Assert.assertEquals("User", role.getTyp());
+		Assert.assertEquals("user", role.getTyp());
 		Assert.assertTrue(role.getLevel() == 1);
 				
-		User user = userManager.getUserByUsername("Bob");
-		Assert.assertEquals("Bob", user.getUsername());
+		System.out.println("Check User By Name");
+		User user = userManager.getUserByUsername("bob");
+		Assert.assertEquals("bob", user.getUsername());
 		Assert.assertEquals("Bob", user.getFirstName());
-		Assert.assertEquals("Bob", user.getLastName());
-		Assert.assertEquals("Bob", user.getPassword());
-		Assert.assertEquals("Bob", user.getRole().getTyp());
-		Assert.assertEquals("Bob", user.getRole().getLevel());
+		Assert.assertEquals("Bobowitsch", user.getLastName());
+		Assert.assertEquals("pw", user.getPassword());
+		Assert.assertEquals("user", user.getRole().getTyp());
+		Assert.assertEquals("1", user.getRole().getLevel().toString());
 		
 		
+		System.out.println("Add User");
 		userManager.registerUser("Tester", "Tester", "Tester", "Tester", role.getId());
 		User user2 = userManager.getUserByUsername("Tester");
 		Assert.assertEquals("Tester", user2.getUsername());
@@ -46,6 +50,10 @@ public class ManagerTests {
 		Assert.assertEquals(role.getTyp(), user2.getRole().getTyp());
 		Assert.assertEquals(role.getLevel(), user2.getRole().getLevel());
 		
+		System.out.println("Readd User");
+		userManager.registerUser("Tester", "Tester", "Tester", "Tester", role.getId());
+		
+		System.out.println("Delete User");
 		Assert.assertTrue(userManager.deleteUserById(user2.getId()));
 		User user3 = userManager.getUserByUsername("Tester");
 		Assert.assertTrue(user3 == null);

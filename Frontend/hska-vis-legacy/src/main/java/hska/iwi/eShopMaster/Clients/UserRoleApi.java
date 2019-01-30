@@ -36,7 +36,7 @@ public class UserRoleApi {
 			headers.add("level", level.toString());
 		}
 		try {
-			ResponseEntity<Role[]> response = restTemplate.exchange(baseUrl + "role", HttpMethod.GET,
+			ResponseEntity<Role[]> response = restTemplate.exchange(baseUrl + "roles", HttpMethod.GET,
 					new HttpEntity<String>(headers), Role[].class);
 
 			return Arrays.asList(response.getBody());
@@ -90,7 +90,7 @@ public class UserRoleApi {
 			headers.add("roleID", roleID.toString());
 		}
 		try {
-			ResponseEntity<User[]> response = restTemplate.exchange(baseUrl + "role", HttpMethod.GET,
+			ResponseEntity<User[]> response = restTemplate.exchange(baseUrl + "users", HttpMethod.GET,
 					new HttpEntity<String>(headers), User[].class);
 			return Arrays.asList(response.getBody());
 		} catch (HttpClientErrorException e) {
