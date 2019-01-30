@@ -24,7 +24,7 @@ public class RolesApiController{
 	@Autowired
 	private UserRoleApi userRoleAPIClient;
 
-	@RequestMapping(value = "/roles", produces = { "application/json" }, method = RequestMethod.POST)
+	@RequestMapping(value = "/roles", method = RequestMethod.POST)
 	public ResponseEntity<?> createRole(@RequestBody Role role) {
 		try {
 			Role r = userRoleAPIClient.createRole(role);
@@ -53,7 +53,7 @@ public class RolesApiController{
 		}
 	}
 
-	@RequestMapping(value = "/roles/{id}", produces = { "application/json" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/roles/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getRoleById(@PathVariable("id") Long id) {
 		try {
 			Role r = userRoleAPIClient.getRole(id);
@@ -67,7 +67,7 @@ public class RolesApiController{
 		}
 	}
 
-	@RequestMapping(value = "/roles", produces = { "application/json" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/roles", method = RequestMethod.GET)
 	public ResponseEntity<?> getRoles(@RequestHeader(value = "Text", defaultValue = "") String text,
 			@RequestHeader(value = "Level", defaultValue = "") Integer level) {
 		RoleQuery query = new RoleQuery();

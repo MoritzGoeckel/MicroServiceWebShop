@@ -42,7 +42,7 @@ public class ProductManagerImpl implements ProductManager {
 		return all;
 	}
 
-	public Product getProductById(int id) {
+	public Product getProductById(long id) {
 		try {
 			return apiInstance.getProductById(id);
 		} catch (ApiException e) {
@@ -52,9 +52,9 @@ public class ProductManagerImpl implements ProductManager {
 		return null;
 	}
 	
-	public long addProduct(String name, double price, int categoryId, String details) {
+	public long addProduct(String name, double price, long categoryId, String details) {
 		try {
-			return apiInstance.postProduct(name, price, (long) categoryId, details).getId();
+			return apiInstance.postProduct(name, price, categoryId, details).getId();
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,7 +64,7 @@ public class ProductManagerImpl implements ProductManager {
 	}
 	
 
-	public void deleteProductById(int id) {
+	public void deleteProductById(long id) {
 		try {
 			apiInstance.deleteProductById(id);
 		} catch (ApiException e) {
@@ -73,7 +73,8 @@ public class ProductManagerImpl implements ProductManager {
 		}
 	}
 
-	public boolean deleteProductsByCategoryId(int categoryId) {
+	public boolean deleteProductsByCategoryId(long categoryId) {
+		// TODO Implement??
 		return false;
 	}
 

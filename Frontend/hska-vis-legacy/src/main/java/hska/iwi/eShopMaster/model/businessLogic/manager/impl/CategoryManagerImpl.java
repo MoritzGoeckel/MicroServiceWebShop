@@ -32,7 +32,7 @@ public class CategoryManagerImpl implements CategoryManager{
 		return all;
 	}
 
-	public Category getCategory(int id) {
+	public Category getCategory(long id) {
 		Category cat = null;
 		try {
 			cat = apiInstance.getCategoryById(id);
@@ -53,7 +53,7 @@ public class CategoryManagerImpl implements CategoryManager{
 		
 	}
 
-	public void delCategoryById(int id) {
+	public void delCategoryById(long id) {
 		try {
 			apiInstance.deleteCategoryById(id);
 		} catch (ApiException e) {

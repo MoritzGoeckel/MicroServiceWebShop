@@ -8,15 +8,15 @@ public interface ProductManager {
 
 	public List<Product> getProducts();
 
-	public Product getProductById(int id);
+	public Product getProductById(long id);
 
-	public long addProduct(String name, double price, int categoryId, String details); 
+	public long addProduct(String name, double price, long categoryId, String details); 
 
 	public List<Product> getProductsForSearchValues(String searchValue, Double searchMinPrice, Double searchMaxPrice, Long categoryId);
 	
-	public boolean deleteProductsByCategoryId(int categoryId);
+	public boolean deleteProductsByCategoryId(long categoryId);
 	
-    public void deleteProductById(int id); 
+    public void deleteProductById(long id); 
     
 	
 }
