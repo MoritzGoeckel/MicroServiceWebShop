@@ -16,15 +16,14 @@ import com.opensymphony.xwork2.ActionSupport;
 public class LoginAction extends ActionSupport {
 
 	/**
-     *
-     */
+	 *
+	 */
 	private static final long serialVersionUID = -983183915002226000L;
 	private String username = null;
 	private String password = null;
 	private String firstname;
 	private String lastname;
 	private String role;
-	
 
 	@Override
 	public String execute() throws Exception {
@@ -32,50 +31,40 @@ public class LoginAction extends ActionSupport {
 		// Return string:
 		String result = "input";
 
-		UserManager myCManager = new UserManagerImpl();
-		
-		// Get user from DB:
-		User user = myCManager.getUserByUsername(getUsername());
+		Map<String, Object> session = ActionContext.getContext().getSession();
 
-		// Does user exist?
-		if (user != null) {
-			// Is the password correct?
-			if (user.getPassword().equals(getPassword())) {
-				// Get session to save user role and login:
-				Map<String, Object> session = ActionContext.getContext().getSession();
-				
-				// Save user object in session:
-				session.put("webshop_user", user);
-				session.put("message", "");
-				
-				ResourceOwnerPasswordResourceDetails resource = new ResourceOwnerPasswordResourceDetails();
-				resource.setPassword(getPassword());
-				resource.setUsername(getUsername());
-				resource.setAccessTokenUri("http://localhost:8092/user");
-				resource.setClientId("frontendId");
-				resource.setClientSecret("frontendSecret");
-				resource.setGrantType("password");
-				resource.setScope(Arrays.asList("read", "write"));
-				
-				OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resource);
-				session.put("restTemplate", restTemplate);
-				
-				firstname= user.getFirstName();
-				lastname = user.getLastName();
-				role = user.getRole().getTyp();
-				result = "success";
-			}
-			else {
-				addActionError(getText("error.password.wrong"));
-			}
-		}
-		else {
-			addActionError(getText("error.username.wrong"));
+		ResourceOwnerPasswordResourceDetails resource = new ResourceOwnerPasswordResourceDetails();
+		resource.setPassword(getPassword());
+		resource.setUsername(getUsername());
+		resource.setAccessTokenUri("http://localhost:8092/user");
+		resource.setClientId("frontendId");
+		resource.setClientSecret("frontendSecret");
+		resource.setGrantType("password");
+		resource.setScope(Arrays.asList("read", "write"));
+
+		OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resource);
+
+		UserManager myCManager = new UserManagerImpl(restTemplate);
+
+		// Get user from DB:
+		try {
+			User user = myCManager.getUserByUsername(getUsername());
+			session.put("restTemplate", restTemplate);
+			session.put("webshop_user", user);
+			session.put("message", "");
+
+			firstname = user.getFirstName();
+			lastname = user.getLastName();
+			role = user.getRole().getTyp();
+			result = "success";
+		} catch (Exception e) {
+			addActionError(getText("error.password.wrong"));
+			e.printStackTrace();
 		}
 
 		return result;
 	}
-	
+
 	@Override
 	public void validate() {
 		if (getUsername().length() == 0) {

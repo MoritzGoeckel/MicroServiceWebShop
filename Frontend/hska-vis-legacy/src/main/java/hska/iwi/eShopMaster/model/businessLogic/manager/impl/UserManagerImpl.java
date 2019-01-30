@@ -3,6 +3,8 @@ package hska.iwi.eShopMaster.model.businessLogic.manager.impl;
 
 import java.util.List;
 
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+
 import hska.iwi.eShopMaster.Clients.ApiException;
 import hska.iwi.eShopMaster.Clients.UserRoleApi;
 import hska.iwi.eShopMaster.model.businessLogic.manager.OAuth2RestManager;
@@ -15,6 +17,10 @@ public class UserManagerImpl implements UserManager {
 	
 	public UserManagerImpl() {
 		apiInstance = new UserRoleApi(OAuth2RestManager.getInstance());
+	}
+	
+	public UserManagerImpl(OAuth2RestTemplate restTemplate) {
+		apiInstance = new UserRoleApi(restTemplate);
 	}
 
 	
