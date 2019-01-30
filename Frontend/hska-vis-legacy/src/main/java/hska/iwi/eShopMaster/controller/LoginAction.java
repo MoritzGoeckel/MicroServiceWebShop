@@ -36,7 +36,7 @@ public class LoginAction extends ActionSupport {
 		ResourceOwnerPasswordResourceDetails resource = new ResourceOwnerPasswordResourceDetails();
 		resource.setPassword(getPassword());
 		resource.setUsername(getUsername());
-		resource.setAccessTokenUri("http://localhost:8092/user");
+		resource.setAccessTokenUri("http://localhost:8092/oauth/token");
 		resource.setClientId("frontendId");
 		resource.setClientSecret("frontendSecret");
 		resource.setGrantType("password");
