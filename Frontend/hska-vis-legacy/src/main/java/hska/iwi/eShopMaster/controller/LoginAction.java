@@ -4,7 +4,11 @@ import hska.iwi.eShopMaster.model.businessLogic.manager.UserManager;
 import hska.iwi.eShopMaster.model.businessLogic.manager.impl.UserManagerImpl;
 import hska.iwi.eShopMaster.models.User;
 
+import java.util.Arrays;
 import java.util.Map;
+
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordResourceDetails;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -43,6 +47,19 @@ public class LoginAction extends ActionSupport {
 				// Save user object in session:
 				session.put("webshop_user", user);
 				session.put("message", "");
+				
+				ResourceOwnerPasswordResourceDetails resource = new ResourceOwnerPasswordResourceDetails();
+				resource.setPassword(getPassword());
+				resource.setUsername(getUsername());
+				resource.setAccessTokenUri("http://localhost:8092/user");
+				resource.setClientId("frontendId");
+				resource.setClientSecret("frontendSecret");
+				resource.setGrantType("password");
+				resource.setScope(Arrays.asList("read", "write"));
+				
+				OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resource);
+				session.put("restTemplate", restTemplate);
+				
 				firstname= user.getFirstName();
 				lastname = user.getLastName();
 				role = user.getRole().getTyp();

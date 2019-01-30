@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+
 import hska.iwi.eShopMaster.Clients.ApiException;
 import hska.iwi.eShopMaster.Clients.ProductServiceClient;
 import hska.iwi.eShopMaster.model.businessLogic.manager.OAuth2RestManager;
@@ -14,8 +16,13 @@ public class ProductManagerImpl implements ProductManager {
 
 	private ProductServiceClient apiInstance;
 	
+	// TODO Delete
 	public ProductManagerImpl() {
 		apiInstance = new ProductServiceClient(OAuth2RestManager.getInstance());
+	}
+	
+	public ProductManagerImpl(OAuth2RestTemplate restTemplate) {
+		apiInstance = new ProductServiceClient(restTemplate);
 	}
 
 	public List<Product> getProducts() {

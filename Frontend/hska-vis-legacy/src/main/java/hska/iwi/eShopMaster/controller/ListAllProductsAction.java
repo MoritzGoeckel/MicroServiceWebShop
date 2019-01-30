@@ -8,6 +8,8 @@ import hska.iwi.eShopMaster.models.User;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -29,7 +31,8 @@ public class ListAllProductsAction extends ActionSupport {
 		
 		if(user != null){
 			System.out.println("list all products!");
-			ProductManager productManager = new ProductManagerImpl();
+			OAuth2RestTemplate restTemplate = (OAuth2RestTemplate)session.get("restTemplate");
+			ProductManager productManager = new ProductManagerImpl(restTemplate);
 			this.products = productManager.getProducts();
 			result = "success";
 		}
