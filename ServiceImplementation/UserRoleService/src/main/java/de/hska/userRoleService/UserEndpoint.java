@@ -22,12 +22,20 @@ import de.hska.userRoleService.model.User;
 @RestController
 public class UserEndpoint {
 
-	@Autowired
 	private UserRepository repo;
-
-	
-	@Autowired
 	private RoleRepository repoRole;
+
+	@Autowired
+	public UserEndpoint(UserRepository repo, RoleRepository repoRole) throws BadRequestException, ConflictException {
+		this.repo = repo;
+		this.repoRole = repoRole;
+
+		Role userRole = repoRole.save(new Role("user", 1));
+		Role adminRole = repoRole.save(new Role("admin", 2));
+
+		addUser(new User("bob", "Bob", "Bobowitsch", "pw", userRole.getId()));
+		addUser(new User("john", "John", "Johnowitsch", "pw", adminRole.getId()));
+	}
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ResponseEntity<Iterable<RepoUser>> getUsers(@RequestParam(name = "username", required = false) String username,
