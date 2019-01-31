@@ -8,6 +8,8 @@ import hska.iwi.eShopMaster.models.User;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -31,7 +33,7 @@ public class AddCategoryAction extends ActionSupport {
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		user = (User) session.get("webshop_user");
 		if(user != null && (user.getRole().getTyp().equals("admin"))) {
-			CategoryManager categoryManager = new CategoryManagerImpl();
+			CategoryManager categoryManager = new CategoryManagerImpl((OAuth2RestTemplate)session.get("restTemplate"));
 			// Add category
 			categoryManager.addCategory(newCatName);
 			
@@ -51,7 +53,8 @@ public class AddCategoryAction extends ActionSupport {
 			addActionError(getText("error.catname.required"));
 		}
 		// Go and get new Category list
-		CategoryManager categoryManager = new CategoryManagerImpl();
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		CategoryManager categoryManager = new CategoryManagerImpl((OAuth2RestTemplate)session.get("restTemplate"));
 		this.setCategories(categoryManager.getCategories());
 	}
 

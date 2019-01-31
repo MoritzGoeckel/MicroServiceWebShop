@@ -8,6 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import hska.iwi.eShopMaster.models.User;
 
+
 public class DeleteProductAction extends ActionSupport {
 
 	/**

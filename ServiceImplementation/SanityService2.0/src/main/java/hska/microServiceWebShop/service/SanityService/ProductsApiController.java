@@ -28,13 +28,15 @@ public class ProductsApiController {
 	@Autowired
 	private CategoryServiceClient categoriesAPIClient;
 
-	@RequestMapping(value = "/products", produces = { "application/json" }, consumes = {
-			"application/json" }, method = RequestMethod.POST)
-	public ResponseEntity<?> addProduct(@RequestBody ProductBackend product) {
+	@RequestMapping(value = "/products", method = RequestMethod.POST)
+	public ResponseEntity<?> addProduct(@RequestHeader(name = "name", required = true) String name,
+            @RequestHeader(name = "price", required = true) Double price,
+            @RequestHeader(name = "category", required = true) Long category,
+            @RequestHeader(name = "details", required = true) String details) {
 		try {
-			Category c = categoriesAPIClient.getCategoryById(product.getCategory().intValue());
-			ProductBackend p = productsAPIClient.postProduct(product.getName(), product.getPrice(),
-					product.getCategory(), product.getDetails());
+			Category c = categoriesAPIClient.getCategoryById(category);
+			ProductBackend p = productsAPIClient.postProduct(name, price,
+					category, details);
 			Product productNew = new Product();
 			productNew.setId(p.getId());
 			productNew.setName(p.getName());
@@ -50,7 +52,7 @@ public class ProductsApiController {
 		}
 	}
 
-	@RequestMapping(value = "/products/{id}", produces = { "application/json" }, method = RequestMethod.DELETE)
+	@RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteProduct(@PathVariable("id") Long id) {
 		try {
 			productsAPIClient.deleteProductById(id.intValue());
@@ -63,7 +65,7 @@ public class ProductsApiController {
 		}
 	}
 
-	@RequestMapping(value = "/products/{id}", produces = { "application/json" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/products/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getProduct(@PathVariable("id") Long id) {
 		try {
 			ProductBackend p = productsAPIClient.getProductById(id.intValue());
@@ -83,8 +85,7 @@ public class ProductsApiController {
 		}
 	}
 
-	@RequestMapping(value = "/products", produces = { "application/json" }, consumes = {
-			"application/json" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/products", method = RequestMethod.GET)
 	public ResponseEntity<?> queryProducts(@RequestHeader(value = "Text", defaultValue = "") String text,
 			@RequestHeader(value = "Category", defaultValue = "") Long category,
 			@RequestHeader(value = "PriceMin", defaultValue = "") Double priceMin,

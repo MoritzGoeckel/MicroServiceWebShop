@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -47,7 +49,7 @@ public class SearchAction extends ActionSupport{
 		if(user != null){
 			System.err.println("3");
 			// Search products and show results:
-			ProductManager productManager = new ProductManagerImpl();
+			ProductManager productManager = new ProductManagerImpl((OAuth2RestTemplate)session.get("restTemplate"));
 //			this.products = productManager.getProductsForSearchValues(this.searchDescription, this.searchMinPrice, this.searchMaxPrice);
 			if (!searchMinPrice.isEmpty()){
 				sMinPrice =  Double.parseDouble(this.searchMinPrice);
@@ -59,7 +61,7 @@ public class SearchAction extends ActionSupport{
 			this.products = productManager.getProductsForSearchValues(this.searchDescription, sMinPrice, sMaxPrice, null);
 			System.err.println("Products: " + this.products.toString());
 			// Show all categories:
-			CategoryManager categoryManager = new CategoryManagerImpl();
+			CategoryManager categoryManager = new CategoryManagerImpl((OAuth2RestTemplate)session.get("restTemplate"));
 			this.categories = categoryManager.getCategories();
 			System.err.println("Categories: " + this.categories.toString());
 			result = "success";

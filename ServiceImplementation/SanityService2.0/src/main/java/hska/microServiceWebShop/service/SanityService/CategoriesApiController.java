@@ -32,11 +32,10 @@ public class CategoriesApiController {
 	@Autowired
 	private ProductServiceClient productsAPIClient;
 
-	@RequestMapping(value = "/categories", produces = { "application/json" }, consumes = {
-			"application/json" }, method = RequestMethod.POST)
-	public ResponseEntity<?> addCategory(@RequestBody Category category) {
+	@RequestMapping(value = "/categories", method = RequestMethod.POST)
+	public ResponseEntity<?> addCategory(@RequestBody String name) {
 		try {
-			Category c = categoriesAPIClient.postCategory(category.getName());
+			Category c = categoriesAPIClient.postCategory(name);
 			return new ResponseEntity<Category>(c, HttpStatus.OK);
 		} catch (ApiException e) {
 			System.err.println(e.getCode());
@@ -47,7 +46,7 @@ public class CategoriesApiController {
 		}
 	}
 
-	@RequestMapping(value = "/categories/{id}", produces = { "application/json" }, method = RequestMethod.DELETE)
+	@RequestMapping(value = "/categories/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteCategory(@PathVariable("id") Long id) {
 		try {
 			Category c = categoriesAPIClient.getCategoryById(id.intValue());
@@ -69,8 +68,7 @@ public class CategoriesApiController {
 		}
 	}
 
-	@RequestMapping(value = "/categories/{id}", produces = { "application/json" }, consumes = {
-			"application/json" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/categories/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getCategory(@PathVariable("id") Long id) {
 		try {
 			Category c = categoriesAPIClient.getCategoryById(id.intValue());
@@ -83,8 +81,7 @@ public class CategoriesApiController {
 		}
 	}
 
-	@RequestMapping(value = "/categories", produces = { "application/json" }, consumes = {
-			"application/json" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/categories", method = RequestMethod.GET)
 	public ResponseEntity<?> queryCategories(@RequestHeader(value = "Text", defaultValue = "") String text) {
 		CategoryQuery query = new CategoryQuery();
 		query.setText(text);

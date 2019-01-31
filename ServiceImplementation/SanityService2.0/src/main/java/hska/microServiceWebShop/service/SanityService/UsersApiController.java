@@ -24,8 +24,7 @@ public class UsersApiController {
 	@Autowired
 	private UserRoleApi userRoleAPIClient;
 
-	@RequestMapping(value = "/users", produces = { "application/json" }, consumes = {
-			"application/json" }, method = RequestMethod.POST)
+	@RequestMapping(value = "/users", method = RequestMethod.POST)
 	public ResponseEntity<?> createUser(@RequestBody UserBackend user) {
 		try {
 			User u = userRoleAPIClient.createUser(user);
@@ -54,7 +53,7 @@ public class UsersApiController {
 		}
 	}
 
-	@RequestMapping(value = "/users/{id}", produces = { "application/json" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getUserById(@PathVariable("id") Long id) {
 		try {
 			User u = userRoleAPIClient.getUser(id);
@@ -68,7 +67,7 @@ public class UsersApiController {
 		}
 	}
 
-	@RequestMapping(value = "/users", produces = { "application/json" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ResponseEntity<?> getUsers(@RequestHeader(value = "Text", defaultValue = "") String text,
 			@RequestHeader(value = "Role", defaultValue = "") Long roleId,
 			@RequestHeader(value = "Username", defaultValue = "") String name) {

@@ -8,11 +8,11 @@ public interface CategoryManager {
 
 	public List<Category> getCategories();
 	
-	public Category getCategory(int id); 
+	public Category getCategory(long id); 
 	
 	public void addCategory(String name);
 	
-	public void delCategoryById(int id);
+	public void delCategoryById(long id);
 
 	
 }

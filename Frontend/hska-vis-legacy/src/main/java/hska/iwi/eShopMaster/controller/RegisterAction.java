@@ -1,13 +1,16 @@
 package hska.iwi.eShopMaster.controller;
 
-import java.util.Map;
-
-import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-
+import hska.iwi.eShopMaster.model.businessLogic.manager.OAuth2RestManager;
 import hska.iwi.eShopMaster.model.businessLogic.manager.UserManager;
 import hska.iwi.eShopMaster.model.businessLogic.manager.impl.UserManagerImpl;
 import hska.iwi.eShopMaster.models.Role;
+
+import java.util.Map;
+
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 
 public class RegisterAction extends ActionSupport {
 
@@ -29,18 +32,18 @@ public class RegisterAction extends ActionSupport {
         // Return string:
         String result = "input";
 
-        UserManager userManager = new UserManagerImpl();
+        UserManager userManager = new UserManagerImpl(OAuth2RestManager.getInstance());
 
-//   		this.role = userManager.getRoleByLevel(1); // 1 -> regular User, 2-> Admin
-//
-//   		if(this.username.equals("admin")) {
-//   			this.role = userManager.getRoleByLevel(2);
-//   		}
+   		this.role = userManager.getRoleByLevel(1); // 1 -> regular User, 2-> Admin
+
+   		if(this.username.equals("admin")) {
+   			this.role = userManager.getRoleByLevel(2);
+   		}
    		
    		if (!userManager.doesUserAlreadyExist(this.username)) {
     		    	
 	        // save it to database
-	        userManager.registerUser(this.username, this.firstname, this.lastname, this.password1, 1);
+	        userManager.registerUser(this.username, this.firstname, this.lastname, this.password1, this.role.getId());
 	            // User has been saved successfully to databse:
 	        	addActionMessage("user registered, please login");
 	        	addActionError("user registered, please login");

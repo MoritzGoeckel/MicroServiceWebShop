@@ -3,6 +3,8 @@ package hska.iwi.eShopMaster.model.businessLogic.manager.impl;
 
 import java.util.List;
 
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+
 import hska.iwi.eShopMaster.Clients.ApiException;
 import hska.iwi.eShopMaster.Clients.UserRoleApi;
 import hska.iwi.eShopMaster.model.businessLogic.manager.OAuth2RestManager;
@@ -13,22 +15,20 @@ public class UserManagerImpl implements UserManager {
 	
 	private UserRoleApi apiInstance;
 	
-	public UserManagerImpl() {
-		apiInstance = new UserRoleApi(OAuth2RestManager.getInstance());
+	public UserManagerImpl(OAuth2RestTemplate restTemplate) {
+		apiInstance = new UserRoleApi(restTemplate);
 	}
 
 	
-	public void registerUser(String username, String name, String lastname, String password, long roleID) {
+	public void registerUser(String username, String name, String lastname, String password, Long role) {
 		UserBackend userBackend = new UserBackend();
 		userBackend.setFirstName(name);
 		userBackend.lastName(lastname);
 		userBackend.setUsername(username);
 		userBackend.setPassword(password);
-		userBackend.setRoleID(roleID);
-		
+		userBackend.setRoleID(role);
 		try {
-			User user = apiInstance.createUser(userBackend);
-			System.err.println("UserManagerImpl registerUser: " + user.toString());
+			apiInstance.createUser(userBackend);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,7 +40,6 @@ public class UserManagerImpl implements UserManager {
 		List<User> users = null;
 		try {
 			users = apiInstance.getUsers(username, null, null);
-			System.err.println("UserManagerImpl getUserByUsername: " + users.toString());
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,6 +72,7 @@ public class UserManagerImpl implements UserManager {
 			System.err.println("ERROR Code: " + e.getCode());
 		}
 		if(roles == null || roles.isEmpty()) {
+			System.err.println("Aufruf gleich NULL!!!!!!!!!!!!!");
 			return null;
 		}
 		return roles.get(0);
@@ -84,7 +84,6 @@ public class UserManagerImpl implements UserManager {
 		query.setUsername(username);
 		try {
 			users = apiInstance.getUsers(username, null, null);
-			System.err.println("UserManagerImpl doesUserAlreadyExist: " + users.toString());
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

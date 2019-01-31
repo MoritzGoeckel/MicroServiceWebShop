@@ -2,7 +2,9 @@ package hska.iwi.eShopMaster.Clients;
 
 import hska.iwi.eShopMaster.models.Category;
 import org.springframework.http.*;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.web.client.HttpClientErrorException;
 
 public class CategoryServiceClient {
 
@@ -19,9 +21,16 @@ public class CategoryServiceClient {
 	}
 
 	public Category postCategory(String name) throws ApiException {
-		ResponseEntity<Category> response = restTemplate.postForEntity(baseUrl, name, Category.class);
-		handle(response);
-		return response.getBody();
+		// Manager
+		ResponseEntity<Category> response = null;
+		try {
+			response = restTemplate.postForEntity(baseUrl, name, Category.class);
+			handle(response);
+			return response.getBody();
+		} catch (HttpMessageNotReadableException e) {
+			// TODO ???
+			throw new ApiException(208, "Category already reported");
+		}
 	}
 
 	public Category[] getCategories(String query) throws ApiException {
@@ -38,14 +47,14 @@ public class CategoryServiceClient {
 		return response.getBody();
 	}
 
-	public Category getCategoryById(int id) throws ApiException {
+	public Category getCategoryById(long id) throws ApiException {
 		ResponseEntity<Category> response = restTemplate.getForEntity(baseUrl + "/" + id, Category.class);
 		handle(response);
 
 		return response.getBody();
 	}
 
-	public void deleteCategoryById(int id) throws ApiException {
+	public void deleteCategoryById(long id) throws ApiException {
 		ResponseEntity<Category> response = restTemplate.exchange(baseUrl + "/" + id, HttpMethod.DELETE,
 				new HttpEntity<String>(new HttpHeaders()), Category.class);
 		handle(response);

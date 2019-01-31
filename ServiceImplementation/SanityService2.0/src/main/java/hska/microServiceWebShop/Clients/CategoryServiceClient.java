@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
@@ -32,7 +33,8 @@ public class CategoryServiceClient {
 	}
 
 	public Category postCategory(String name) throws ApiException {
-		ResponseEntity<Category> response = restTemplate.postForEntity(baseUrl, name, Category.class);
+		ResponseEntity<Category> response = null;
+		response = restTemplate.postForEntity(baseUrl, name, Category.class);
 		handle(response);
 		return response.getBody();
 	}
@@ -58,7 +60,7 @@ public class CategoryServiceClient {
 	}
 
 	@HystrixCommand(fallbackMethod = "getCategoriesByIdCache", ignoreExceptions = ApiException.class)
-	public Category getCategoryById(int id) throws ApiException {
+	public Category getCategoryById(long id) throws ApiException {
 		ResponseEntity<Category> response = restTemplate.getForEntity(baseUrl + "/" + id, Category.class);
 		handle(response);
 
@@ -69,10 +71,11 @@ public class CategoryServiceClient {
 		return category;
 	}
 
-	public void deleteCategoryById(int id) throws ApiException {
+	public void deleteCategoryById(long id) throws ApiException {
 		ResponseEntity<Category> response = restTemplate.exchange(baseUrl + "/" + id, HttpMethod.DELETE,
 				new HttpEntity<String>(new HttpHeaders()), Category.class);
 		handle(response);
+		cache.remove(id);
 	}
 
 	private void handle(ResponseEntity<?> response) throws ApiException {
@@ -84,7 +87,7 @@ public class CategoryServiceClient {
 		return cache.values().stream().filter(c -> c.getName().contains(query)).toArray(Category[]::new);
 	}
 
-	public Category getCategoriesByIdCache(int id) throws ApiException {
+	public Category getCategoriesByIdCache(long id) throws ApiException {
 		Category category = cache.getOrDefault((long) id, null);
 		if (category == null)
 			throw new ApiException(HttpStatus.NOT_FOUND.value(), "Category not found in cache");

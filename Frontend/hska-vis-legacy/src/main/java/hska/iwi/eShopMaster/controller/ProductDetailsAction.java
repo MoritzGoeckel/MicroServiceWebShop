@@ -1,14 +1,16 @@
 package hska.iwi.eShopMaster.controller;
 
-import java.util.Map;
-
-import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-
 import hska.iwi.eShopMaster.model.businessLogic.manager.ProductManager;
 import hska.iwi.eShopMaster.model.businessLogic.manager.impl.ProductManagerImpl;
 import hska.iwi.eShopMaster.models.Product;
 import hska.iwi.eShopMaster.models.User;
+
+import java.util.Map;
+
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 
 public class ProductDetailsAction extends ActionSupport {
 	
@@ -32,7 +34,7 @@ public class ProductDetailsAction extends ActionSupport {
 		user = (User) session.get("webshop_user");
 		
 		if(user != null) {
-			ProductManager productManager = new ProductManagerImpl();
+			ProductManager productManager = new ProductManagerImpl((OAuth2RestTemplate)session.get("restTemplate"));
 			product = productManager.getProductById(id);
 			
 			res = "success";			

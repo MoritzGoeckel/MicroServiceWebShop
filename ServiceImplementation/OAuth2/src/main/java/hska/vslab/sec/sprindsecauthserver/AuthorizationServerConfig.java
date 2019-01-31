@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -21,15 +20,15 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-	//@Qualifier("authenticationManagerBean")
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
 	@Autowired
+	private CustomUserDetailsService userDetailsService;
+	
+	@Autowired
 	private TokenStore tokenStore;
 	
-//	@Autowired
-//	private AuthorizationServerTokenServices tokenServices;
 	
 	@Autowired
 	private PasswordEncoder encoder;
@@ -45,7 +44,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory()
 		.withClient("frontendId")
-		.authorizedGrantTypes("client_credentials")
+		.authorizedGrantTypes("password", "authorization_code", "refresh_token", "client_credentials")
+		.authorities("ROLE_USER", "ROLE_ADMIN")
 		.scopes("read", "write")
 		.autoApprove(true)
 		.secret(encoder.encode("frontendSecret"))
@@ -78,33 +78,28 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		.authorizedGrantTypes("client_credentials")
 		.scopes("read", "write")
 		.autoApprove(true)
-		.secret(encoder.encode("userroleSecret"));
+		.secret(encoder.encode("userroleSecret"))
+		.and()
+		.withClient("oauthId")		
+		.authorizedGrantTypes("client_credentials")
+		.scopes("read", "write")
+		.autoApprove(true)
+		.secret(encoder.encode("oauthSecret"));
 		
 	}
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints.authenticationManager(authenticationManager)
-				.tokenStore(tokenStore);
-				//.tokenServices(tokenServices);
+				.tokenStore(tokenStore)
+				.userDetailsService(userDetailsService);
 	}
 	
 	@Bean
 	public TokenStore tokenStore() {
 		return new InMemoryTokenStore();
 	}
-	
-//    @Bean
-//    public AuthorizationServerTokenServices tokenServices(){
-//        DefaultTokenServices tokenServices = new DefaultTokenServices();
-//        tokenServices.setTokenStore(this.tokenStore());
-//        return tokenServices;
-//    }
-	
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+		
 	
 	@Bean
 	protected AuthorizationCodeServices authorizationCodeServices() {

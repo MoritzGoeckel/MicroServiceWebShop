@@ -78,6 +78,7 @@
         <action name="DeleteCategoryAction" class="hska.iwi.eShopMaster.controller.DeleteCategoryAction">
         	<result name="input" type="redirect">LogoutAction</result>
         	<result name="success">/pages/categories.jsp</result>
+        	<result name="error">/pages/categories.jsp</result>
         </action>
        
     </package>
