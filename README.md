@@ -1,5 +1,5 @@
 # Webshop with Spring Microservices 
-This is a webshop created with Spring consisting of 7 microservices. The project was conducted for educational purposes.
+This is a webshop created with Spring consisting of 7 microservices. The project was conducted for educational purposes by a team of five students.
 
 # Architecture
 There are seven microservices:
